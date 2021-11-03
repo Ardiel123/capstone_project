@@ -45,7 +45,7 @@
 
 
 		if(empty($current_pass)){
-			$error = "Hatdog";
+				$error = "Current password cannot be empty";
 				echo  '<script> 
 					$(document).ready(function(){
 					$("#exampleModal").modal("show");
@@ -53,13 +53,29 @@
 				</script>';
 		}
 		else if(empty($new_pass)){
-				header("location: account.php?error=Please Input new password");
+				$error = "Please Input new password";
+				echo  '<script> 
+					$(document).ready(function(){
+					$("#exampleModal").modal("show");
+					});
+				</script>';
 		}
 		else if(empty($confirm_pass)){
-				header("location: account.php?error=Please Confirm new password");
+				$error = "Please Confirm new password";
+				echo  '<script> 
+					$(document).ready(function(){
+					$("#exampleModal").modal("show");
+					});
+				</script>';
+
 		}
 		else if($new_pass != $confirm_pass){
-				header("location: account.php?error=Password do not match");
+				$error = "New Password do not match";
+				echo  '<script> 
+					$(document).ready(function(){
+					$("#exampleModal").modal("show");
+					});
+				</script>';
 		}
 		else{
 
@@ -72,6 +88,25 @@
 
 				if($data_password == $cur_pass){
 
+					$n_pass = md5($new_pass); 
+
+					$sql_updpass = "UPDATE account_tbl SET password='$n_pass' WHERE account_id = '$acc_id'";
+					mysqli_query($db, $sql_updpass);
+
+					echo  '<script> 
+						$(document).ready(function(){
+						$("#mymodal").modal("show");
+						});
+					</script>';
+
+				}
+				else{
+					$error = "You've entered wrong current password";
+					echo  '<script> 
+						$(document).ready(function(){
+						$("#exampleModal").modal("show");
+						});
+					</script>';
 				}
 
 	
@@ -296,7 +331,7 @@
 <label>Current Password: </label>
 </div>
 	<div class="col">
-<input type="password" name="current_pass"  id="myInput">
+<input type="password" name="current_pass" autocomplete="new-password" id="myInput">
 </div>
 </div>
  <div class="row">
@@ -316,7 +351,7 @@
 </div>
 </div>
 <!-- An element to toggle between password visibility -->
-<input type="checkbox" onclick="myFunction()">Show Password
+<input type="checkbox" onclick="myFunction()"> Show Password
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -326,6 +361,29 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Alert-->
+  <div class="modal fade" id="mymodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <h4 class="modal-title">Password Changed!</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
 <?php 
 		include('include/footer_user.php');
  ?>
@@ -345,5 +403,8 @@
   }
 }
 
-$('#formsss').disableAutoFill();
- </script>
+if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+ } 
+
+</script>
