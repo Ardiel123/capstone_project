@@ -28,24 +28,55 @@
  		$province = $_POST['province'];
  		echo $cus_id;
 
- 		// $que = "UPDATE `customer_tbl` SET `customer_fname`='$fname',`customer_lname`='$lname',`house_no`='$house_no',`barangay`='$brgy',`city`='$city',`province`='$province',`customer_email`='$email',`customer_phonenumber`='$contact' WHERE `customer_id`='$cus_id'";
-
  		$que = "UPDATE customer_tbl ct INNER JOIN account_tbl act ON ct.account_id = act.account_id SET `customer_fname`='$fname',`customer_lname`='$lname',`house_no`='$house_no',`barangay`='$brgy',`city`='$city',`province`='$province',`customer_email`='$email',`customer_phonenumber`='$contact', `username` = '$user' WHERE ct.customer_id = '$cus_id'";
 
 		
 		$result2 = mysqli_query($db,$que);
 		  echo  '<script> window.location.href="account.php";</script>';
-		// header("location: account.php");
 	}
 
-	if (isset($POST['save_pass'])) {
+	if (isset($_POST['save_pass'])) {
+
 		$acc_id = $_POST['acc_id'];
+
 		$current_pass = $_POST['current_pass'];
 		$new_pass = $_POST['new_pass'];
 		$confirm_pass = $_POST['confirm_pass'];
 
-		$cur_pass = md5($current_pass);
+
+		if(empty($current_pass)){
+			$error = "Hatdog";
+				echo  '<script> 
+					$(document).ready(function(){
+					$("#exampleModal").modal("show");
+					});
+				</script>';
+		}
+		else if(empty($new_pass)){
+				header("location: account.php?error=Please Input new password");
+		}
+		else if(empty($confirm_pass)){
+				header("location: account.php?error=Please Confirm new password");
+		}
+		else if($new_pass != $confirm_pass){
+				header("location: account.php?error=Password do not match");
+		}
+		else{
+
+				$sql_getpass = "SELECT * FROM account_tbl WHERE account_id = '$acc_id'";
+				$res_getpass = mysqli_query($db, $sql_getpass);
+				$ps = mysqli_fetch_assoc($res_getpass);
+
+				$data_password = $ps['password'];
+				$cur_pass = md5($current_pass);
+
+				if($data_password == $cur_pass){
+
+				}
+
 	
+		}
+
 	}
 		
 ?> 
@@ -109,7 +140,7 @@
 		    					<label for=""><b>First Name:</b></label>
 		    				</div>
 		    				<div class="col" >
-		    					<form method="POST">
+		    					<form method="POST" autocomplete="off" id="formsss">
 		    					 <input class="border" type="text"  name="fname" id="fname" value="<?php echo $row_profile['customer_fname']; ?>" style="width: 230px;padding: 5px 0px 5px 10px;border-color: #dbdbdb">
 								 
 
@@ -233,7 +264,6 @@
 		    </div>
 		   
 		</div>
-
 	
 		
 		
@@ -241,6 +271,7 @@
 
 <div style="height: 150px"></div>
 </body>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -252,6 +283,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <?php if(isset($error)) { ?>
+					<div class="alert alert-danger" role="alert">
+							<?php echo $error; ?>
+					</div>
+			<?php } ?>
      
       <div class="modal-body">
        <!-- Password field -->
@@ -260,7 +296,7 @@
 <label>Current Password: </label>
 </div>
 	<div class="col">
-<input type="password" name="current_pass" value="" id="myInput">
+<input type="password" name="current_pass"  id="myInput">
 </div>
 </div>
  <div class="row">
@@ -268,7 +304,7 @@
 <label>New Password: </label>
 </div>
 	<div class="col">
-	<input type="password" name="new_pass" value="" id="myInput1">
+	<input type="password" name="new_pass" id="myInput1">
 </div>
 </div>
  <div class="row">
@@ -276,7 +312,7 @@
 <label>Confirm New Password: </label>
 </div>
 	<div class="col">
-<input type="password" name="confirm_pass" value="" id="myInput2">
+<input type="password" name="confirm_pass" id="myInput2">
 </div>
 </div>
 <!-- An element to toggle between password visibility -->
@@ -284,7 +320,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" name="save_pass" class="btn btn-primary">Save changes</button>
+        <input type="submit" name="save_pass" class="btn btn-primary" value="submit">
       </div>
       </form>
     </div>
@@ -308,4 +344,6 @@
     z.type = "password";
   }
 }
+
+$('#formsss').disableAutoFill();
  </script>
