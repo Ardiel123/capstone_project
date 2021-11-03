@@ -39,17 +39,25 @@
 
 			$cus_id = $_POST['customer_id'];
 			$service_type = $_POST['serv_type'];
-			$size = $_POST['x'].'x'.$_POST['y'];
 			$quantity = $_POST['quan'];
 			$recipient_name = $_POST['recipient_name'];
 			$recipient_number = $_POST['recipient_number'];
 			$payment_option = $_POST['payment_option'];
 			$status = 1;
 
-			if ($service_type == "logo") {
-					$total = $quantity * 200;
-			}elseif ($service_type == "tarpaulin") {
-					$total = $quantity * 800;
+			if ($service_type == 2) {
+					$price = 200;
+					$total = $quantity * $price;
+					$size = $_POST['x'].'x'.$_POST['y'].' INCH';
+
+			}elseif ($service_type == 1) {
+					$explode_price = $_POST['size_tarp'];
+					$expl = explode("|", $explode_price);
+
+					$price = $expl[0];
+					$size = $expl[1];
+
+					$total = $quantity * $price;
 			}
 
 			date_default_timezone_set('Asia/Manila');
@@ -69,7 +77,7 @@
 
 				$the_ship_id = $show_ship_id['ship_id'];
 
-				$sql_add_det = "INSERT INTO `printing_service_tbl`(`service_type`,`print_service_image`,`print_service_size`,`print_service_quantity`,`print_service_total`,`customer_id`, `status_id`, `payment_type_id`, `shipping_details_id`) VALUES ('$service_type','$destination1','$size','$quantity','$total','$cus_id','$status','$payment_option','$the_ship_id')";
+				$sql_add_det = "INSERT INTO `printing_service_tbl`(`service_type`,`print_service_image`,`print_service_price`,`print_service_size`,`print_service_quantity`,`print_service_total`,`customer_id`, `status_id`, `payment_type_id`, `shipping_details_id`) VALUES ('$service_type','$destination1','$price','$size','$quantity','$total','$cus_id','$status','$payment_option','$the_ship_id')";
 				$add_to_order = mysqli_query($db,$sql_add_det);
 				
 			}
@@ -87,7 +95,7 @@
 
 				$the_ship_id = $show_ship_id['ship_id'];
 
-				$sql_add_det = "INSERT INTO `printing_service_tbl`(`service_type`,`print_service_image`,`print_service_size`,`print_service_quantity`,`print_service_total`,`customer_id`, `status_id`, `payment_type_id`, `shipping_details_id`) VALUES ('$service_type','$destination1','$size','$quantity','$total','$cus_id','$status','$payment_option','$the_ship_id')";
+				$sql_add_det = "INSERT INTO `printing_service_tbl`(`service_type`,`print_service_image`,`print_service_price`,`print_service_size`,`print_service_quantity`,`print_service_total`,`customer_id`, `status_id`, `payment_type_id`, `shipping_details_id`) VALUES ('$service_type','$destination1','$price','$size','$quantity','$total','$cus_id','$status','$payment_option','$the_ship_id')";
 				$add_to_order = mysqli_query($db,$sql_add_det);
 
 			}
@@ -113,37 +121,15 @@
 	  -ms-transform: translate(-50%, -50%);
 	  transform: translate(-50%, -50%);
 	}
-	.title_text{
-    margin: 60px 0px 5px 20px;font-weight: 600;color: black;font-size: 40px;margin-bottom: 40px;font-family: 'Poppins';
-  }
 </style>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 2px;">
-<div style="background-color: white;height: 60px; width: 100%">
-  
-<ul class="nav justify-content-center" style="padding: 10px 0px">
-    <li class="nav-item " style="font-size: 19px;">
-      <a class="nav-link nav2 " href="index.php" >Home</a>
-    </li>
-    <li class="nav-item" style="font-size: 19px;">
-      <a class="nav-link nav2 " href="products.php">Products</a>
-    </li>
-    <li class="nav-item" style="font-size: 19px;">
-      <a class="nav-link nav2 active" href="services.php">Services</a>
-    </li>
-    
-    
-  </ul>
-</div>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 1.5px;">
 
-<body onload="calculate()" style="background-color: #f5f5f5">
-<div class="container-md" style="height: 660px; margin-top: 70px;">
-	<!-- <h3 class="title_text">Services</h3> -->
-		<div class="this" style="margin-top: 30px">
+<body onload="calculate()">
+<div class="container">
+		<div class="this">
 			<div class="center">
-				<form method="POST">
-					<button type="submit" name="req" class="btn btn-primary" style="width: 200px; height: 60px;">Request Logo printing</button>
-				</form>
+
+					<button type="button" name="req" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width: 200px; height: 60px;">Request Logo printing</button>
+
 			</div>
 		</div>
 </div>
@@ -169,24 +155,43 @@
       <div class="modal-body">
         <form action="" method="POST" enctype="multipart/form-data">
         	<input type="hidden" name="customer_id" value="<?php echo $_SESSION['user_id']; ?>">
-        	<div class="form-group" >
-        		<label for="serv_type">Service Type:</label>
-        		<select name="serv_type" id="serv_type" class="form-control" onclick="calculate()">
-        				<option value="tarpaulin">Tarpaulin Printing</option>
-        				<option value="logo">Logo Printing</option>
-        		</select>
-        	</div>
 
         	<div class="form-group" >
         		<label for="image">Image:</label>
         		<input type="file" name="image" class="form-control">
         	</div>
 
-        	<label for="size">Size (inches):</label>
+        	<div class="form-group" >
+        		<label for="serv_type">Service Type:</label>
+        		<select name="serv_type" id="serv_type" class="form-control" onchange="showsize(this)" onclick="calculate()">
+        				<option value="1">Tarpaulin Printing</option>
+        				<option value="2">Logo Printing</option>
+        		</select>
+        	</div>
+
+        	<div id="for_tarp" style="display:block;">
+        		<label for="size_tarp">Size (Feet):</label>
+        			<select name="size_tarp" id="pri" class="form-control" onclick="calculate()">
+        				<option value="1000|2x2 FT">2x2 FT</option>
+        				<option value="2000|3x3 FT">3x3 FT</option>
+        			</select>
+        	</div>
+
+        	<div id="for_logo" style="display:none;">
+        			<label for="size_logo">Size (inches):</label>
+		        	<div class="form-group" >
+		        		<input type="number" name="x" class="form-control" value="2" style="float: left; width: 15%;" min="1" required>&nbsp;&nbsp;x&nbsp; 
+		        		<input type="number" name="y" class="form-control" value="2" style="width: 15%; float: right; margin-right: 65%" min="1" required>
+		        	</div>
+        		
+        	</div>
+
+
+        	<!--<label for="size">Size (inches):</label>
         	<div class="form-group" >
         		<input type="number" name="x" class="form-control" value="2" style="float: left; width: 15%;" min="1" required>&nbsp;&nbsp;x&nbsp; 
         		<input type="number" name="y" class="form-control" value="2" style="width: 15%; float: right; margin-right: 65%" min="1" required>
-        	</div>
+        	</div>--->
 
 
         	<label for="quan">Sheets (Pcs):</label><br>
@@ -268,11 +273,6 @@
   </div>
 </div>
 </body>
-
-<?php 
-	include('include/footer_user.php');
- ?>
-
 <script>
 
 	function showDiv(select){
@@ -288,17 +288,30 @@
 	   }
 	} 
 
+	function showsize(select){
+
+	   if(select.value==1){
+	    document.getElementById('for_tarp').style.display = "block";
+	    document.getElementById('for_logo').style.display = "none";
+	   } else if(select.value==2){
+	    document.getElementById('for_logo').style.display = "block";
+	    document.getElementById('for_tarp').style.display = "none";
+	   }
+	}
 
 	function calculate(){
 		var service = document.getElementById("serv_type").value;
 
-		if (service == "logo") {
+		if (service == 2) {
 			var quan = document.getElementById("quantity").value;
 			document.getElementById("total").value = "₱"+Number(200 * quan).toFixed(2);
 		} 
-		else if (service =="tarpaulin") {
+		else if (service == 1) {
 			var quan = document.getElementById("quantity").value;
-			document.getElementById("total").value = "₱"+Number(800 * quan).toFixed(2);
+			var val = document.getElementById("pri").value;
+			var pri = val.split("|");
+
+			document.getElementById("total").value = "₱"+Number(pri[0] * quan).toFixed(2);
 		}
 	}
 	function add(){
