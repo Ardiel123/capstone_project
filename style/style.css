@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+}
+body{
+	min-height: 100vh;
+}
+.form-group span{
+	color: red;
+}
+
+/*for header*/
+header{
+	top: 0;
+	z-index: 4;
+	position: fixed;
+	background: #170c82;
+	width: 100%;
+	height: 5em;
+}
+.left_area{
+	width: 30%;
+	float: left;
+	height: 70px;
+	transition: 0.5s;
+}
+.right_area{
+	width: 30%;
+	float: right;
+	height: 70px;
+	padding: 20px;
+}
+.left_area h3{
+	position: absolute;
+	color: #fff;
+	margin-left: 50px;
+	text-transform: uppercase;
+	font-size: 30px;
+	font-weight: 900;
+}
+.left_area span{
+	color: #cc7a00;
+	font-size: 30px;
+}
+.right_area h5{
+	position: absolute;
+	color: #fff;
+}
+
+/*for navbar*/
+.navigation{
+	z-index: 2;
+	top: 0;
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	background: #170c82;
+	transition: 0.5s;
+	overflow: hidden;
+}
+.navigation ul{
+	margin-top: 70px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.navigation ul li{
+	position: relative;
+	width: 100%;
+	list-style: none;
+}
+.navigation ul li:hover{
+	background: #dc7e00;
+}
+
+.navigation ul li a{
+	position: relative;
+	display: block;
+	width: 100%;
+	display: flex;
+	text-decoration: none;
+	color: #fff;
+}
+.navigation ul li a .icon{
+	position: relative;
+	display: block;
+	min-width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	margin-top: 2px;
+}
+.navigation ul li a .icon .fa{
+	font-size: 24px;
+	margin-top: 15px;
+}
+.navigation ul li a .title{
+	position: relative;
+	display: block;
+	padding: 0 10px;
+	height: 60px;
+	line-height: 60px;
+	text-align: start;
+	white-space: nowrap;
+}
+label #sidebar_btn{
+	color: #fff;
+	position: fixed;
+	cursor: pointer;
+	left: 20px;
+	font-size: 20px;
+	margin: 16px 0;
+	transition: 0.5s;
+	transition-property: color;
+}
+label #sidebar_btn:hover{
+	color: #dc7e00;
+}
+#check:checked ~ .navigation{
+	width: 0;
+}
+/*for content*/
+.content{
+	padding: 20px;
+	margin-top: 50px;
+	margin-left: 200px;
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	transition: 0.5s;
+}
+#check:checked ~ .content{
+	margin-left: 0;
+}
+
+#check:checked ~ #sidebar_btn{
+	left: -220px;
+}
+
+#check{
+	display: none;
+}
+
+.for_title, .my_content{
+	left: 0;
+	margin-top: 10px;
+	width: 100%;
+}
+
+@media (max-width: 960px) {
+	.navigation ul li a .title  { display: none; }
+	.navigation {width: 60px;}
+	.content {margin-left: 60px;}
+	nav .nav-pills { margin-top: 0;}
+
+}
+
+/*for footer*/
+footer{
+
+	background: #fff;
+	padding: 10px;
+	width: 100%;
+	height: 5em;
+}
+
+textarea{
+	resize: vertical;
+}
+
