@@ -12,7 +12,7 @@
 
 <body class="bcolor" >
 <hr class="hr1" >
-<div class="index-1">
+<div class="nav-div1">
   
 <ul class="nav justify-content-center" >
     <li class="nav-item navli" >

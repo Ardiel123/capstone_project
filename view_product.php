@@ -154,68 +154,28 @@
 
 ?>
 <style>
-	.rowpad{
-		padding-left: 1px;
-	}
-	.img-prod{
-		width: 400px; height: 450px;
-		}
-	.title_text{
-		margin: 60px 0px 5px 20px;font-weight: 600;color: black;font-size: 40px;margin-bottom: 40px;font-family: 'Poppins';
-	}
-	.size-1{
-		width: 130px;text-align: center;border-color: #dbdbdb;
-	}
-	.button-1{
-		width:150px;background-color: #cc7a00;color: white;
-	}
-	.button-2{
-		width: 150px;background-color: #170c82;color: white;
-	}
-	@media only screen and (max-width: 600px){
-		.rowpad{
-			padding-left: 25px;
-		}
-		.title_text{
-			font-size: 35px;
-		}
-		.prod_name{
-			font-size: 30px;
-		}
-	}
-	@media only screen and (max-width: 991px){
-		.prod_name{
-				margin-top: 10px;
-		}
-	}
-	@media only screen and (max-width: 425px){
-		.img-prod{
-			width: 300px;height: 320px;
-		}
-		.size-1{
-		width: 100px;
-		}
-		.button-1,.button-2{
-			width: 130px;
-		}
-		.title_text{
-			font-size: 30px;
-		}
-	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 </style>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 2px;">
-<div style="background-color: white;height: 60px; width: 100%">
+<hr class="hr1">
+<div class="nav-div1">
   
-<ul class="nav justify-content-center" style="padding: 10px 0px">
-    <li class="nav-item " style="font-size: 19px;">
+<ul class="nav justify-content-center">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="index.php" >Home</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 active" href="products.php">Products</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2" href="services.php">Services</a>
     </li>
     
@@ -223,11 +183,11 @@
   </ul>
 </div>
 
-<hr style="margin: 0px;background-color: #dbdbdb;height: 1.5px;">
+<hr class="hr2">
 
 
-<body onload="calculate()" style="background-color:#F5F5f5">
-<div class="container-sm" style="margin-top: 50px;min-height: 660px">
+<body onload="calculate()" class="bcolor">
+<div class="container-sm view-div1" >
 
 	<h3  class="title_text" style="">Product Detail</h3>
 
@@ -244,17 +204,17 @@
   			</div>
 
   			<!-- price -->
-  			<div class="row rowpad" style="margin-bottom: 10px">
+  			<div class="row rowpad view-div2" >
   				<div class="col-lg" style="text-align: left">
   					<div class="row">
   						<div class="col-lg">
-  							<label for="price" style="font-size: 18px"><b>Price: </b></label> 
+  							<label for="price" class="price-view"><b>Price: </b></label> 
 				
   						</div>
   					</div>
   					<div class="row" >
   						<div class="col-lg">
-  							<input type="text" name="price_total" id="display" style="padding: 10px; font-weight: bold; width: 130px;border-style: none;color: #cc7a00;font-size: 23px;background-color: #f5f5f5;font-family: ''" disabled>
+  							<input type="text" name="price_total" id="display" class="price-view2"  disabled>
   						</div>
   					</div>
   				</div>
@@ -264,8 +224,8 @@
   			<div class="row rowpad">
   				<div class="col-lg">
 	  			<p style="text-align: left;">
-	  				<b style="font-size: 18px;">Product Description:</b><br>
-	  				<textarea rows=5 style="padding: 10px; resize: none; width: 100%;border-style: none;margin-top: 8px;margin-bottom: 0px;background-color: #f5f5f5;" disabled><?php echo $show_product['product_description']; ?></textarea>
+	  				<b class="description-view">Product Description:</b><br>
+	  				<textarea rows=5 class="description-view2"  disabled><?php echo $show_product['product_description']; ?></textarea>
 	  			</p>
   				</div>
   			</div>
@@ -275,13 +235,13 @@
   				<input type="hidden" name="unit_pri" value="<?php echo $row3['price']; ?>">
 
   			
-  			<div class="row" style="margin-top: 0px">
+  			<div class="row view-row" >
   				<!-- size -->
   				<div class="col">
   				<div class="form-group">
   					<div class="row rowpad">
   						<div class="col-lg">
-						<label for="size"> <b style="font-size: 18px;">Size:</b></label>
+						<label for="size"> <b class="view">Size:</b></label>
 						</div>
 					</div>
 					<div class="row rowpad">
@@ -305,14 +265,14 @@
   				<div class="form-group">
 					<div class="row">
 						<div class="col-lg" >					
-						<label for="quantity" > <b style="font-size: 18px;">Quantity:</b></label>
+						<label for="quantity" > <b class="view">Quantity:</b></label>
 						</div>
 					</div>	
 					<div class="row ">
 						<div class="col-lg">
-				<button type="button" onclick="minus(); calculate();" style="padding: 5px 10px;margin-right: 0px;height: 40px;background-color: #ffffff;border-style: solid;border-right-style: none;border-color: #dbdbdb"> <b>-</b> </button>
-					<input type="text" id="quantity" name="quantity" min="1" value="1" size="5" onchange="calculate()" onkeydown="return (event.keyCode!=13);" style="text-align: center;margin-left: 0px;height: 40px;border-style: solid;border-color: #dbdbdb;border-left-style: none;border-right-style: none;" readonly>
-				<button type="button" onclick="add(); calculate();" style="padding: 5px 8px;height: 40px;background-color: #ffffff;border-style: solid;border-left-style: none;border-color: #dbdbdb"><b>+</b></button>
+				<button type="button" onclick="minus(); calculate();" class="view-minus"> <b>-</b> </button>
+					<input type="text" id="quantity" name="quantity" min="1" value="1" size="5" onchange="calculate()" onkeydown="return (event.keyCode!=13);" class="view-quantity" readonly>
+				<button type="button" onclick="add(); calculate();" class="view-plus" ><b>+</b></button>
 						</div>
 					</div>
 					</div>
@@ -377,11 +337,11 @@
 				      			<label for="size">Size:</label>
 				        		<input type="text" name="size" class="form-control" value="<?php echo $show_variation['weight_value'].''.$show_variation['abbreviation']; ?>" readonly>
 				     		</div>
-				     		<label for="price" style="margin-right: 24%"> Unit Price: ₱</label>
+				     		<label for="price" class="view-label1"> Unit Price: ₱</label>
 				     		<label for="quantity">Quantity:</label>
 				      		<div class="form-group">
-				        		<input style="width: 40%; float: left; margin-right: 5px" type="text" name="price" class="form-control" value="<?php echo $show_variation['price']; ?>" readonly>
-				        		<input style="width: 40%" type="text" name="quantity" class="form-control" value="<?php echo $quanti; ?>" readonly>
+				        		<input type="text" name="price" class="form-control view-modal1" value="<?php echo $show_variation['price']; ?>" readonly>
+				        		<input  type="text" name="quantity" class="form-control view-modal2" value="<?php echo $quanti; ?>" readonly>
 				     		</div>
 				     	
 				     		<div class="form-group">
@@ -411,18 +371,18 @@
 
 				     		<div id="hidden_div" style="display:block;">
 				     		<hr><h5>Shipping Information</h5>
-				     			<label for="houseno" style="margin-right: 27%">House #:</label>
+				     			<label for="houseno" class="view-label2">House #:</label>
 				     			<label for="brgy">Barangay:</label>
 				     			<div class="form-group">
-				     				<input type="text" name="houseno" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['house_no']; ?>">
-				     				<input type="text" name="brgy" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['barangay']; ?>">
+				     				<input type="text" name="houseno" class="form-control view-modal3"  value="<?php echo $show_info['house_no']; ?>">
+				     				<input type="text" name="brgy" class="form-control view-modal4"  value="<?php echo $show_info['barangay']; ?>">
 				     			</div>
 
-				     			<label for="city" style="margin-right: 15%">City/Municipality:</label>
+				     			<label for="city" class="view-label3">City/Municipality:</label>
 				     			<label for="brgy">Province:</label>
 				     			<div class="form-group">
-				     				<input type="text" name="city" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['city']; ?>">
-				     				<input type="text" name="province" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['province']; ?>">
+				     				<input type="text" name="city" class="form-control view-modal5"  value="<?php echo $show_info['city']; ?>">
+				     				<input type="text" name="province" class="form-control view-modal6"  value="<?php echo $show_info['province']; ?>">
 
 				     				<br><br>
 				     				<p><i>Important: The customer will pay for the shipping cost charged by the courier.<br><span style="color: red">By clicking checkout you've agreed to this policy.</span><i></p>
@@ -431,7 +391,7 @@
 
 				     		<div id="for_pick" style="display:none;">
 				     		<hr><h5>Pick-up Information </h5>
-				     		<label for="houseno" style="margin-right: 27%">Select campus:</label>
+				     		<label for="houseno" class="view-label4">Select campus:</label>
 				     			<select class="form-control" name="campus">
 				     				<option value="Sumacab campus">Sumacab Campus</option>
 				     				<option value="Gabaldon campus">Gabaldon Campus</option>
