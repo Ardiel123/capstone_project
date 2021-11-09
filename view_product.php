@@ -153,18 +153,7 @@
 
 
 ?>
-<style>
-	
-	
-	
-	
-	
-	
-	
-	
 
-
-</style>
 <hr class="hr1">
 <div class="nav-div1">
   

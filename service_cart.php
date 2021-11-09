@@ -143,109 +143,79 @@
 	
 ?>
 <style>
-	table
-	{
-		
-	} 
-	table td
-	{
-
-
-    	white-space:nowrap;
-	}
-	.stat_but{
-		border:none; 
-		border-radius: 5px; 
-		width: 70px; 
-		color: white;
-		font-size: 10px;
-	}
-	.pname
-	{
-    	text-overflow:ellipsis;
-    	overflow:hidden;
-    	white-space:nowrap;
-	}
-	.title_text{
-    margin: 60px 0px 5px 20px;font-weight: 600;color: black;font-size: 40px;margin-bottom: 40px;font-family: 'Poppins';
- 	}
-	@media only screen and (max-width: 600px){
-	.row-order{
-		max-width: 130px ;
-	}
-	.row1-order{
-		max-width: 130px ;
-	}
 	
-}
+	
+	
+	
+	
 </style>
 
-<hr style="margin: 0px;background-color: #dbdbdb;height: 2px;">
-<div style="background-color: white;height: 60px; width: 100%">
+<hr class="hr1">
+<div class="nav-div1">
   
-<ul class="nav justify-content-center" style="padding: 10px 0px">
-    <li class="nav-item " style="font-size: 19px;">
+<ul class="nav justify-content-center" >
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="index.php" >Home</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="products.php">Products</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2" href="services.php">Services</a>
     </li>
     
     
   </ul>
 </div>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 1.5px;">
+<hr class="hr2">
 
-<body style="background-color: #f5f5f5">
+<body class="bcolor">
 	<div class="container-md">
-	<h3 class="title_text" >Services Requested</h3>
+	<h3 class="sc-title" >Services Requested</h3>
 		
 	</div>
 
-<div class="container-md border" style="margin-top: 30px;min-height: 580px;background-color: white">
+<div class="container-md border sc-container" >
 		<div class="my_content">
 
 			<div class="panel panel-default">
-			  	<div class="panel-heading" style="height: 55px">
+			  	<div class="panel-heading sc-div1" >
 
 			  	</div>
 			  	<div class="panel-body">
-			  		<div class="container" style="width: 100%; height: 500px; overflow: auto;">
+			  		<div class="container sc-container2" >
 			  			<table class="table table-striped">
 			  				<thead>
 			  					<tr cols="8">
 			  					<form method="GET">
-			  						<div class="row" style="margin-bottom: 10px">
-			  							<div class="col-sm row-order" >
+			  						<div class="row sc-row2" >
+			  							<div class="col-sm sc-row" >
 			  								<center>
 			  						<button style="outline: none; border: none;" class="but1 btn btn-outline-secondary" type="submit" name="all" value="0">All</button>
 			  						</center>
 			  							</div>
-			  							<div class="col-sm row-order">
+			  							<div class="col-sm sc-row">
 			  								<center>
 
 			  						<button style="outline: none; border: none;" class="but2 btn btn-outline-secondary" type="submit" name="pen" value="1">Pending</button>
 			  						</center>
 			  						</div>
-			  							<div class="col-sm row-order">
+			  							<div class="col-sm sc-row">
 			  								<center>
 			  						<button style="outline: none; border: none;" class="but3 btn btn-outline-secondary" type="submit" name="acc" value="2">Accepted</button>
 			  						</center>
 			  						</div>
-			  							<div class="col-sm row-order" style="min-width: 130px;">
+			  							<div class="col-sm sc-row sc-row3" >
 			  								<center>
 			  						<button style="outline: none; border: none;" class="but6 btn btn-outline-secondary" type="submit" name="del" value="5">To deliver</button>
 			  						</center>
 			  						</div>
-			  							<div class="col-sm row-order">
+			  							<div class="col-sm sc-row">
 			  								<center>
 			  						<button style="outline: none; border: none;" class="but4 btn btn-outline-secondary" type="submit" name="can" value="3">Cancelled</button>
 			  						</center>
 			  						</div>
-			  							<div class="col-sm row-order">
+			  							<div class="col-sm sc-row">
 			  								<center>
 			  						<button style="outline: none; border: none;" class="but5 btn btn-outline-secondary" type="submit" name="com" value="4">Completed</button>
 			  						</center>
@@ -273,19 +243,19 @@
 			  						<tr>
 			  							<center>
 			  							<div class="row">
-			  							<div class="col-sm row1-order">
+			  							<div class="col-sm sc-row1">
 			  							<?php echo "SRV_NUM".$show_order['printing_service_id']; ?>
 			  							</div>
-			  							<div class="col-sm row1-order">
+			  							<div class="col-sm sc-row1">
 				  						<?php echo $show_order['service_type']; ?>
 				  						</div>
-			  							<div class="col-sm row1-order">
+			  							<div class="col-sm sc-row1">
 				  						<?php echo $show_order['date_placed']; ?>
 				  						</div>
-			  							<div class="col-sm row1-order">
+			  							<div class="col-sm sc-row1">
 				  						<?php echo "Total: ₱".$show_order['print_service_total']; ?>
 				  						</div>
-			  							<div class="col-sm row1-order">
+			  							<div class="col-sm sc-row1">
 				  						
 				  								<?php
 
@@ -295,23 +265,23 @@
 
 													if($stat['status_description'] == "pending"){
 														?>
-															<button class="stat_but" type="button" style="background-color: #D67A0A;" disabled><?php echo $stat['status_description']; ?></button>
+															<button class="service-button" type="button" style="background-color: #D67A0A;" disabled><?php echo $stat['status_description']; ?></button>
 														<?php
 													}else if($stat['status_description'] == "accepted"){
 														?>
-															<button class="stat_but" type="button" style="background-color: #099707;" disabled><?php echo $stat['status_description']; ?></button>
+															<button class="service-button" type="button" style="background-color: #099707;" disabled><?php echo $stat['status_description']; ?></button>
 														<?php
 													}else if($stat['status_description'] == "to deliver"){
 														?>
-															<button class="stat_but" type="button" style="background-color: #2063E9;" disabled><?php echo $stat['status_description']; ?></button>
+															<button class="service-button" type="button" style="background-color: #2063E9;" disabled><?php echo $stat['status_description']; ?></button>
 														<?php
 													}else if($stat['status_description'] == "cancelled"){
 														?>
-															<button class="stat_but" type="button" style="background-color: #B62517;" disabled><?php echo $stat['status_description']; ?></button>
+															<button class="service-button" type="button" style="background-color: #B62517;" disabled><?php echo $stat['status_description']; ?></button>
 														<?php
 													}else if($stat['status_description'] == "completed"){
 														?>
-															<button class="stat_but" type="button" style="background-color: #979897;" disabled><?php echo $stat['status_description']; ?></button>
+															<button class="service-button" type="button" style="background-color: #979897;" disabled><?php echo $stat['status_description']; ?></button>
 														<?php
 													}
 													
@@ -320,7 +290,7 @@
 				  								?>
 				  						
 				  						</div>
-				  						<div class="col-sm row1-order">
+				  						<div class="col-sm sc-row1">
 				  							<form method="POST">
 				  								<input type="hidden" name="view_id" value="<?php echo $show_order['printing_service_id']; ?>">
 				  								<input type="hidden" name="stat_id" value="<?php echo $show_order['status_id']; ?>">
@@ -361,7 +331,7 @@
 			      	<!--form-->
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
-			      		<div class="container" style="width: 100%; height: 100%; overflow: auto;">
+			      		<div class="container sc-modal1" >
 			  			<table class="table table-borderless">
 			  				<thead>
 			  					<tr>

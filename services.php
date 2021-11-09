@@ -123,8 +123,27 @@
 	}
 </style>
 
-<body onload="calculate()">
-<div class="container">
+<hr class="hr1">
+<div class="nav-div1">
+  
+<ul class="nav justify-content-center">
+    <li class="nav-item navli" >
+      <a class="nav-link nav2 " href="index.php" >Home</a>
+    </li>
+    <li class="nav-item navli" >
+      <a class="nav-link nav2 " href="products.php">Products</a>
+    </li>
+    <li class="nav-item navli" >
+      <a class="nav-link nav2" href="services.php">Services</a>
+    </li>
+    
+    
+  </ul>
+</div>
+<hr class="hr2">
+
+<body class="bcolor" onload="calculate()">
+<div class="container" style="margin-top: 100px">
 		<div class="this">
 			<div class="center">
 

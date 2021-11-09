@@ -144,82 +144,47 @@
 	
 
 ?>
-<style>
-	table
-	{
-		
-	} 
-	table td
-	{
 
 
-    	white-space:nowrap;
-	}
-	.stat_but{
-		border:none; 
-		border-radius: 5px; 
-		width: 70px; 
-		color: white;
-		font-size: 10px;
-	}
-	.pname
-	{
-    	text-overflow:ellipsis;
-    	overflow:hidden;
-    	white-space:nowrap;
-	}
-	.title_text{
-    margin: 60px 0px 5px 20px;font-weight: 600;color: black;font-size: 40px;margin-bottom: 40px;font-family: 'Poppins';
- 	}
-	@media only screen and (max-width: 600px){
-	.row-order{
-		max-width: 130px ;
-	}
-	.row1-order{
-		max-width: 130px ;
-	}
-}
-</style>
-
-<hr style="margin: 0px;background-color: #dbdbdb;height: 2px;">
-<div style="background-color: white;height: 60px; width: 100%">
+<hr class="hr1">
+<div class="nav-div1">
   
-<ul class="nav justify-content-center" style="padding: 10px 0px">
-    <li class="nav-item " style="font-size: 19px;">
+<ul class="nav justify-content-center">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="index.php" >Home</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="products.php">Products</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2" href="services.php">Services</a>
     </li>
     
     
   </ul>
 </div>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 1.5px;">
+<hr class="hr2">
 
-<body style="background-color: #f5f5f5">
+<body class="bcolor">
 	<div class="container-md">
-	<h3 class="title_text" >My Orders</h3>
+	<h3 class="order-title" >My Orders</h3>
 		
 	</div>
-<div class="container-sm" style="border:1px solid;border-color: #dbdbdb;margin-top: 30px;background-color: white">
+<div class="container-sm order-div1" >
 		<div class="my_content">
 
 			<div class="panel panel-default">
-			  	<div class="panel-heading" style="height: 55px">
+			  	<div class="panel-heading order-panel" >
 			  		
 			  	</div>
 			  	<div class="panel-body">
-			  		<div class="container" style="width: 100%; height: 500px; overflow: auto;">
+			  		<div class="container order-body" >
 			  			<table class="table table-striped">
 			  				
 			  				<thead>
 			  					<tr>
 			  						<form method="GET">
-			  							<div class="row" style="margin-bottom: 10px">
+			  							<div class="row order1" >
 			  								
 			  										<div class="col-sm row-order" >
 			  										<center>
@@ -240,7 +205,7 @@
 			  								
 			  								
 			  								
-			  										<div class="col-sm row-order" style="min-width: 130px;align-items: center;">
+			  										<div class="col-sm row-order order2" >
 			  										<center>
 			  										<button style="outline: none; border: none;" class="but6 btn btn-outline-secondary" type="submit" name="del" value="5">To deliver</button>
 			  										</center>
@@ -285,7 +250,7 @@
 					  								<div class="col-sm row1-order">
 					  									<?php echo "ORD_NUM".$show_order['order_details_id']; ?>
 					  								</div>
-					  								<div class="col-sm row1-order" style="min-width: 150px">
+					  								<div class="col-sm row1-order order3" >
 					  									<?php echo $show_order['date_ordered']; ?>
 					  								</div>
 					  							
@@ -388,7 +353,7 @@
 			      	<!--form-->
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
-			      		<div class="container" style="width: 100%; height: 100%; overflow: auto;">
+			      		<div class="container order-modal1" >
 			  			<table class="table">
 			  				<thead>
 			  					<tr>
