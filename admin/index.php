@@ -36,6 +36,21 @@
 
 		}while ($ye = mysqli_fetch_assoc($ex));
 
+
+		$sq2 ="SELECT year(status_date) as years, SUM(print_service_total) as yearly_totals FROM printing_service_tbl Where status_id = 4 GROUP BY year(status_date) ORDER BY year(status_date)";
+		$ex2 = mysqli_query($db, $sq2);
+		$ye2 = mysqli_fetch_assoc($ex2);
+
+		$xx_strp = "";
+		$yx_strp = "";
+
+		do{
+			
+			$xx_strp .= '"'.$ye2['years'].'",';
+			$yx_strp .= ''.round($ye2['yearly_totals'],2).',';
+
+		}while ($ye2 = mysqli_fetch_assoc($ex2));
+
 	
 ?>
 <style>
@@ -86,130 +101,124 @@
 			<h2>Dashboard</h2>
 		</div>
 		<div class="my_content">
-			<div class="container" style="margin-left: 0; width: 100%; ">
+
+			<div class="container-fluid">
 			
-				<div style="float: left; margin-bottom: 50px; margin-left: 50px;margin-top: 50px;">
-					<form id="yearly" method="POST" style="display: block;">
+				<div class="col-sm-6">
 
-					<div class="form-group">
-						<label>Show</label>
-						<select id="choice" name="myChoice" onchange="showDiv()" class="form-control">
-							<option value="Yearly" <?php echo (isset($option)&&($option==1)?"selected":"")?>>Yearly</option>
-							<option value="Monthly" <?php echo (isset($option)&&($option==2)?"selected":"")?>>Monthly</option>
-							<option value="Weekly" <?php echo (isset($option)&&($option==3)?"selected":"")?>>Weekly</option>
-						</select>
+					<div class="data_view" style="border: solid;">
+						<canvas id="myChart"></canvas>
 					</div>
 
-					<div id="year" class="form-group" style="margin-top: 20px; display: block; " >	
-						<label>Year</label>
-						<select id="m_year" name="m_year" class="form-control m_year" disabled="true">
-							<?php 
+					<div style="margin-top: 10px; text-align: center;">
+						<form class="form-inline" id="show_chart" method="POST">
 
-								$show_y = "SELECT year(status_date) as y FROM order_details_tbl Where status_id = 4 GROUP BY year(status_date)";
-								$exx = mysqli_query($db,$show_y);
-								$shww = mysqli_fetch_assoc($exx);
-							do{?>
-								<option value="<?php echo $shww['y']; ?>"  <?php echo (isset($year)&&($year==$shww['y'])?"selected":"")?>><?php echo $shww['y']; ?></option>
-							<?php }while($shww = mysqli_fetch_assoc($exx)); ?>
-						</select>
-					</div>
+						<div class="form-group">
+							<label>Show</label>
+							<select id="choice" name="myChoice" onchange="showDiv()" class="form-control">
+								<option value="Yearly" <?php echo (isset($option)&&($option==1)?"selected":"")?>>Yearly</option>
+								<option value="Monthly" <?php echo (isset($option)&&($option==2)?"selected":"")?>>Monthly</option>
+								<option value="Weekly" <?php echo (isset($option)&&($option==3)?"selected":"")?>>Weekly</option>
+							</select>
+						</div>
 
-					<div class="form-group" id="month" style="margin-top: 20px; display: block;">
-						<label style="margin-left: 10px;">Month</label>
-						<select id="m_month" name="m_month" class="form-control m_month" disabled="true">
-							<option value="1">Jan</option>
-							<option value="2">Feb</option>
-							<option value="3">Mar</option>
-							<option value="4">Apr</option>
-							<option value="5">May</option>
-							<option value="6">Jun</option>
-							<option value="7">Jul</option>
-							<option value="8">Aug</option>
-							<option value="9">Sep</option>
-							<option value="10">Oct</option>
-							<option value="11">Nov</option>
-							<option value="12">Dec</option>
-						</select>
-					</div>
+						<div id="year" class="form-group">	
+							<label>Year</label>
+							<select id="m_year" name="m_year" class="form-control m_year" disabled="true">
+								<?php 
 
-					<div class="form-group">
-						<input type="submit" name="sub_show" value="Show" class="form-control btn btn-primary">
+									$show_y = "SELECT year(status_date) as y FROM order_details_tbl Where status_id = 4 GROUP BY year(status_date)";
+									$exx = mysqli_query($db,$show_y);
+									$shww = mysqli_fetch_assoc($exx);
+								do{?>
+									<option value="<?php echo $shww['y']; ?>"  <?php echo (isset($year)&&($year==$shww['y'])?"selected":"")?>><?php echo $shww['y']; ?></option>
+								<?php }while($shww = mysqli_fetch_assoc($exx)); ?>
+							</select>
+						</div>
+
+						<div class="form-group" id="month">
+							<label>Month</label>
+							<select id="m_month" name="m_month" class="form-control m_month" disabled="true">
+								<option value="1">Jan</option>
+								<option value="2">Feb</option>
+								<option value="3">Mar</option>
+								<option value="4">Apr</option>
+								<option value="5">May</option>
+								<option value="6">Jun</option>
+								<option value="7">Jul</option>
+								<option value="8">Aug</option>
+								<option value="9">Sep</option>
+								<option value="10">Oct</option>
+								<option value="11">Nov</option>
+								<option value="12">Dec</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" name="sub_show" value="Show" class="form-control btn btn-primary">
+						</div>
+						</form>
 					</div>
-					</form>
 				</div>
 
-				<div class="data_view" style="width:100%; max-width: 900px; display: block; margin: auto;">
-					<!---<canvas id="Chart"></canvas>--->
-					<canvas id="myChart"></canvas>
+				<div class="col-sm-6">
+
+					<div class="data_view2" style="border: solid;">
+						<canvas id="myChart2"></canvas>
+					</div>
+
+					<div style="margin-top: 10px; text-align: center;">
+						<form class="form-inline" id="show_chart2" method="POST">
+
+						<div class="form-group">
+							<label>Show</label>
+							<select id="choice2" name="myChoice2" onchange="showDiv2()" class="form-control">
+								<option value="Yearly" <?php echo (isset($option2)&&($option2==1)?"selected":"")?>>Yearly</option>
+								<option value="Monthly" <?php echo (isset($option2)&&($option2==2)?"selected":"")?>>Monthly</option>
+								<option value="Weekly" <?php echo (isset($option2)&&($option2==3)?"selected":"")?>>Weekly</option>
+							</select>
+						</div>
+
+						<div id="year" class="form-group">	
+							<label>Year</label>
+							<select id="m_year2" name="m_year2" class="form-control m_year2" disabled="true">
+								<?php 
+
+									$show_y2 = "SELECT year(status_date) as y2 FROM printing_service_tbl Where status_id = 4 GROUP BY year(status_date)";
+									$exx2 = mysqli_query($db,$show_y2);
+									$shww2 = mysqli_fetch_assoc($exx2);
+								do{?>
+									<option value="<?php echo $shww2['y2']; ?>"  <?php echo (isset($year2)&&($year2==$shww2['y2'])?"selected":"")?>><?php echo $shww2['y2']; ?></option>
+								<?php }while($shww2 = mysqli_fetch_assoc($exx2)); ?>
+							</select>
+						</div>
+
+						<div class="form-group" id="month2">
+							<label>Month</label>
+							<select id="m_month2" name="m_month2" class="form-control m_month2" disabled="true">
+								<option value="1">Jan</option>
+								<option value="2">Feb</option>
+								<option value="3">Mar</option>
+								<option value="4">Apr</option>
+								<option value="5">May</option>
+								<option value="6">Jun</option>
+								<option value="7">Jul</option>
+								<option value="8">Aug</option>
+								<option value="9">Sep</option>
+								<option value="10">Oct</option>
+								<option value="11">Nov</option>
+								<option value="12">Dec</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" name="sub_show2" value="Show" class="form-control btn btn-primary">
+						</div>
+						</form>
+					</div>
+
 				</div>
-				<script>
-					function showDiv(){
 
-						var sel = document.getElementById("choice").value;
-						if(sel== "Yearly"){
-
-					    	m_year.disabled = true;
-					    	m_month.disabled = true;
-
-						}else if(sel=="Monthly"){
-					    	m_year.disabled = false;
-					    	m_month.disabled = true;
-
-					   	}else if(sel=="Weekly"){
-					    	m_year.disabled = false;
-					    	m_month.disabled = false;
-					   	}
-					} 
-
-					$(document).ready(function() {
-					    $("#yearly").submit(function(e) {
-					    	e.preventDefault();
-
-					    	var choice = document.getElementById("choice").value;
-					    	var year = document.getElementById("m_year").value;
-					    	var month = document.getElementById("m_month").value;
-
-					        $.ajax({
-								type: "POST",
-								url: "chartproc.php",
-								data: {
-									'subbtn': true,
-									'choice': choice,
-									'year': year,
-									'month': month
-								},
-								success: function(response){
-									$('.data_view').html(response);
-								}
-
-							});	
-					    });
-					});
-
-					var ctx = document.getElementById('myChart');
-					var myChart = new Chart(ctx, {
-					    type: 'bar',
-					    data: {
-					        labels: [<?php echo $xx_str; ?>],
-					        datasets: [{
-					            label: 'Tradebay Sales',
-					            data: [<?php echo $yx_str.'0'; ?>],
-					            backgroundColor: ['#DC8927'],
-					            borderColor: ['rgba(0, 0, 0, 1)'],
-					            borderWidth: 1
-					        }]
-					    },
-					    options: {
-					        scales: {
-					            y: {
-
-					                beginAtZero: true
-					            }
-					        }
-					    }
-					});
-					
-				</script>
 			</div>
 			<div class="container" style="margin-left: 0; width: 100%; ">
 
@@ -278,5 +287,140 @@
 	if ( window.history.replaceState ) {
   		window.history.replaceState( null, null, window.location.href );
 	}
+
+	function showDiv(){
+
+		var sel = document.getElementById("choice").value;
+		if(sel== "Yearly"){
+
+	    	m_year.disabled = true;
+	    	m_month.disabled = true;
+
+		}else if(sel=="Monthly"){
+	    	m_year.disabled = false;
+	    	m_month.disabled = true;
+
+	   	}else if(sel=="Weekly"){
+	    	m_year.disabled = false;
+	    	m_month.disabled = false;
+	   	}
+	} 
+
+	$(document).ready(function() {
+	    $("#show_chart").submit(function(e) {
+	    	e.preventDefault();
+
+	    	var choice = document.getElementById("choice").value;
+	    	var year = document.getElementById("m_year").value;
+	    	var month = document.getElementById("m_month").value;
+
+	        $.ajax({
+				type: "POST",
+				url: "chartproc.php",
+				data: {
+					'subbtn': true,
+					'choice': choice,
+					'year': year,
+					'month': month
+				},
+				success: function(response){
+					$('.data_view').html(response);
+				}
+
+			});	
+	    });
+	});
+
+	var ctx = document.getElementById('myChart');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [<?php echo $xx_str; ?>],
+			datasets: [{
+				label: 'Tradebay Product Sales',
+				data: [<?php echo $yx_str.'0'; ?>],
+				backgroundColor: ['#DC8927'],
+				borderColor: ['rgba(0, 0, 0, 1)'],
+				borderWidth: 1
+				}]
+			},
+		options: {
+			scales: {
+					y: {
+
+					beginAtZero: true
+					}
+				}
+		}
+	});
+
+
+	/*for tradebay printing chart*/
+
+	function showDiv2(){
+
+		var sel = document.getElementById("choice2").value;
+		if(sel== "Yearly"){
+
+	    	m_year2.disabled = true;
+	    	m_month2.disabled = true;
+
+		}else if(sel=="Monthly"){
+	    	m_year2.disabled = false;
+	    	m_month2.disabled = true;
+
+	   	}else if(sel=="Weekly"){
+	    	m_year2.disabled = false;
+	    	m_month2.disabled = false;
+	   	}
+	} 
+
+	$(document).ready(function() {
+	    $("#show_chart2").submit(function(e) {
+	    	e.preventDefault();
+
+	    	var choice2 = document.getElementById("choice2").value;
+	    	var year2 = document.getElementById("m_year2").value;
+	    	var month2 = document.getElementById("m_month2").value;
+
+	        $.ajax({
+				type: "POST",
+				url: "chartproc2.php",
+				data: {
+					'subbtn2': true,
+					'choice': choice2,
+					'year': year2,
+					'month': month2
+				},
+				success: function(response){
+					$('.data_view2').html(response);
+				}
+
+			});	
+	    });
+	});
+
+	var ctx = document.getElementById('myChart2');
+	var myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [<?php echo $xx_strp; ?>],
+			datasets: [{
+				label: 'Tradebay Printing Sales',
+				data: [<?php echo $yx_strp.'0'; ?>],
+				backgroundColor: ['#800000'],
+				borderColor: ['rgba(0, 0, 0, 1)'],
+				borderWidth: 1
+				}]
+			},
+		options: {
+			scales: {
+					y: {
+
+					beginAtZero: true
+					}
+				}
+		}
+	});
 	
 </script>
