@@ -28,11 +28,15 @@
 
 		$xx_str = "";
 		$yx_str = "";
+		$colorstr = "";
+		$border = "";
 
 		do{
 			
 			$xx_str .= '"'.$ye['year'].'",';
 			$yx_str .= ''.round($ye['yearly_total'],2).',';
+			$colorstr .= '"#DC8927",';
+			$border .= '"#060606",';
 
 		}while ($ye = mysqli_fetch_assoc($ex));
 
@@ -43,11 +47,15 @@
 
 		$xx_strp = "";
 		$yx_strp = "";
+		$colorstrp = "";
+		$borderp = "";
 
 		do{
 			
 			$xx_strp .= '"'.$ye2['years'].'",';
 			$yx_strp .= ''.round($ye2['yearly_totals'],2).',';
+			$colorstrp .= '"#800000",';
+			$borderp .= '"#060606",';
 
 		}while ($ye2 = mysqli_fetch_assoc($ex2));
 
@@ -103,26 +111,30 @@
 		<div class="my_content">
 
 			<div class="container-fluid">
-			
-				<div class="col-sm-6">
 
-					<div class="data_view" style="border: solid;">
+				<div class="col-sm-5" style="border: solid; padding: 20px; margin: 12px; ">
+					<canvas id="myChart3" style="max-height: 611px;"></canvas>
+				</div>
+			
+				<div class="col-sm-6" style="margin-bottom: 20px; border: solid; margin: 12px">
+
+					<div class="data_view col-sm-10">
 						<canvas id="myChart"></canvas>
 					</div>
 
-					<div style="margin-top: 10px; text-align: center;">
-						<form class="form-inline" id="show_chart" method="POST">
+					<div class="col-sm-2" style="margin-top: 25px">
+						<form id="show_chart" method="POST">
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label>Show</label>
-							<select id="choice" name="myChoice" onchange="showDiv()" class="form-control">
+							<select class="form-control" id="choice" name="myChoice" onchange="showDiv()" >
 								<option value="Yearly" <?php echo (isset($option)&&($option==1)?"selected":"")?>>Yearly</option>
 								<option value="Monthly" <?php echo (isset($option)&&($option==2)?"selected":"")?>>Monthly</option>
 								<option value="Weekly" <?php echo (isset($option)&&($option==3)?"selected":"")?>>Weekly</option>
 							</select>
 						</div>
 
-						<div id="year" class="form-group">	
+						<div class="form-group form-group-sm" id="year" >	
 							<label>Year</label>
 							<select id="m_year" name="m_year" class="form-control m_year" disabled="true">
 								<?php 
@@ -136,7 +148,7 @@
 							</select>
 						</div>
 
-						<div class="form-group" id="month">
+						<div class="form-group form-group-sm" id="month">
 							<label>Month</label>
 							<select id="m_month" name="m_month" class="form-control m_month" disabled="true">
 								<option value="1">Jan</option>
@@ -154,23 +166,23 @@
 							</select>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<input type="submit" name="sub_show" value="Show" class="form-control btn btn-primary">
 						</div>
 						</form>
 					</div>
 				</div>
 
-				<div class="col-sm-6">
+				<div class="col-sm-6" style="margin-bottom: 20px; border: solid; margin: 12px;">
 
-					<div class="data_view2" style="border: solid;">
+					<div class="data_view2 col-sm-10">
 						<canvas id="myChart2"></canvas>
 					</div>
 
-					<div style="margin-top: 10px; text-align: center;">
-						<form class="form-inline" id="show_chart2" method="POST">
+					<div class="col-sm-2" style="margin-top: 25px">
+						<form id="show_chart2" method="POST">
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<label>Show</label>
 							<select id="choice2" name="myChoice2" onchange="showDiv2()" class="form-control">
 								<option value="Yearly" <?php echo (isset($option2)&&($option2==1)?"selected":"")?>>Yearly</option>
@@ -179,7 +191,7 @@
 							</select>
 						</div>
 
-						<div id="year" class="form-group">	
+						<div id="year" class="form-group form-group-sm">	
 							<label>Year</label>
 							<select id="m_year2" name="m_year2" class="form-control m_year2" disabled="true">
 								<?php 
@@ -193,7 +205,7 @@
 							</select>
 						</div>
 
-						<div class="form-group" id="month2">
+						<div class="form-group form-group-sm" id="month2">
 							<label>Month</label>
 							<select id="m_month2" name="m_month2" class="form-control m_month2" disabled="true">
 								<option value="1">Jan</option>
@@ -211,7 +223,7 @@
 							</select>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-group-sm">
 							<input type="submit" name="sub_show2" value="Show" class="form-control btn btn-primary">
 						</div>
 						</form>
@@ -339,8 +351,8 @@
 			datasets: [{
 				label: 'Tradebay Product Sales',
 				data: [<?php echo $yx_str.'0'; ?>],
-				backgroundColor: ['#DC8927'],
-				borderColor: ['rgba(0, 0, 0, 1)'],
+				backgroundColor: [<?php echo $colorstr; ?>],
+				borderColor: [<?php echo $border; ?>],
 				borderWidth: 1
 				}]
 			},
@@ -408,8 +420,8 @@
 			datasets: [{
 				label: 'Tradebay Printing Sales',
 				data: [<?php echo $yx_strp.'0'; ?>],
-				backgroundColor: ['#800000'],
-				borderColor: ['rgba(0, 0, 0, 1)'],
+				backgroundColor: [<?php echo $colorstrp; ?>],
+				borderColor: [<?php echo $borderp; ?>],
 				borderWidth: 1
 				}]
 			},
@@ -423,4 +435,31 @@
 		}
 	});
 	
+
+	var xValues = ["Printing Service", "Product Sales"];
+	var yValues = [50, 50];
+	var barColors = [
+	  "#b91d47",
+	  "#00aba9",
+	  "#2b5797",
+	  "#e8c3b9",
+	  "#1e7145"
+	];
+
+	new Chart("myChart3", {
+	  type: "doughnut",
+	  data: {
+	    labels: xValues,
+	    datasets: [{
+	      backgroundColor: barColors,
+	      data: yValues
+	    }]
+	  },
+	  options: {
+	    title: {
+	      display: true,
+	      text: "Tradebay Printing Vs. Product Sales"
+	    }
+	  }
+	});
 </script>

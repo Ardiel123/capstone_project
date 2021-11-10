@@ -57,34 +57,41 @@ if(isset($_POST['subbtn2'])){
 				$weeks = array("Week0", "Week1","Week2", "Week3", "Week4");
 				$zero = 0;
 
-				for($x = 0; $x <= 4; $x++){
+				$sql_week ="SELECT week(status_date) as week_num, round(sum(print_service_total),2) as week_total from printing_service_tbl WHERE month(status_date) = '$month' AND year(status_date) = '$years' AND status_id = 4 group by week(status_date)";
+				$exe_week = mysqli_query($db, $sql_week);
+				$week = mysqli_fetch_assoc($exe_week);
 
-					$sql_week ="SELECT round(sum(print_service_total),2) as week_total from printing_service_tbl WHERE week(status_date) = '$x' AND month(status_date) = '$month' AND year(status_date) = '$years' AND status_id = 4 group by week(status_date)";
-					$exe_week = mysqli_query($db, $sql_week);
-					$week = mysqli_fetch_assoc($exe_week);
-					
-					if(!empty($week)) {
-						$y_str .= ''.$week['week_total'].',';
-					}
-					else if(empty($week)){
-						$y_str .= ''.$zero.',';
-					}
+				if($week != 0){
 
-					$x_str .= '"'.$weeks[$x].'",';
-					$colorstr .= '"#800000",';
-					$border .= '"#060606",';
+					do{	
+
+						if($week['week_total'] != 0) {
+							$y_str .= ''.$week['week_total'].',';
+						}
+						else{
+							$y_str .= ''.$zero.',';
+						}
+
+						$colorstr .= '"#800000",';
+						$border .= '"#060606",';
+						$x_str .= '"Week'.$week['week_num'].'",';
+
+
+					}while($week = mysqli_fetch_assoc($exe_week));
+
+				}else{
 
 				}
 
 
 			}
 
-			echo '<canvas id="Chart"></canvas>';
+			echo '<canvas id="Chart2"></canvas>';
 
 	}
 ?>
 			<script>
-					var ctx = document.getElementById('Chart');
+					var ctx = document.getElementById('Chart2');
 					var myChart = new Chart(ctx, {
 					    type: 'bar',
 					    data: {
