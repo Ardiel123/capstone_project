@@ -22,6 +22,17 @@
 	$total_ord2 = mysqli_fetch_assoc($result4);
 
 
+
+		$sq3 = "SELECT round(SUM(total),2) AS product FROM order_details_tbl WHERE status_id = 4";
+		$ex3 = mysqli_query($db, $sq3);
+		$ye3 = mysqli_fetch_assoc($ex3);
+
+		$sq4 = "SELECT round(SUM(print_service_total),2) AS print FROM printing_service_tbl WHERE status_id = 4";
+		$ex4 = mysqli_query($db, $sq4);
+		$ye4 = mysqli_fetch_assoc($ex4);
+
+
+
 		$sq ="SELECT year(status_date) as year, SUM(total) as yearly_total FROM order_details_tbl Where status_id = 4 GROUP BY year(status_date) ORDER BY year(status_date)";
 		$ex = mysqli_query($db, $sq);
 		$ye = mysqli_fetch_assoc($ex);
@@ -437,13 +448,10 @@
 	
 
 	var xValues = ["Printing Service", "Product Sales"];
-	var yValues = [50, 50];
+	var yValues = [<?php echo $ye3['product']; ?>,<?php echo $ye4['print']; ?>];
 	var barColors = [
-	  "#b91d47",
-	  "#00aba9",
-	  "#2b5797",
-	  "#e8c3b9",
-	  "#1e7145"
+	  "#DC8927",
+	  "#800000"
 	];
 
 	new Chart("myChart3", {
