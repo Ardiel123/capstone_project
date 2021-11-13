@@ -55,8 +55,8 @@
 								};
 							</script> 
 						<div class="form-group">
-							<input type="submit" name="back" value="Back" class="btn btn-default">
-							<input type="submit" name="save_all" value="Save" class="btn btn-primary">
+							<input type="submit" name="back" value="Back" class="btn-sm btn-default">
+							<input type="submit" name="save_all" value="Save" class="btn-sm btn-primary">
 						</div>
 					</form>
 				</div>
@@ -67,7 +67,7 @@
 					 
 					<form method="POST">
 						<h5 style="float: left;">Variations</h5>
-						<button style="margin-left: -50%; float:right;" type="button" name="add" data-toggle="modal" data-target="#add" class="btn btn-primary">
+						<button style="margin-left: -50%; float:right;" type="button" name="add" data-toggle="modal" data-target="#add" class="btn-sm btn-primary">
 							<i class="fa fa-plus" aria-hidden="true"></i> Add
 						</button>
 					</form>
@@ -102,13 +102,9 @@
 									<form method="POST">
 										<input type="hidden" name="details_id" value="<?php echo $product_details['product_variation_id']; ?>">
 
-										<button type="submit" class="btn btn-success" name="edit">
-											<i class="fa fa-eraser" aria-hidden="true" ></i>Edit
+										<button type="submit" class="btn-sm btn-success" name="edit">
+											<i class="fa fa-eraser" aria-hidden="true" ></i> Edit
 										</button>
-										<button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you Sure?')">
-											<i class="fa fa-ban" aria-hidden="true"></i> Delete
-										</button>
-										
 									</form>
 								</td>
 							</tr>
@@ -155,8 +151,8 @@
 
 								    </div>
 								    <div class="modal-footer">
-								        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        	<button type="submit" class="btn btn-primary" name="add_size_btn">Add</button>
+								        	<button type="button" class="btn-sm btn-default" data-dismiss="modal">Close</button>
+								        	<button type="submit" class="btn-sm btn-primary" name="add_size_btn">Add</button>
 								    </div>
 						    </div>
 						    </form>

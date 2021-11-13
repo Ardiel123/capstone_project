@@ -112,6 +112,9 @@
 		font-size: 40px;
 	
 	}
+	.container-fluid{
+		padding: 0;
+	}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -123,11 +126,11 @@
 
 			<div class="container-fluid">
 
-				<div class="col-sm-5" style="border: solid; padding: 20px; margin: 12px; ">
-					<canvas id="myChart3" style="max-height: 611px;"></canvas>
+				<div class="col-sm-5" style="min-width: 300px; border: solid 0.5px; border-color: lightgrey; padding: 20px; margin: 12px; ">
+					<canvas id="myChart3"></canvas>
 				</div>
 			
-				<div class="col-sm-6" style="margin-bottom: 20px; border: solid; margin: 12px">
+				<div class="col-sm-6" style="min-width: 300px; margin-bottom: 20px; border: solid 0.5px; border-color: lightgrey; margin: 12px">
 
 					<div class="data_view col-sm-10">
 						<canvas id="myChart"></canvas>
@@ -184,7 +187,7 @@
 					</div>
 				</div>
 
-				<div class="col-sm-6" style="margin-bottom: 20px; border: solid; margin: 12px;">
+				<div class="col-sm-6" style="min-width: 300px; margin-bottom: 20px; border: solid 0.5px; border-color: lightgrey; margin: 12px;">
 
 					<div class="data_view2 col-sm-10">
 						<canvas id="myChart2"></canvas>
@@ -243,7 +246,7 @@
 				</div>
 
 			</div>
-			<div class="container" style="margin-left: 0; width: 100%; ">
+			<div class="container-fluid">
 
 				<hr>
 				<div class="card-body">
@@ -360,7 +363,7 @@
 		data: {
 			labels: [<?php echo $xx_str; ?>],
 			datasets: [{
-				label: 'Tradebay Product Sales',
+				label: 'Product Sales',
 				data: [<?php echo $yx_str.'0'; ?>],
 				backgroundColor: [<?php echo $colorstr; ?>],
 				borderColor: [<?php echo $border; ?>],
@@ -368,12 +371,11 @@
 				}]
 			},
 		options: {
-			scales: {
-					y: {
-
-					beginAtZero: true
-					}
-				}
+			title: {
+				      display: true,
+				      text: "PRODUCT CHART SALES",
+				      fontSize: 15
+				    }
 		}
 	});
 
@@ -429,7 +431,7 @@
 		data: {
 			labels: [<?php echo $xx_strp; ?>],
 			datasets: [{
-				label: 'Tradebay Printing Sales',
+				label: 'Printing Sales',
 				data: [<?php echo $yx_strp.'0'; ?>],
 				backgroundColor: [<?php echo $colorstrp; ?>],
 				borderColor: [<?php echo $borderp; ?>],
@@ -437,12 +439,11 @@
 				}]
 			},
 		options: {
-			scales: {
-					y: {
-
-					beginAtZero: true
-					}
-				}
+			title: {
+				      display: true,
+				      text: "PRINTING SERVICE CHART SALES",
+				      fontSize: 15
+				    }
 		}
 	});
 	
@@ -453,6 +454,7 @@
 	  "#DC8927",
 	  "#800000"
 	];
+
 
 	new Chart("myChart3", {
 	  type: "doughnut",
@@ -466,7 +468,8 @@
 	  options: {
 	    title: {
 	      display: true,
-	      text: "Tradebay Printing Vs. Product Sales"
+	      text: "PRINTING & PRODUCT SALES",
+	      fontSize: 15
 	    }
 	  }
 	});

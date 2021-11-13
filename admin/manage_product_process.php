@@ -40,15 +40,6 @@
 		}
 
 	}
-	if (isset($_POST['delete'])) {
-
-		$details_id = $_POST['details_id'];
-
-		$query5 = "DELETE FROM `product_variation_tbl` WHERE product_variation_id = '$details_id'";
-		$result5 = mysqli_query($db,$query5);
-		header("location: manage_product.php?id=$product_details_id");
-	
-	}
 
 	if (isset($_POST['edit'])) {
 

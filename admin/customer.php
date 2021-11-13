@@ -8,23 +8,10 @@
 	$result3 = mysqli_query($db,$query3);
 	$show_cust = mysqli_fetch_assoc($result3);
 
-	if (isset($_POST['delete'])) {
-
-		$customer_id = $_POST['customer_id'];
-		$query4 = "DELETE FROM `customer_tbl` WHERE customer_id = '$customer_id'";
-		mysqli_query($db,$query4);
-		header("location: customer.php");
-	}
-
-	if (isset($_POST['edit'])) {
-
-		$customer_id = $_POST['customer_id']; 
-		header("location: edit_customer.php?id=$customer_id");
-	}
 ?>
 	<div class="content">
 		<div class="for_title">
-			<h2>Users</h2>
+			<h2>Customers</h2>
 		</div>
 		<div class="my_content">
 
@@ -39,10 +26,8 @@
 			  				<thead>
 			  					<tr>
 			  						<th>Customer ID#</th>
-			  						<th>Full name</th>
-			  						<th>Address</th>
-			  						<th>Email</th>
-			  						<th>Phone number</th>
+			  						<th>Lastname</th>
+			  						<th>Firstname</th>
 			  						<th>Actions</th>
 			  					</tr>
 			  				</thead>
@@ -62,18 +47,12 @@
 			  					?>
 			  						<tr>
 			  							<td><?php echo $show_cust['customer_id']; ?></td>
-			  							<td><?php echo ''.$show_cust['customer_fname'].' '.$show_cust['customer_lname'].''; ?></td>
-			  							<td><?php echo '#'.$show_cust['house_no'].'/'.$show_cust['barangay'].'/'.$show_cust['city'].'/'.$show_cust['province'].''; ?></td>
-			  							<td><?php echo $show_cust['customer_email']; ?></td>
-			  							<td><?php echo $show_cust['customer_phonenumber']; ?></td>
+			  							<td><?php echo $show_cust['customer_lname']; ?></td>
+			  							<td><?php echo $show_cust['customer_fname']; ?></td>
 			  							<td>
 			  								<form method="POST">
-				  								<input type="hidden" name="customer_id" value="<?php echo $show_cust['customer_id']; ?>">
-				  								<button type="submit" name="edit" class="btn btn-success">
-				  									<i class="fa fa-eraser" aria-hidden="true" ></i> Edit
-				  								</button>
-				  								<button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete <?php echo ''.$show_cust['customer_fname'].' '.$show_cust['customer_lname'].''; ?>?')">
-				  									<i class="fa fa-ban" aria-hidden="true" ></i> Delete
+				  								<button type="submit" name="view" class="btn-sm btn-link view">
+				  									<i class="fas fa-search"></i> <span class="actions">View</span>
 				  								</button>
 				  							</form>
 			  							</td>
@@ -93,10 +72,61 @@
 		</div>
 	</div>
 
+<!-- Modal -->
+<div class="modal fade" id="view_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" name="cus_id">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+      	</h4>
+      </div>
+      <div class="modal-body">
+        <div class="data_view">
+        	
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
 	
 $(document).ready( function () {
   var table = $('#example').DataTable();
 } );
+
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+
+$(document).ready(function(){
+	$("#example").on('click','.view',function(e){
+			e.preventDefault();
+
+		var currentRow = $(this).closest("tr"); 
+		var cus = currentRow.find("td:eq(0)").text(); 
+
+			$.ajax({
+				type: "POST",
+				url: "view_customer.php",
+				data: {
+					'viewbtn': true,
+					'cus_ID': cus,
+				},
+				success: function(response){
+					$('h4[name="cus_id"]').text("Customer #"+cus);
+					$('.data_view').html(response);
+					$('#view_modal').modal('show');
+				}
+			});	
+		});
+});
 
 </script>

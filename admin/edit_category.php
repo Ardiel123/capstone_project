@@ -47,8 +47,8 @@ if (isset($_POST['back'])) {
 					
 						<div class="form-group">
 							
-							<input type="submit" class="btn btn-default" name="back" value="Back">
-							<input type="submit" class="btn btn-primary" name="save" value="Save">
+							<input type="submit" class="btn-sm btn-default" name="back" value="Back">
+							<input type="submit" class="btn-sm btn-primary" name="save" value="Save">
 						</div>
 					</form>
 				</div>

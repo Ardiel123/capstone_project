@@ -20,9 +20,8 @@
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../style/cardstyle.css">
 </head>
-
 <body>
-	<input type="checkbox" id="check">
+	<input type="checkbox" id="check" class="chk">
 	<header>
 		<label for="check">
 			<i class="fa fa-bars" aria-hidden="true" id="sidebar_btn"></i>
@@ -52,3 +51,31 @@
 				
 		</div>
 	</header>
+
+<script>
+	$(window).resize(function()
+	{
+	    var $theWindowSize = $(this).width();
+	    if($theWindowSize <= 800)
+	        {
+	        	$( "#check").prop('checked', true);
+	        }
+	});
+
+	$(window).resize(function()
+	{
+	    var $theWindowSize = $(this).width();
+	    if($theWindowSize > 800)
+	        {
+	        	$( "#check").prop('checked', false);
+	        }
+	});
+
+	$(function() {      
+    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        	$( "#check").prop('checked', true);
+    }
+ 	});
+</script>

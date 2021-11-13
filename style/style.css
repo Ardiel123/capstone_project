@@ -153,12 +153,17 @@ label #sidebar_btn:hover{
 	width: 100%;
 }
 
+.actions{
+	display: inline-block;
+}
+
 @media (max-width: 960px) {
 	.navigation ul li a .title  { display: none; }
-	.navigation {width: 60px;}
-	.content {margin-left: 60px;}
-	nav .nav-pills { margin-top: 0;}
-
+	.navigation {width: 60px; }
+	.content {margin-left: 60px; }
+	nav .nav-pills { margin-top: 0; }
+	.actions{ display: none; }
+	input[id="to_checkkkk"]:checked
 }
 
 /*for footer*/

@@ -81,8 +81,8 @@
 							  	</div>		     
 					    </div>
 					    <div class="modal-footer">
-					        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        	<button type="submit" class="btn btn-primary" name="add_btn">Add</button>
+					        	<button type="button" class="btn-sm btn-default" data-dismiss="modal">Close</button>
+					        	<button type="submit" class="btn-sm btn-primary" name="add_btn">Add</button>
 					    </div>
 			    </div>
 			    </form>
@@ -102,7 +102,7 @@
 						  	<?php }while($category5 = mysqli_fetch_assoc($result5)) ?>
 						  	</select>
 			  	</div>
-			  	<button type="button" class="btn btn-primary" style="margin-left: -50%; float:right;" data-toggle="modal" data-target="#add_products"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+			  	<button type="button" class="btn-sm btn-primary" style="margin-left: -50%; float:right;" data-toggle="modal" data-target="#add_products"><i class="fas fa-plus-circle"></i></i> Add</button>
 			  </div>
 
 
@@ -147,15 +147,11 @@
 							  	<td>
 							  
 								  		<a href="manage_product.php?id=<?php echo $show_products['product_details_id']; ?>" style="text-decoration: none; color: white;">
-								  			<button type="button" class="btn btn-success" name="manage">
-								  				<i class="fa fa-eraser" aria-hidden="true" ></i> Update
+								  			<button type="button" class="btn-sm btn-success" name="manage">
+								  				<i class="fas fa-edit"></i> Update
 											</button>
 								  		</a>
-								  		<a href="delete.php?id=<?php echo $show_products['product_details_id']; ?>" style="text-decoration: none; color: white;" onclick="return confirm('Are you sure you want to delete <?php echo $show_products['product_name'] ?> and all its content?')">
-								  			<button type="button" class="btn btn-danger" name="delete">
-								  				<i class="fa fa-ban" aria-hidden="true"></i> Delete
-											</button>
-								  		</a>
+								  		
 							  	</td>
 				  		   	</tr>
 						<?php 

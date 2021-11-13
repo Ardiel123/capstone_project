@@ -9,22 +9,6 @@
 	$show_categories = mysqli_fetch_assoc($result);
 
 
-	if (isset($_POST['delete'])) {
-
-		$cat_id = $_POST['cat_id'];
-
-		$query1 = "DELETE FROM `category_tbl` WHERE category_id = '$cat_id'";
-		$result1 = mysqli_query($db,$query1);
-		
-		if ($result1) {
-			header("location: category.php");
-		}
-		else
-		{
-			echo '<script> alert("This category has products. cant delete")</script>';
-		}
-	
-	}
 
 	if (isset($_POST['add_cat'])) {
 		$cat_name = $_POST['cat_name'];
@@ -95,7 +79,7 @@
 
 			<div class="panel panel-default" style="width: 100%; min-width: 350px">
 			  	<div class="panel-heading" style="height: 55px">
-			  		<button type="button" class="btn btn-primary" style="margin-left: -50%; float:right;" data-toggle="modal" data-target="#add_category"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+			  		<button type="button" class="btn-sm btn-primary" style="margin-left: -50%; float:right;" data-toggle="modal" data-target="#add_category"><i class="fas fa-plus-circle"></i> Add</button>
 			  	</div>
 			  	<div class="panel-body">
 			  		<div class="container" style="width: 100%; height: 100%;">
@@ -125,11 +109,8 @@
 			  						<td>
 			  							<form method="POST">
 			  								<input type="hidden" name="cat_id" value="<?php echo $show_categories['category_id']; ?>">
-				  							<button type="submit" class="btn btn-success" name="edit">
-												<i class="fa fa-eraser" aria-hidden="true" ></i>Edit
-											</button>
-											<button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you Sure?')">
-												<i class="fa fa-ban" aria-hidden="true"></i> Delete
+				  							<button type="submit" class="btn-sm btn-success" name="edit">
+												<i class="fas fa-edit"></i> Update
 											</button>
 										</form>
 			  						</td>

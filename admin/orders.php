@@ -315,7 +315,7 @@
   
   <ul class="nav nav-pills nav-stacked">
     <li class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Show <span class="caret"></span></button>
+      <button class="btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Show <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="orders.php?all">All</a></li>
 		    <li><a href="orders.php?show=1">Pending</a></li>
@@ -336,7 +336,7 @@
 								<option value="1" <?php echo (isset($search_by)&&($search_by==1)?"selected":"")?> >to receive</option>
 								<option value="3" <?php echo (isset($search_by)&&($search_by==3)?"selected":"")?> >Status Date</option>
 							</select>
-							<input type="submit" class="btn" name="searchdate" value="Filter">
+							<input type="submit" class="btn-sm" name="searchdate" value="Filter">
 						</form>
 			</div>
 
@@ -356,7 +356,7 @@
 								<option value="1" <?php echo (isset($search_by)&&($search_by==1)?"selected":"")?> >to receive</option>
 								<option value="3" <?php echo (isset($search_by)&&($search_by==3)?"selected":"")?> >Status Date</option>
 							</select>
-							<input type="submit" class="btn" name="searchdate" value="Filter">
+							<input type="submit" class="btn-sm" name="searchdate" value="Filter">
 						</form>
 						</div>
 
@@ -365,10 +365,10 @@
 								<nav class="menu"> 
 								  <ul> 
 								  	<input type="hidden" name="selected_ids" id="show">
-								    <button type="submit" name="accept" class="btn btn-link" onclick="return confirm('Are you sure you want to accept all selected items')"><i class="fas fa-thumbs-up"></i> <span class="text">Accept</span></button>
-								    <button type="submit" name="deliver" class="btn btn-link" onclick="return confirm('Are you sure you want to deliver all selected items')"><i class="fas fa-truck"></i> <span class="text">To Receive</span></button>
-								    <button type="submit" name="complete" class="btn btn-link" onclick="return confirm('Are you sure you want to mark as complete all selected items')"><i class="fas fa-clipboard-check"></i> <span class="text">Mark as complete</span></button>
-								   	<button type="submit" name="cancel" class="btn btn-link" onclick="return confirm('Are you sure you want to cancel all selected items')"><i class="fas fa-ban"></i> <span class="text">Cancel</span></button>
+								    <button type="submit" name="accept" class="btn-sm btn-link" onclick="return confirm('Are you sure you want to accept all selected items')"><i class="fas fa-thumbs-up"></i> <span class="text">Accept</span></button>
+								    <button type="submit" name="deliver" class="btn-sm btn-link" onclick="return confirm('Are you sure you want to deliver all selected items')"><i class="fas fa-truck"></i> <span class="text">To Receive</span></button>
+								    <button type="submit" name="complete" class="btn-sm btn-link" onclick="return confirm('Are you sure you want to mark as complete all selected items')"><i class="fas fa-clipboard-check"></i> <span class="text">Mark as complete</span></button>
+								   	<button type="submit" name="cancel" class="btn-sm btn-link" onclick="return confirm('Are you sure you want to cancel all selected items')"><i class="fas fa-ban"></i> <span class="text">Cancel</span></button>
 								  </ul> 
 
 								</nav>
@@ -377,7 +377,6 @@
 			  	</div>
 			<div class="panel-body">
 			<div class="container" style="width: 100%; height: 100%;">
-
 				<table id="example" class="display nowrap" style="min-width: 100%">
 				    <thead>
 				      <tr>
@@ -456,7 +455,7 @@
 							  	<td>
 				  						<input type="hidden" name="view_id" value="<?php echo $show_orders['order_details_id']; ?>">
 				  						<input type="hidden" name="stat_id" value="<?php echo $show_orders['status_id']; ?>">
-				  						<button class="view" type="button" name="view_items" id="view_items" style="border: none; background: none; outline: none; color: blue">View</button>
+				  						<button class="btn-sm btn-link view" type="button" name="view_items" id="view_items"><i class="fas fa-search"></i> <span class="actions">View</span></button>
 							  	</td>
 				  		   	</tr>
 						<?php 
