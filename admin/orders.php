@@ -23,9 +23,11 @@
 	if(isset($_POST['accept'])) {
 
 		if(empty($_POST['selected_ids'])){
-				echo "<script>
-    						alert('You select nothing!');
-    					</script>";
+				echo '<script> 
+						$(document).ready(function(){
+						$("#nothing").modal("show");
+						});
+					</script>';
 		}
 		else
 		{
@@ -49,22 +51,31 @@
 		
 					if($check == true)
 					{
+
+						$success_message = "All items moved to accepted tab.";
+
 						for ($i=0; $i < $count; $i++) 
 						{ 
 								$sql_acc = "UPDATE `order_details_tbl` SET `status_id`= '2' WHERE order_details_id = '$explde[$i]'";
 								$exe_sql_acc = mysqli_query($db,$sql_acc);
 						}
 
-							echo "<script>
-		    						alert('All items moved to accepted orders.');
-										window.location.href='orders.php?show=2';
-		    					</script>";
+							echo '<script> 
+											$(document).ready(function(){
+											$("#success").modal("show");
+											});
+										</script>';
 		    	}
 		    	else
 		    	{
-		    		echo "<script>
-		    						alert('Please Accept only Pending orders.');
-		    					</script>";
+
+		    		$fail_message = "Please Accept only in Pending status.";
+
+		    			echo '<script> 
+											$(document).ready(function(){
+											$("#fail").modal("show");
+											});
+										</script>';
 		    	}
 
 		}
@@ -75,9 +86,11 @@
 	if(isset($_POST['deliver'])) {
 
 		if(empty($_POST['selected_ids'])){
-				echo "<script>
-    						alert('You select nothing!');
-    					</script>";
+				echo '<script> 
+						$(document).ready(function(){
+						$("#nothing").modal("show");
+						});
+					</script>';
 		}
 		else
 		{
@@ -101,22 +114,29 @@
 		
 					if($check == true)
 					{
+						$success_message = "All items moved to Receive tab.";
+
 						for ($i=0; $i < $count; $i++) 
 						{ 
 								$sql_acc = "UPDATE `order_details_tbl` SET `status_id`= '5' WHERE order_details_id = '$explde[$i]'";
 								$exe_sql_acc = mysqli_query($db,$sql_acc);
 						}
 
-							echo "<script>
-		    						alert('All items are to deliver.');
-										window.location.href='orders.php?show=5';
-		    					</script>";
+							echo '<script> 
+											$(document).ready(function(){
+											$("#success").modal("show");
+											});
+										</script>';
 		    	}
 		    	else
 		    	{
-		    		echo "<script>
-		    						alert('Please Deliver only Accepted orders.');
-		    					</script>";
+		    		$fail_message = "Please Deliver only in Accepted status.";
+
+		    		echo '<script> 
+											$(document).ready(function(){
+											$("#fail").modal("show");
+											});
+										</script>';
 		    	}
 
 		}
@@ -126,9 +146,11 @@
 	if(isset($_POST['complete'])) {
 
 		if(empty($_POST['selected_ids'])){
-				echo "<script>
-    						alert('You select nothing!');
-    					</script>";
+				echo '<script> 
+						$(document).ready(function(){
+						$("#nothing").modal("show");
+						});
+					</script>';
 		}
 		else
 		{
@@ -152,22 +174,29 @@
 		
 					if($check == true)
 					{
+						$success_message = "All items moved to Completed tab.";
+
 						for ($i=0; $i < $count; $i++) 
 						{ 
 								$sql_acc = "UPDATE `order_details_tbl` SET `status_id`= '4' WHERE order_details_id = '$explde[$i]'";
 								$exe_sql_acc = mysqli_query($db,$sql_acc);
 						}
 
-							echo "<script>
-		    						alert('All items are marked as completed.');
-										window.location.href='orders.php?show=4';
-		    					</script>";
+							echo '<script> 
+											$(document).ready(function(){
+											$("#success").modal("show");
+											});
+										</script>';
 		    	}
 		    	else
 		    	{
-		    		echo "<script>
-		    						alert('Please Mark as complete only Delivered orders.');
-		    					</script>";
+		    		$fail_message = "Please Mark as Complete only delivered items.";
+
+		    		echo '<script> 
+											$(document).ready(function(){
+											$("#fail").modal("show");
+											});
+										</script>';
 		    	}
 
 		}
@@ -177,9 +206,11 @@
 	if(isset($_POST['cancel'])) {
 
 		if(empty($_POST['selected_ids'])){
-				echo "<script>
-    						alert('You select nothing!');
-    					</script>";
+				echo '<script> 
+						$(document).ready(function(){
+						$("#nothing").modal("show");
+						});
+					</script>';
 		}
 		else
 		{
@@ -203,22 +234,30 @@
 		
 					if($check == true)
 					{
+						$success_message = "All items are cancelled.";
+
 						for ($i=0; $i < $count; $i++) 
 						{ 
 								$sql_acc = "UPDATE `order_details_tbl` SET `status_id`= '3' WHERE order_details_id = '$explde[$i]'";
 								$exe_sql_acc = mysqli_query($db,$sql_acc);
 						}
 
-							echo "<script>
-		    						alert('All items are cancelled.');
-										window.location.href='orders.php?show=4';
-		    					</script>";
+							echo '<script> 
+											$(document).ready(function(){
+											$("#success").modal("show");
+											});
+										</script>';
 		    	}
 		    	else
 		    	{
-		    		echo "<script>
-		    						alert('Please cancel only pending orders.');
-		    					</script>";
+
+		    		$fail_message = "You can cancel only pending status.";
+
+		    		echo '<script> 
+											$(document).ready(function(){
+											$("#fail").modal("show");
+											});
+										</script>';
 		    	}
 
 		}
@@ -403,9 +442,9 @@
 			  						<td colspan="10" class="text-center">Empty<td>
 			  					</tr>
 			  			<?php
-			  				}
-			  				else{
-				      			do{ 
+			  					}
+			  					else{
+				      				do{ 
 
 				      	?>
 						  	<tr>
@@ -514,17 +553,19 @@
 			    </form>
 			  </div>
 			</div>
-			<!--end of modal-->
+<!--end of modal-->
+
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-$( function() {
-	$( "#datepicker1" ).datepicker();
-	$( "#datepicker2" ).datepicker();
-} );
+
+<script>
+flatpickr("#datepicker1", {});
+flatpickr("#datepicker2", {});
 
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
@@ -601,3 +642,8 @@ $(document).ready(function(){
 		});
 });
 </script>
+
+
+<?php
+	include('alert_modals.php');
+?>

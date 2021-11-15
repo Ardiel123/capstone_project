@@ -26,7 +26,14 @@
 
 					if($usertype == "admin"){
 
+						$acc_id = $get_usertype['account_id'];
+
+						$getid = "SELECT * FROM admin_tbl WHERE account_id = '$acc_id'";
+						$exeget_id = mysqli_query($db,$getid);
+						$getid_res = mysqli_fetch_assoc($exeget_id);
+
 						$_SESSION['username'] = $user;
+						$_SESSION['adm_id'] = $getid_res['admin_id'];
 						header("location: admin/index.php");
 					}
 					else if($usertype == "customer"){

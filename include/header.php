@@ -14,6 +14,7 @@
 
     <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -41,8 +42,12 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
+									<a  href="admin_acc.php">
+										<i class="fas fa-cog" style="margin-right: 20px"></i>Account
+									</a>
+				
 									<a  href="logout_process.php">
-										Logout
+										<i class='bx bx-log-out' style="margin-right: 20px"></i> Logout
 									</a>
 								</li>
 								

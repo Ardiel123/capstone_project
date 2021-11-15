@@ -7,6 +7,22 @@
 	include('manage_product_process.php');
 
 ?>
+<style>
+	.product{
+		width: 48%;
+		float: left;
+		margin-right: 20px;
+	}
+	.variation{
+		float: left;
+		width: 48%;
+	}
+
+	@media (max-width: 960px) {
+		.product{width: 100%; float: none; margin-right: 0;}
+		.variation{width: 100%; float: none;}
+	}
+</style>
 
 <div class="content">
 		<div class="for_title">
@@ -14,12 +30,20 @@
 		</div>
 		<div class="my_content">
 
-			<div class="panel panel-default" style="width: 45%; float: left; margin-right: 20px; min-width: 200px ">
+			<div class="panel panel-default product">
 				<div class="panel-heading" style="height: 55px">
-					<h5>Product #: <?php echo $products['product_details_id']; ?></h5>
+					<h5 class="float-left">Product #: <?php echo $products['product_details_id']; ?></h5>
+					<input type="hidden" id="prod_id" value="<?php echo $products['product_details_id']; ?>">
+					<div class="data_view">
+						<?php if($products['available'] == 1){ ?>
+							<button class="btn-sm btn-primary stat float-right" id="stats" value="<?php echo $products['available']; ?>">Available</button>
+						<?php }else if($products['available'] == 0){ ?>
+							<button class="btn-sm stat float-right" id="stats" value="<?php echo $products['available']; ?>">Not Available</button>
+						<?php } ?>
+					</div>
+					
 				</div>
-				<div class="panel-body">
-
+				<div class="panel-body prods">
 					<form method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="category">Category:</label><br>
@@ -62,7 +86,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default" style="width: 50%; float: left; min-width: 200px">
+			<div class="panel panel-default variation">
 				<div class="panel-heading" style="height: 55px">
 					 
 					<form method="POST">
@@ -163,3 +187,34 @@
 		</div>
 	</div>
 
+<script>
+
+$('.stat').click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "available.php",
+        data: { 
+        	stat_but: true,
+        	product_id: document.getElementById("prod_id").value,
+            id: $(this).val() 
+        },
+        success: function(response) {
+            $('.data_view').html(response);
+        }
+    });
+});
+
+
+  	// $(document).ready(function(e){
+   //      var id = document.getElementById("stats").value;
+
+   //      if(id == 0){
+   //      	$(".variation").css({ "pointer-events": 'none', "opacity": '0.7'});
+   //      	$(".prods").css({ "pointer-events": 'none', "opacity": '0.7'});
+   //      }else if(id == 1){
+   //      	$(".variation").css({ "pointer-events": 'auto', "opacity": '1'});
+   //      	$(".prods").css({ "pointer-events": 'auto', "opacity": '1'});
+   //      }
+   //  });
+</script>
