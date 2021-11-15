@@ -40,7 +40,7 @@
 									echo ''.$_SESSION['username'].'';
 								?> <span class="caret"></span>
 							</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu dropdown-menu-right">
 								<li>
 									<a  href="admin_acc.php">
 										<i class="fas fa-cog" style="margin-right: 20px"></i>Account

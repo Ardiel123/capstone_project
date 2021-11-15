@@ -153,6 +153,11 @@
 					    </div>
 
 					    <div class="form-group col-md-12">
+					      <label for="date">Admin ID: </label>
+					      <?php echo $show_admin['admin_id']; ?>
+					    </div>
+
+					    <div class="form-group col-md-12">
 					      <label for="date">Date Created: </label>
 					      <?php echo $show_admin['date_created']; ?>
 					    </div>
