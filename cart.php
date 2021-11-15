@@ -1,9 +1,9 @@
 <?php
-	 
-	include('include/dbconnection.php');
+   
+  include('include/dbconnection.php');
   include('include/validate_user.php');
   include('include/header_user.php');
-	
+  
 
 $query_payment = "SELECT * FROM payment_type_tbl";
   $res4 = mysqli_query($db,$query_payment);
@@ -129,165 +129,54 @@ $query_payment = "SELECT * FROM payment_type_tbl";
     }
     
 
-    /*$sql_add_det = "INSERT INTO `order_details_tbl`(`total`, `status_id`, `customer_id`, `payment_type_id`) VALUES ('$total','$status','$cus_id','$payment_option')";
-    $add_to_order = mysqli_query($db,$sql_add_det);
-
-    $last_id_query = "SELECT MAX(order_details_id) AS last_id FROM order_details_tbl";
-    $execute_last_id = mysqli_query($db,$last_id_query);
-    $show_last_id = mysqli_fetch_assoc($execute_last_id);
-
-    $the_last_id = $show_last_id['last_id'];
-
-    foreach ($_SESSION['cart'] as $key => $value) 
-      { 
-        $sql_get_price = "SELECT price FROM product_variation_tbl WHERE product_variation_id = '$key'";
-        $exe_get_price = mysqli_query($db, $exe_get_price);
-        $get_price = mysqli_fetch_assoc($exe_get_price);
-
-        $current_price = $get_price['price'];
-
-        $sql_add_item = "INSERT INTO `order_items_tbl`(`quantity`, `current_price`, `product_variation_id`, `order_details_id`) VALUES ('$value','$current_price','$key','$the_last_id')";
-      $add_to_order = mysqli_query($db,$sql_add_item);
-
-      }
-
-      unset($_SESSION['cart']);*/
-
   }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 
 
-.zoom{
-  transform: scale(1);
-  transition: 0.3s ease-in-out;
 
-}
-.zoom:hover{
-  transform: scale(1.03);
-}
-.product{
-	border-style: solid;
-	border-color: #eeeeee;
-	padding: 4px;
-	border-width: 0.5px;
-	margin-top: 20px;
-  background-color: white;
-}
-.btn-product{
-	margin: 5px 0 10px 0;
-	border: none;
-	background-color: #cc7a00;
-	color: white;
-}
-/*Font style*/
-.Poppin{
-font-family: 'Poppins';
-}
-.play{
-  font-family: 'Playfair Display';
-  font-weight: 700px;
-  font-style: italic;
-}
-.product h5{
-	color: #333333;
-	margin-top: 10px;
-}
-.product h6{
-	color: #808080;
-	font-family: 'Poppins';
-}
-.home-img{
-	width: 100%;height: 700px;
-}
-.cart_quantity{
-    padding: 30px 0px 0px 0px;
-  }
-.title_text{
-    margin: 60px 0px 5px 20px;font-weight: 600;color: black;font-size: 40px;margin-bottom: 40px;font-family: 'Poppins';
-  }
-@media only screen and (max-width: 800px){
-	.home-img{
-		width: 100%;height: 500px;
-	}
-}
-@media only screen and (max-width: 600px){
-  .cart_quantity{
-    padding: 60px 0px 0px 0px;
-  }
-  .row1{
-   text-align: left;
 
-  }
-   .prod-14{
-    font-size:13px;
-  }
-}
-@media only screen and (max-width: 580px){
-  .row1{
-   text-align: left;
 
-  }
-   .prod-14{
-    font-size:13px;
-  }
-}
-@media only screen and (max-width: 578px){
-  
-  .row1{
-   text-align: center;
-   max-width: 200px
-  }
-  .prod-16{
-    font-size:16px;
-  }
-   .prod-14{
-    font-size:13px;
-  }
-  .prod-img{
-    margin-bottom: 10px;
-  }
-  .jusko{
-    overflow: none;
-  }
-}
+
+
+
 
 </style>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 2px;">
-<div style="background-color: white;height: 60px; width: 100%">
+<hr class="hr1">
+<div class="nav-div1">
   
-<ul class="nav justify-content-center" style="padding: 10px 0px">
-    <li class="nav-item " style="font-size: 19px;">
+<ul class="nav justify-content-center" >
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="index.php" >Home</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2 " href="products.php">Products</a>
     </li>
-    <li class="nav-item" style="font-size: 19px;">
+    <li class="nav-item navli" >
       <a class="nav-link nav2" href="services.php">Services</a>
     </li>
     
     
   </ul>
 </div>
-<hr style="margin: 0px;background-color: #dbdbdb;height: 1.5px;">
+<hr class="hr2">
 
 
-<body style="background-color:#f5f5f5">
+<body class="bcolor">
 <div class="container-md">
-  <h3 class="title_text">Cart</h3>
+  <h3 class="title-cart">Cart</h3>
  
 <center>
-  <div class="container-md" style="background-color: white;padding: 10px 30px;border: 1.5px solid;border-color: #dbdbdb;margin-top: 30px;background-color: white;min-height: 580px;">
+  <div class="container-md cart-container" >
    
     <div class="my_content">
-       <div class="panel-heading" style="height: 30px">
+       <div class="panel-heading panel-cart" >
           </div>
 
-      <div class="row" style="display: block;">
+      <div class="row cart-row1">
 
-        <div class="col-lg jusko" style="overflow: auto;">
+        <div class="col-lg jusko cart-col1">
           <table class="crt_tbl table table-striped">
 
             <thead>
@@ -296,8 +185,8 @@ font-family: 'Poppins';
 
                 <th class="row1">Product</th>
                 
-                <th style="text-align: center;">Quantity</th>
-                <th style="text-align: center;">Subtotal</th>
+                <th style="text-align: center;"></th>
+              
                   <th style="text-align: center;"></th>
               </div>
             </tr>
@@ -307,8 +196,9 @@ font-family: 'Poppins';
               <?php
                     if (empty($_SESSION['cart'])) {
                   ?>
-                      <tr background="empty_cart.png" style="height: 400px; background-repeat: no-repeat; background-size: 250 400px;background-position: center center;">
-                        <td colspan="3" style="text-align: center;" ><td>
+                      <tr background="empty_cart.png" class="cart-tr1">
+                        <td colspan="3">  </td>
+                          
                       </tr>
                   <?php
                     }
@@ -330,12 +220,12 @@ font-family: 'Poppins';
                 <td>
                   <div class="row row1">
                       <!-- image -->
-                    <div class="col-sm-4" style="min-width: 100px">
+                    <div class="col-sm-4 cart-col2" >
                       <?php echo '<img class="prod-img" src="'.$row['product_image'].'" style="height: 80px;width: 80px;" >'; ?>
                   
                     </div>
 
-                    <div class="col-sm" style="min-width: 110px">
+                    <div class="col-sm cart-col3" >
                       <!-- product name -->
                       <div class="row">
                         <div class="col-sm ">
@@ -360,26 +250,60 @@ font-family: 'Poppins';
                   </div>
                 </td>
                <!-- quantity -->
-                <td class="cart_quantity" style="vertical-align: middle;min-width: 100px;">
-                  <center>
-                  <div > 
-                 <a href="cart.php?minus_id=<?php echo $row['product_variation_id']; ?>" style="font-size: 20px;color: black;text-decoration: none;">-</a>
-                 <input type="text" id="quantity" name="quantity" min="1" value="<?php echo $value; ?>" size="1" onchange="calculate()" onkeydown="return (event.keyCode!=13);" style="text-align: center;margin-left: 0px;height: 40px;border: .5px solid;border-color: #dbdbdb" readonly>
-                  <a href="cart.php?plus_id=<?php echo $row['product_variation_id']; ?>" style="font-size: 20px;color: black;text-decoration: none;">+</a>
+                <td colspan="2" class="cart_quantity" >
+                  <div class="row">
+                  
+                    <div class="col">
+                      <!-- quantity -->
+                          <div class="row">
+                            <div class="col cart-col4" >
+                                
+                                <div class="row">
+                                  <div class="col">
+                                      <center>
+                                      <div class="cart-div1"> 
+                                     <a href="cart.php?minus_id=<?php echo $row['product_variation_id']; ?>" class="cart-minus">-</a>
+                                     <input type="text" id="quantity" name="quantity" min="1" value="<?php echo $value; ?>" size="1" onchange="calculate()" onkeydown="return (event.keyCode!=13);" class="cart-input" readonly>
+                                      <a href="cart.php?plus_id=<?php echo $row['product_variation_id']; ?>" class="cart-plus">+</a>
+                                      </div>
+                                     </center>
+                                  </div>
+                                </div>
+                            </div>
+                          
+                      <!-- subtotal -->
+                         
+                            <div class="col cart-col4">
+                               <div class="row">
+                                  <div class="col">
+                                    <center>
+                                    <h6>Subtotal:</h6>
+                                    </center>
+                                  </div>
+                                </div>
+                                 <div class="row">
+                                  <div class="col">
+                                   <center>
+                                    <h6 class="cart-h6">&#8369; <?php echo number_format($subtotal,2,".",","); ?></h6>
+                                    </center>
+                                  </div>
+                                </div>
+                            </div>
+                             <!-- remove -->
+                     <div class="col cart-col4" >
+                      <center>
+                      <a class="cart-remove" href="cart.php?remove_id=<?php echo $row['product_variation_id']; ?>">Remove</a>
+                      </center>
+                    </div>
+                          </div>
+                    </div>
+                   
                   </div>
-                 </center>
-                </td>
-                <!-- total -->
-                <td style="vertical-align: middle;">
-                  <center>
-                  <h6 >&#8369; <?php echo number_format($subtotal,2,".",","); ?></h6>
-                  </center>
-                </td>
 
-                <td style="vertical-align: middle;">  
-                  <a style="padding: 4px 8px;border-radius: 50%;background-color: white;border: .5px solid;border-color: #dbdbdb;color: black;text-decoration: none;" href="cart.php?remove_id=<?php echo $row['product_variation_id']; ?>">X</button></a>
-                  <!-- <button style="padding: 4px 8px;border-radius: 50%;background-color: white;border: .5px solid;border-color: #dbdbdb">X</button> -->
+
+                  
                 </td>
+               
               </div>
               </form>
               </tr>
@@ -388,10 +312,12 @@ font-family: 'Poppins';
                     ?>
                
                   <tr>
-                    <td colspan="2" align="left" style="vertical-align: middle;">
-                        <h6 style="font-size: 17px">Total: <span>&#8369; 650</span></h6>
+                    <td colspan="1" align="left" style="vertical-align: middle;">
+                      <center>
+                        <h6 class="cart-total">Total <br><span>&#8369; 650.00</span></h6>
+                        </center>
                     </td>
-                     <td colspan="2" align="right"><button type="button" name="checkout_all" class="btn " data-toggle="modal" data-target="#order_all" style="width:150px;background-color: #cc7a00;color: white">Checkout</button></td>
+                     <td colspan="2" align="right"><button type="button" name="checkout_all" class="btn cart-checkout" data-toggle="modal" data-target="#order_all" >Checkout</button></td>
                   </tr>
                <?php  
                     }
@@ -406,12 +332,12 @@ font-family: 'Poppins';
 
       
     </div>
-    	
+      
   
-    	
+      
    
-	</div>
-	  
+  </div>
+    
 </div>
 
 </center>
@@ -433,7 +359,7 @@ font-family: 'Poppins';
               <!--form-->
               <form action="" method="POST">
                 <div class="modal-body">
-                <div class="container" style="width: 100%; height: 100%; overflow: auto;">
+                <div class="container cart-modal-container" >
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -513,18 +439,18 @@ font-family: 'Poppins';
 
                 <div id="hidden_div" style="display:block;">
                 <hr><h5>Shipping Information</h5>
-                  <label for="houseno" style="margin-right: 27%">House #:</label>
+                  <label for="houseno" class="cart-label1">House #:</label>
                   <label for="brgy">Barangay:</label>
                   <div class="form-group">
-                    <input type="text" name="houseno" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['house_no']; ?>">
-                    <input type="text" name="brgy" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['barangay']; ?>">
+                    <input type="text" name="houseno" class="form-control cart-minput1"  value="<?php echo $show_info['house_no']; ?>">
+                    <input type="text" name="brgy" class="form-control cart-minput2"  value="<?php echo $show_info['barangay']; ?>">
                   </div>
 
-                  <label for="city" style="margin-right: 15%">City/Municipality:</label>
+                  <label for="city" class="cart-label2">City/Municipality:</label>
                   <label for="brgy">Province:</label>
                   <div class="form-group">
-                    <input type="text" name="city" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['city']; ?>">
-                    <input type="text" name="province" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['province']; ?>">
+                    <input type="text" name="city" class="form-control cart-minput3"  value="<?php echo $show_info['city']; ?>">
+                    <input type="text" name="province" class="form-control cart-minput4"  value="<?php echo $show_info['province']; ?>">
 
                     <br><br>
                     <p><i>Important: The customer will pay for the shipping cost charged by the courier.<br><span style="color: red">By clicking checkout you've agreed to this policy.</span><i></p>
@@ -533,7 +459,7 @@ font-family: 'Poppins';
 
                 <div id="for_pick" style="display:none;">
                 <hr><h5>Pick-up Information </h5>
-                <label for="houseno" style="margin-right: 27%">Select campus:</label>
+                <label for="houseno" class="cart-label3">Select campus:</label>
                   <select class="form-control" name="campus">
                     <option value="Sumacab campus">Sumacab Campus</option>
                     <option value="Gabaldon campus">Gabaldon Campus</option>

@@ -1,21 +1,14 @@
 <?php 
 		include('include/dbconnection.php');
+		include('include/validate_user.php');
 		include('include/header_user.php'); 
 
 		$sql_profile = "SELECT * FROM customer_tbl INNER JOIN account_tbl ON customer_tbl.account_id = account_tbl.account_id   WHERE customer_id = '$_SESSION[user_id]'";
 		$result_profile = mysqli_query($db,$sql_profile);
 		$resultCheck_profile = mysqli_num_rows($result_profile);
 
-		
-
-		// if (isset($_POST['pass'])) {
-		// 	echo "<script>alert ('wewwwww')</script>";
-		// }
-	
-
 	if (isset($_POST['save_btn'])) {
 
-		// echo "<script>alert ('wewwwww')</script>";
  		$cus_id = $_POST['cus_id'];
 		$fname = $_POST['fname'];
  		$lname = $_POST['lname'];
@@ -116,21 +109,7 @@
 		
 ?> 
 
-<style> 
-	.col-acc{
-		min-width: 110px; 
-	}
-	@media only screen and(max-width: 579px){ 
-		.container-sm{ 
-			max-width: 550px;
-			} 
-	} 
-	@media only screen and (max-width: 559px){ 
-		.container-sm{ 
-			max-width: 540px; 
-			} 
-	} 
-</style>
+	
 
  <hr class="hr1">
 <div class="nav-div1">
@@ -156,149 +135,101 @@
 	
 				
 	</div>
-	<div class="container-sm mt-3 border account-container1" >
-		
-		<h3 class="account-title">My Profile</h3>
-		<hr class="account-hr">
-		
-
-		<div class="row account-row1" >
-		    <div class="col-sm account-col1" >
-					
-					<?php if($resultCheck_profile > 0) { ?>
+	<div class="container-sm" >
+		<div class="card">
+		  <div class="card-header" style="background-color: #fafafa;font-size: 20px;">My Profile</div>
+		  <div class="card-body">
+		  	<?php if($resultCheck_profile > 0) { ?>
 					<?php while($row_profile = mysqli_fetch_assoc($result_profile)){ ?>
-		    			<!-- first name -->
-			
+		  	<form method="post">
 
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>First Name:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					<form method="POST" autocomplete="off" id="formsss">
-		    					 <input class="border account-input1" type="text"  name="fname" id="fname" value="<?php echo $row_profile['customer_fname']; ?>" >
-								 
+						<div class="form-row">
 
-		    				</div>
-		    			</div>
+					  	<div class="form-group col-md-12">
+					    	<hr><h5 style="font-size: 17px">Customer Name <i class='bx bxs-id-card' style="font-size: 22px;"></i></h5> 
+					    </div>
+
+					    <div class="form-group col-md-4">
+					    	<label for="inputEmail4"> Firstname</label>
+					      <input type="text"  name="fname" id="fname" class="form-control" value="<?php echo $row_profile['customer_fname']; ?>" required="">
+					    </div>
+
+					    <div class="form-group col-md-4"> 
+					     <label for="inputPassword4"> Lastname</label>
+					      <input type="text" name="lname" id="lname" class="form-control" value="<?php echo $row_profile['customer_lname']; ?>" required="">
+					    </div>
+					    <div class="form-group col-md-12">
+					    	<hr><h5 style="font-size: 17px">Username <i class='bx bxs-user-rectangle' style="font-size: 20px" ></i></h5> 
+					    </div>
+
+					    <div class="form-group col-md-4"> 
+					     <label for="inputPassword4"> Username</label>
+					      <input type="text" name="username" class="form-control" value="<?php echo $row_profile['username']; ?>" required="">
+					    </div>
+
+					    <div class="form-group col-md-12">
+					    	<hr><h5 style="font-size: 17px">Contact Information 
+					    		<i class='bx bxs-phone' style="font-size: 20px"></i>
+					    	</h5>
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="inputCity">Contact Number</label>
+					      <input type="text" name="contact" class="form-control" value="<?php echo $row_profile['customer_phonenumber']; ?>" required="">
+					    </div>
+
+					    <div class="form-group col-md-4">
+					      <label for="inputCity">Email</label>
+					      <input type="text"  name="email" class="form-control" value="<?php echo $row_profile['customer_email']; ?>" required="">
+					    </div>
+
+					    <div class="form-group col-md-12">
+					    	<hr>
+					    	<h5 style="font-size: 17px">Full Address 
+					    		<i class='bx bxs-map' style="font-size: 20px;"></i>
+							</h5>
+					    </div>
+
+						  <div class="form-group col-md-3">
+						    <label for="inputAddress">House Number</label>
+						    <input type="text"  name="house" class="form-control" value="<?php echo $row_profile['house_no']; ?>" required="">
+						  </div>
+
+						  <div class="form-group col-md-3">
+						    <label for="inputAddress2">Barangay</label>
+						    <input type="text" name="brgy" class="form-control" value="<?php echo $row_profile['barangay']; ?>" required="">
+						  </div>
+					 
+					  	<div class="form-group col-md-3">
+					      <label for="inputCity">Municipality</label>
+					      <input type="text" name="city" class="form-control" value="<?php echo $row_profile['city']; ?>" required="">
+					    </div>
+
+					    <div class="form-group col-md-3">
+					      <label for="inputCity">Province</label>
+					      <input type="text" name="province" class="form-control" value="<?php echo $row_profile['province']; ?>" required="">
+					    </div>
+					     <input class="border account-input2" type="text" name="cus_id" value="<?php echo $row_profile['customer_id']; ?>" >
+						<input class="border account-input2" type="text" name="acc_id" value="<?php echo $row_profile['account_id']; ?>" >
+					 	</div>
+					 	
+					 	  <div class="form-group col-md-12">
+					    	<hr>
+
+					    	<button type="submit" name="save_btn" class="btn btn-primary float-right">Save Changes</button>
+					    	<button type="button" class="btn  abtn1 float-right"  data-toggle="modal" style="margin-right: 10px" data-target="#exampleModal">
+ 				Change Password</button>
+					    </div>
 					   
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>Last Name:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="lname" id="lname" value="<?php echo $row_profile['customer_lname']; ?>" >
-		    				</div>
-		    			</div>
-
-		    			<!-- username -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>Username:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="username" id="username" value="<?php echo $row_profile['username']; ?>" >
-		    				</div>
-		    			</div>
-					   
-						<!-- email -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>Email:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="email" value="<?php echo $row_profile['customer_email']; ?>" >
-		    				</div>
-		    			</div>
-
-		    			<!-- contact -->
-		    			<div class="row account-row2">
-		    				<div class="col col-acc">
-		    					<label for=""><b>Contact:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="contact" value="<?php echo $row_profile['customer_phonenumber']; ?>" >
-		    				</div>
-		    			</div>
-
-					
-				
-					<input class="border account-input2" type="text" name="cus_id" value="<?php echo $row_profile['customer_id']; ?>" >
-					<input class="border account-input2" type="text" name="acc_id" value="<?php echo $row_profile['account_id']; ?>" >
-
-		    </div>
-		  
-		    <div class="col-sm account-col1" >
-					
-
-					<!-- contact -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>House #:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="house" value="<?php echo $row_profile['house_no']; ?>" >
-		    				</div>
-		    			</div>
-
-		    		<!-- Barangay -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc" >
-		    					<label for=""><b>Barangay:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="brgy" value="<?php echo $row_profile['barangay']; ?>" >
-		    				</div>
-		    			</div>		
-
-		    		<!-- City/Municipality -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc">
-		    					<label for=""><b>City:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="city" value="<?php echo $row_profile['city']; ?>" >
-		    				</div>
-		    			</div>
-		    		<!-- Province -->
-		    			<div class="row account-row2" >
-		    				<div class="col col-acc" >
-		    					<label for=""><b>Province:</b></label>
-		    				</div>
-		    				<div class="col" >
-		    					 <input class="border account-input1" type="text" name="province" value="<?php echo $row_profile['province']; ?>" >
-		    				</div>
-		    			</div>
-		
-
-		    </div>
-		      
-		    <?php } ?>	
+					</form>
+					<?php } ?>	
 				<?php } ?>
-
+		  </div>
+		  <!-- <div class="card-footer">Footer</div> -->
 		</div>
-		<hr class="account-hr1">
-		<div class="row account-row1" >
-
-		    <div class="col account-col2" >
-					
-		    	<button type="button" class="btn  abtn1"  data-toggle="modal" data-target="#exampleModal">
- 				Change Password</button>	
-				
-				
-				
-		    </div>
-		    <div class="col account-col2" >
-				
-				<button type="submit" name="save_btn" class="btn abtn2" >Save Profile </button>
-				
-		    </div>
-		   
-		</div>
-	
-		
 		
 </div>
+
 
 
 </body>
@@ -309,7 +240,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

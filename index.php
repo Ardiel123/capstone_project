@@ -159,7 +159,7 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
 
    </center>
 
-<br><br><br>
+
 </body>
 
 <?php 

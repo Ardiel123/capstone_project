@@ -105,22 +105,7 @@
 
 ?>
 <style>
-	div .this{
-		background: url("back.jpg");
-		height: 500px;
-		width: 100%;
-		position: relative;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-	}
-	.center {
-	  margin: 0;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  -ms-transform: translate(-50%, -50%);
-	  transform: translate(-50%, -50%);
-	}
+	
 </style>
 
 <hr class="hr1">
@@ -143,11 +128,11 @@
 <hr class="hr2">
 
 <body class="bcolor" onload="calculate()">
-<div class="container" style="margin-top: 100px">
+<div class="container services-container" >
 		<div class="this">
-			<div class="center">
+			<div class="center-services">
 
-					<button type="button" name="req" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width: 200px; height: 60px;">Request Logo printing</button>
+					<button type="button" name="req" class="btn btn-primary btn-services" data-toggle="modal" data-target="#myModal" >Request Logo printing</button>
 
 			</div>
 		</div>
@@ -199,24 +184,17 @@
         	<div id="for_logo" style="display:none;">
         			<label for="size_logo">Size (inches):</label>
 		        	<div class="form-group" >
-		        		<input type="number" name="x" class="form-control" value="2" style="float: left; width: 15%;" min="1" required>&nbsp;&nbsp;x&nbsp; 
-		        		<input type="number" name="y" class="form-control" value="2" style="width: 15%; float: right; margin-right: 65%" min="1" required>
+		        		<input type="number" name="x" class="form-control services-x" value="2"  min="1" required>&nbsp;&nbsp;x&nbsp; 
+		        		<input type="number" name="y" class="form-control services-y" value="2"  min="1" required>
 		        	</div>
         		
         	</div>
 
 
-        	<!--<label for="size">Size (inches):</label>
-        	<div class="form-group" >
-        		<input type="number" name="x" class="form-control" value="2" style="float: left; width: 15%;" min="1" required>&nbsp;&nbsp;x&nbsp; 
-        		<input type="number" name="y" class="form-control" value="2" style="width: 15%; float: right; margin-right: 65%" min="1" required>
-        	</div>--->
-
-
         	<label for="quan">Sheets (Pcs):</label><br>
-        	<button type="button" onclick="minus(); calculate();" style="padding: 5px 10px;margin-left: 0px"> - </button>
-						<input type="text" id="quantity" name="quan" min="1" value="1" onchange="calculate()" onkeydown="return (event.keyCode!=13);" style="text-align: center; width: 15%;" readonly>
-					<button type="button" onclick="add(); calculate();" style="padding: 5px 8px;">+</button>
+        	<button type="button" onclick="minus(); calculate();" class="services-minus"> - </button>
+						<input type="text" id="quantity" name="quan" min="1" value="1" onchange="calculate()" onkeydown="return (event.keyCode!=13);" class="services-quan" readonly>
+					<button type="button" onclick="add(); calculate();" class="services-plus">+</button>
 
 
         	<div class="form-group" >
@@ -246,18 +224,18 @@
 
 				     		<div id="hidden_div" style="display:block;">
 				     		<hr><h5>Shipping Information</h5>
-				     			<label for="houseno" style="margin-right: 27%">House #:</label>
+				     			<label for="houseno" class="label1-services">House #:</label>
 				     			<label for="brgy">Barangay:</label>
 				     			<div class="form-group">
-				     				<input type="text" name="houseno" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['house_no']; ?>">
-				     				<input type="text" name="brgy" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['barangay']; ?>">
+				     				<input type="text" name="houseno" class="form-control input1-services"  value="<?php echo $show_info['house_no']; ?>">
+				     				<input type="text" name="brgy" class="form-control input2-services"  value="<?php echo $show_info['barangay']; ?>">
 				     			</div>
 
-				     			<label for="city" style="margin-right: 15%">City/Municipality:</label>
+				     			<label for="city" class="label2-services">City/Municipality:</label>
 				     			<label for="brgy">Province:</label>
 				     			<div class="form-group">
-				     				<input type="text" name="city" class="form-control" style="width: 40%; float: left; margin-right: 5px" value="<?php echo $show_info['city']; ?>">
-				     				<input type="text" name="province" class="form-control" style="width: 50%; float: left; margin-right: 5px" value="<?php echo $show_info['province']; ?>">
+				     				<input type="text" name="city" class="form-control input3-services"  value="<?php echo $show_info['city']; ?>">
+				     				<input type="text" name="province" class="form-control input4-services"  value="<?php echo $show_info['province']; ?>">
 
 				     				<br><br>
 				     				<p><i>Important: The customer will pay for the shipping cost charged by the courier.<br><span style="color: red">By clicking checkout you've agreed to this policy.</span><i></p>
@@ -266,7 +244,7 @@
 
 				     		<div id="for_pick" style="display:none;">
 				     		<hr><h5>Pick-up Information </h5>
-				     		<label for="houseno" style="margin-right: 27%">Select campus:</label>
+				     		<label for="houseno" class="label3-services">Select campus:</label>
 				     			<select class="form-control" name="campus">
 				     				<option value="Sumacab campus">Sumacab Campus</option>
 				     				<option value="Gabaldon campus">Gabaldon Campus</option>
@@ -292,6 +270,10 @@
   </div>
 </div>
 </body>
+<?php 
+  include('include/footer_user.php');
+ ?>
+
 <script>
 
 	function showDiv(select){
