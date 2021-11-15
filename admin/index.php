@@ -373,7 +373,7 @@
 		options: {
 			title: {
 				      display: true,
-				      text: "PRODUCT CHART SALES",
+				      text: "PRODUCT ORDERED CHART SALES",
 				      fontSize: 15
 				    }
 		}

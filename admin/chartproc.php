@@ -103,12 +103,11 @@ if(isset($_POST['subbtn'])){
 					        }]
 					    },
 					    options: {
-					        scales: {
-					            y: {
-
-					                beginAtZero: true
-					            }
-					        }
+					        title: {
+						      display: true,
+						      text: "PRODUCT ORDERED CHART SALES",
+						      fontSize: 15
+						    }
 					    }
 					});
 

@@ -105,12 +105,11 @@ if(isset($_POST['subbtn2'])){
 					        }]
 					    },
 					    options: {
-					        scales: {
-					            y: {
-
-					                beginAtZero: true
-					            }
-					        }
+					        title: {
+						      display: true,
+						      text: "PRINTING SERVICE CHART SALES",
+						      fontSize: 15
+						    }
 					    }
 					});
 
