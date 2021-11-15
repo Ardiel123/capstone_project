@@ -50,37 +50,97 @@
 					}
 				}
 				else{
-					header("location: login.php?error=Please verify your account");
+					$error = "Please verify your account";
 				}
 
 			}else{
 
-				header("location: login.php?error=Invalid account");
+				$error = "Invalid account";
 			}
 
 		}
 		else{
-			header("location: login.php?error=All field is required");
+			$error = "All field is required";
 		}
 
 	}
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>TradeBay</title>
-	    <!-- Required meta tags -->
+	<link rel="stylesheet" type="text/css" href="style/login_style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+	<img class="wave" src="img/login/waves.png">
+	<div class="container">
+		<div class="img">
+			<img src="img/login/bg.png">
+		</div>
+		<div class="login-content">
+			<form method="POST">
+				<img src="img/login/avatar.png">
+				<a href="index.php" class="fortitle"><h2 class="title">Trade<span class="bay">Bay</span></h2></a>
+				<?php if(isset($error)) { ?>
+					<div class="alert">
+					  	<?php echo $error; ?>
+					</div>
+				<?php } ?>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Username</h5>
+           		   		<input type="text" name="username" class="input">
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Password</h5>
+           		    	<input type="password" name="password" class="input">
+            	   </div>
+            	</div>
+            	<a href="#" class="forpass">Forgot Password?</a>
+            	<input type="submit" class="btn" name="login_btn" value="Login">
+            	<a href="customer_register.php" class="fortitle"><input type="button" class="btn" value="Signup"></a>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
+
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>
+<!-- <html>
+<head>
+	<title>TradeBay</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
+
     <link rel="stylesheet" type="text/css" href="style/style.css">
-</head>
-<style>
+</head> -->
+<!-- <style>
 	label #sidebar_btn{
 		display: none;
 	}
@@ -113,8 +173,8 @@
 		text-decoration: none;
 		color: #fff;
 	}
-</style>
-<body>
+</style> -->
+<!-- <body>
 	<input type="checkbox" id="check">
 	<header>
 		<label for="check">
@@ -128,11 +188,11 @@
 		<div class="container">
 			<div class="text-center">
 				<h2>User Login</h2>
-				<?php if(isset($_GET['error'])) { ?>
+				<?php //if(isset($_GET['error'])) { ?>
 					<div class="alert alert-danger" role="alert">
-					  	<?php echo $_GET['error']; ?>
+					  	<?php //echo $_GET['error']; ?>
 					</div>
-				<?php } ?>
+				<?php //} ?>
 			</div>
 			<div class="my_content">
 				<form method="POST" autocomplete="off">
@@ -152,5 +212,5 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> -->
 

@@ -28,7 +28,7 @@
 			<i class="fa fa-bars" aria-hidden="true" id="sidebar_btn"></i>
 		</label>
 		<div class="left_area">
-			<h3>Trade <span style="font-size: 30px;">Bay</span></h3>
+			<a href="index.php"><h3>Trade <span style="font-size: 30px;">Bay</span></h3></a>
 		</div>
 		
 		<div class="right_area">
