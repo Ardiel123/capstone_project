@@ -5,9 +5,9 @@
 	}
 
 	$host = "localhost";
-	$user = "root";
+	$dbusername = "root";
 	$pass = "";
 	$database = "tradebay_db";
 
-	$db = mysqli_connect($host,$user,$pass,$database);
+	$db = mysqli_connect($host,$dbusername,$pass,$database);
 ?>

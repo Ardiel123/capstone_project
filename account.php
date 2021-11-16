@@ -7,6 +7,10 @@
 		$result_profile = mysqli_query($db,$sql_profile);
 		$resultCheck_profile = mysqli_num_rows($result_profile);
 
+		$sql_profile1 = "SELECT * FROM customer_tbl INNER JOIN account_tbl ON customer_tbl.account_id = account_tbl.account_id   WHERE customer_id = '$_SESSION[user_id]'";
+		$result_profile1 = mysqli_query($db,$sql_profile1);
+		$resultCheck_profile1 = mysqli_fetch_assoc($result_profile1);
+
 	if (isset($_POST['save_btn'])) {
 
  		$cus_id = $_POST['cus_id'];
@@ -30,7 +34,8 @@
 
 	if (isset($_POST['save_pass'])) {
 
-		$acc_id = $_POST['acc_id'];
+		$acc_id = $_POST['acccc_id'];
+
 
 		$current_pass = $_POST['current_pass'];
 		$new_pass = $_POST['new_pass'];
@@ -264,7 +269,7 @@
 							<?php echo $error; ?>
 					</div>
 			<?php } ?>
-     
+     <form method="POST">
       <div class="modal-body">
        <!-- Password field -->
        <div class="row">
@@ -291,6 +296,8 @@
 <input type="password" name="confirm_pass" id="myInput2">
 </div>
 </div>
+
+<input type="hidden" name="acccc_id" value="<?php echo $resultCheck_profile1['account_id']; ?>" >
 <!-- An element to toggle between password visibility -->
 <input type="checkbox" onclick="myFunction()"> Show Password
       </div>
@@ -310,11 +317,11 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          
+          <h4 class="modal-title">Password Changed!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>  
         </div>
         <div class="modal-body">
-          <h4 class="modal-title">Password Changed!</h4>
+          Use the password for your next login.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

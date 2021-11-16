@@ -1,8 +1,8 @@
 <?php
-	require_once('include/dbconnection.php');
+		require_once('include/dbconnection.php');
 	
 		if(isset($_POST['register_btn'])){
-			// $firstname = $_POST['firstname'];
+			$firstname = $_POST['firstname'];
 			$lastname = $_POST['lastname'];
 			$house_no = $_POST['house_no'];
 			$brgy = $_POST['brgy'];
@@ -13,49 +13,42 @@
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$confirm_pass = $_POST['confirm_password'];
-			$error = '';
-			$errorl = '';
-			 $firstname = '';
 
-			if(empty($_POST["firstname"])){
+			if(empty($firstname)){
 				$error = 'Firstname is required';
-				
-			}else{
-				$firstname = $_POST["firstname"];
 			}
-			 if(empty($lastname)){
-				$errorl = 'Lastname is required';
-				// header("location: customer_register.php?error=Lastname is required");
+			else if(empty($lastname)){
+				$error = 'Lastname is required';
 			}
 			else if(empty($house_no)){
-				header("location: customer_register.php?error=House_no is required");
+				$error="House_no is required";
 			}
 			else if(empty($brgy)){
-				header("location: customer_register.php?error=Barangay is required");
+				$error= "Barangay is required";
 			}
 			else if(empty($city)){
-				header("location: customer_register.php?error=City is required");
+				$error="City is required";
 			}
 			else if(empty($province)){
-				header("location: customer_register.php?error=Province is required");
+				$error="Province is required";
 			}
 			else if(empty($email_address)){
-				header("location: customer_register.php?error=Email address is required");
+				$error="Email address is required";
 			}
 			else if(empty($contact)){
-				header("location: customer_register.php?error=Contact number is required");
+				$error="Contact number is required";
 			}
 			else if(empty($username)){
-				header("location: customer_register.php?error=Username is required");
+				$error="Username is required";
 			}
 			else if(empty($password)){
-				header("location: customer_register.php?error=Password is required");
+				$error="Password is required";
 			}
 			else if(empty($confirm_pass)){
-				header("location: customer_register.php?error=Please Confirm password");
+				$error="Please Confirm password";
 			}
 			else if($password != $confirm_pass){
-				header("location: customer_register.php?error=Password do not match");
+				$error="Password do not match";
 
 			}else{
 
@@ -87,7 +80,7 @@
 
 						$mail->isHTML(true);
 						$mail->Subject='TradeBay Customer Verification';
-						$mail->Body='<h1>Verification Email</h1></br><h5>Click the log-in link provided below to activate your account and log-in.</h5></br> <a href="192.168.1.2/tradebay_project/verify_user_email.php?vkey='.$verification_key.'">Log-in Account</a>';
+						$mail->Body='<h1>Verification Email</h1></br><h5>Click the log-in link provided below to activate your account and log-in.</h5></br> <a href="192.168.1.2/capstone_project/verify_user_email.php?vkey='.$verification_key.'">Log-in Account</a>';
 
 						if(!$mail->send()){
 							echo "Message not sent";
@@ -112,38 +105,11 @@
 						}
 				}
 				else{
-					header("location: customer_register.php?error=Email or Username already exist");
+					$error = "Email or Username already exist";
 				}
 
-				/*$user_check = "SELECT * FROM customer_tbl WHERE customer_email = '$email_address'";
-				$email_result = mysqli_query($db, $user_check);
-
-				$user_check = "SELECT * FROM customer_tbl WHERE customer_phonenumber = '$contact'";
-				$phone_result = mysqli_query($db, $user_check);
-
-				$user_check = "SELECT * FROM customer_tbl WHERE customer_username = '$username'";
-				$user_result = mysqli_query($db, $user_check);
-
-				if(mysqli_num_rows($email_result) > 0) {
-					header("location: customer_register.php?error=Email address already exist");
-				}
-				else if(mysqli_num_rows($phone_result) > 0) {
-					header("location: customer_register.php?error=Phone number already exist");
-				}
-				else if(mysqli_num_rows($user_result) > 0) {
-					header("location: customer_register.php?error=Username already exist");
-				}
-				else{
-					$pass = md5($password);
-
-					$saveresult = "INSERT INTO customer_tbl (`customer_fname`, `customer_lname`, `house_no`, `barangay`, `city`, `province`, `customer_email`, `customer_phonenumber`, `customer_username`, `customer_password`) VALUES ('$firstname','$lastname','$house_no', '$brgy','$city','$province','$email_address','$contact','$username','$pass')";
-					mysqli_query($db,$saveresult);
-
-					header("location: login.php");
-				}
-				*/
 			}
-			header("location: customer_register.php?errorf=".$error."&fname=".$firstname."&errorl=".$errorl);
+
 		}
 	
 ?>
