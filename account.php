@@ -209,23 +209,37 @@
 					      <label for="inputCity">Province</label>
 					      <input type="text" name="province" class="form-control" value="<?php echo $row_profile['province']; ?>" required="">
 					    </div>
+
+					    <div class="form-group col-md-12">
+					    	<hr>
+					    	<h5 style="font-size: 17px">Security
+					    	<i class='bx bxs-lock-alt'></i>
+							</h5>
+					    </div>
+
+					    <div class="form-group col-md-3">
+					    	<button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal">
+ 				Change Password</button>
+					    </div>
+
 					     <input class="border account-input2" type="text" name="cus_id" value="<?php echo $row_profile['customer_id']; ?>" >
 						<input class="border account-input2" type="text" name="acc_id" value="<?php echo $row_profile['account_id']; ?>" >
 					 	</div>
+
 					 	
 					 	  <div class="form-group col-md-12">
 					    	<hr>
 
 					    	<button type="submit" name="save_btn" class="btn btn-primary float-right">Save Changes</button>
-					    	<button type="button" class="btn  abtn1 float-right"  data-toggle="modal" style="margin-right: 10px" data-target="#exampleModal">
- 				Change Password</button>
+					    	<button class="btn btn-default float-right" style="margin-right: 10px; border: solid 1px"><a href="#" onclick="history.back();" style="text-decoration: none; color: black">Back</a></button>
+					    	
 					    </div>
 					   
 					</form>
 					<?php } ?>	
 				<?php } ?>
 		  </div>
-		  <!-- <div class="card-footer">Footer</div> -->
+	
 		</div>
 		
 </div>

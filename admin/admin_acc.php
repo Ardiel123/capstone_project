@@ -164,7 +164,7 @@
 
 					    <div class="form-group col-md-12">
 					    	<button type="submit" name="save_change" class="btn btn-primary float-right">Save Changes</button>
-					    	<button class="btn float-right" style="margin-right: 10px">Back</button>
+					    	<button class="btn float-right" style="margin-right: 10px;"><a href="#" onclick="history.back();" style="text-decoration: none; color: black">Back</a></button>
 					    </div>
 
 					 	</div>
