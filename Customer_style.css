@@ -695,7 +695,13 @@ font-family: 'Poppins';
 	margin-bottom: 10px;
 }
 .cart-remove{
-	color: #170c82;
+	color: #FF0000;
+	text-decoration: none !important;
+}
+.cart-remove:hover{
+	color: #FFF;
+	padding: 10px;
+	background-color: #FF0000;
 	text-decoration: none !important;
 }
 .cart-total{

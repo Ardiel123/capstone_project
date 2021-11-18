@@ -17,6 +17,7 @@ $query_payment = "SELECT * FROM payment_type_tbl";
     
     $var_id = $_GET['remove_id'];
     unset($_SESSION['cart'][$var_id]);
+    echo  '<script> window.location.href="cart.php";</script>';
   }
 
   if (isset($_GET['minus_id'])) {
@@ -26,15 +27,20 @@ $query_payment = "SELECT * FROM payment_type_tbl";
     if($_SESSION['cart'][$var_id] > 1){
       
       $_SESSION['cart'][$var_id] -= 1;
+      echo  '<script> window.location.href="cart.php";</script>';
+    
+    }
+    else
+    {
+      echo  '<script> window.location.href="cart.php";</script>';
     }
 
   }
 
   if (isset($_GET['plus_id'])) {
-
     $var_id = $_GET['plus_id'];
     $_SESSION['cart'][$var_id] += 1;
-
+     echo  '<script> window.location.href="cart.php";</script>';
   }
 
   if (isset($_POST['confirm_order'])) {
@@ -174,20 +180,6 @@ $query_payment = "SELECT * FROM payment_type_tbl";
 
         <div class="col-lg jusko cart-col1">
           <table class="crt_tbl table table-striped">
-
-            <thead>
-            <tr>
-              <div class="row">
-
-                <th class="row1">Product</th>
-                
-                <th style="text-align: center;"></th>
-              
-                  <th style="text-align: center;"></th>
-              </div>
-            </tr>
-            </thead>
-
             <tbody>
               <?php
                     if (empty($_SESSION['cart'])) {
@@ -273,11 +265,6 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                          
                             <div class="col cart-col4">
                                <div class="row">
-                                  <div class="col">
-                                    <center>
-                                    <h6>Subtotal:</h6>
-                                    </center>
-                                  </div>
                                 </div>
                                  <div class="row">
                                   <div class="col">
@@ -312,9 +299,9 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                
                   <tr>
                     <td colspan="1" align="left" class="cart-td">
-                      <center>
+
                         <h6 class="cart-total" >Total <br><?php echo "<b>₱".number_format($grandtotal1,2,".",",")."</b>"; ?></span></h6>
-                        </center>
+
                     </td>
            
                      <td colspan="2" align="right"><button type="button" name="checkout_all" class="btn cart-checkout" data-toggle="modal" data-target="#order_all" >Checkout</button></td>
