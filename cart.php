@@ -17,7 +17,6 @@ $query_payment = "SELECT * FROM payment_type_tbl";
     
     $var_id = $_GET['remove_id'];
     unset($_SESSION['cart'][$var_id]);
-    echo  '<script> window.location.href="cart.php";</script>';
   }
 
   if (isset($_GET['minus_id'])) {
@@ -27,18 +26,15 @@ $query_payment = "SELECT * FROM payment_type_tbl";
     if($_SESSION['cart'][$var_id] > 1){
       
       $_SESSION['cart'][$var_id] -= 1;
-      
     }
-    else
-    {
-      echo  '<script> window.location.href="cart.php";</script>';
-    }
+
   }
 
   if (isset($_GET['plus_id'])) {
+
     $var_id = $_GET['plus_id'];
     $_SESSION['cart'][$var_id] += 1;
-     echo  '<script> window.location.href="cart.php";</script>';
+
   }
 
   if (isset($_POST['confirm_order'])) {
