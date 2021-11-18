@@ -7,7 +7,7 @@
 		if (isset($_POST['search_btn'])) {
 $search = $_POST['search'];
 
-$sql = "SELECT * FROM product_details_tbl WHERE product_name like '%$search%'";
+$sql = "SELECT * FROM product_details_tbl WHERE available = 1 and product_name like '%$search%'";
 $result = mysqli_query($db,$sql);
 $resultCheck = mysqli_num_rows($result);
 
@@ -15,7 +15,7 @@ $resultCheck = mysqli_num_rows($result);
 
  } 
  else{
-$sql = "SELECT * FROM product_details_tbl;";
+$sql = "SELECT * FROM product_details_tbl WHERE available = 1;";
   $result = mysqli_query($db,$sql);
   $resultCheck = mysqli_num_rows($result);
 

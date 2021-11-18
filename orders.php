@@ -205,7 +205,7 @@
 			  								
 			  								
 			  								
-			  										<div class="col-sm row-order order2" >
+			  										<div class="col-sm row-order" >
 			  										<center>
 			  										<button style="outline: none; border: none;" class="but6 btn btn-outline-secondary" type="submit" name="del" value="5">To deliver</button>
 			  										</center>
@@ -294,7 +294,7 @@
 																?>
 																	<button class="stat_but" type="button" style="background-color: #099707;" disabled><?php echo $stat['status_description']; ?></button>
 																<?php
-															}else if($stat['status_description'] == "to deliver"){
+															}else if($stat['status_description'] == "to receive"){
 																?>
 																	<button class="stat_but" type="button" style="background-color: #2063E9;" disabled><?php echo $stat['status_description']; ?></button>
 																<?php
@@ -388,6 +388,7 @@
 				  								<?php echo "x".$view['quantity']; ?>
 				  								</div>
 				  							</div>
+
 				  							
 				  							
 				  						</div>
