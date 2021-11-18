@@ -222,17 +222,17 @@ a:hover{
 	}
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1160px){
 	.container{
 		grid-template-columns: 1fr;
 	}
 
 	.img{
-		display: none;
+		display: none !important;
 	}
 
 	.wave{
-		display: none;
+		display: none !important;
 	}
 
 	.login-content{
