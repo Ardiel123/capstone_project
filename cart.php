@@ -203,6 +203,7 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                   <?php
                     }
                     else{
+                      $grandtotal1 = 0;
 
                       foreach ($_SESSION['cart'] as $key => $value) 
                       { 
@@ -211,6 +212,7 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                       $row = mysqli_fetch_assoc($ex);
 
                       $subtotal = $value * $row['price'];
+                      $grandtotal1 += $subtotal;
                   ?>
               <tr> 
               <form method="POST"> 
@@ -289,6 +291,7 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                                   </div>
                                 </div>
                             </div>
+
                              <!-- remove -->
                      <div class="col cart-col4" >
                       <center>
@@ -307,16 +310,17 @@ $query_payment = "SELECT * FROM payment_type_tbl";
               </div>
               </form>
               </tr>
-              <?php
+               <?php
                       }
                     ?>
                
                   <tr>
-                    <td colspan="1" align="left" style="vertical-align: middle;">
+                    <td colspan="1" align="left" class="cart-td">
                       <center>
-                        <h6 class="cart-total">Total <br><span>&#8369; 650.00</span></h6>
+                        <h6 class="cart-total" >Total <br><?php echo "<b>₱".number_format($grandtotal1,2,".",",")."</b>"; ?></span></h6>
                         </center>
                     </td>
+           
                      <td colspan="2" align="right"><button type="button" name="checkout_all" class="btn cart-checkout" data-toggle="modal" data-target="#order_all" >Checkout</button></td>
                   </tr>
                <?php  
