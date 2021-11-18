@@ -56,31 +56,3 @@
 				
 		</div>
 	</header>
-
-<script>
-	$(window).resize(function()
-	{
-	    var $theWindowSize = $(this).width();
-	    if($theWindowSize <= 800)
-	        {
-	        	$( "#check").prop('checked', true);
-	        }
-	});
-
-	$(window).resize(function()
-	{
-	    var $theWindowSize = $(this).width();
-	    if($theWindowSize > 800)
-	        {
-	        	$( "#check").prop('checked', false);
-	        }
-	});
-
-	$(function() {      
-    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-
-    if (isMobile) {
-        	$( "#check").prop('checked', true);
-    }
- 	});
-</script>
