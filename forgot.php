@@ -10,11 +10,9 @@
 	if ($show_email) {
 
 		$email = $show_email['customer_email'];
-
-		$length = strlen($email);
-	    $visibleCount = (int) round($length / 4);
-	    $hiddenCount = $length - ($visibleCount * 2);
-	    $the_email = substr($email, 0, $visibleCount) . str_repeat('*', $hiddenCount) . substr($email, ($visibleCount * -1), $visibleCount);
+		list($first, $last) = explode("@", $email);
+   	 	$len = floor(strlen($first)/2);
+    	$the_email = substr($first, 0, $len) . str_repeat('*', $len) . "@" . $last;
 
 	}else{
 		$error = "Username not exist";
@@ -50,7 +48,7 @@
 						$mail->addReplyTo('tradebay2021@gmail.com');
 
 						$mail->isHTML(true);
-						$mail->Subject='TradeBay Customer Verification';
+						$mail->Subject='TradeBay Password Recovery';
 						$mail->Body='<h1>Account recovery</h1></br><h3>Here is your new Login Password.</h3></br> <h2>'.$password.'</h2>';
 
 						if(!$mail->send()){
@@ -107,7 +105,7 @@
 	}
 	.container{
 		padding: 30px;
-		width: 100%;
+		width: 50%;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	}
 
@@ -118,6 +116,9 @@
 
 	@media screen and (max-width: 900px){
 		.inputs{
+			width: 100%;
+		}
+		.container{
 			width: 100%;
 		}
 	}
@@ -136,13 +137,13 @@
 		</div>
 	</header>
 	<div class="content">
-		<div class="container">
-			<div class="text-center">
-				<h3>Account recovery</h3><br>
+		<div class="container text-center" >
+
+				<h2>Account recovery</h2><hr>
 
 
-					<h3>We've sent your login details in your email.<br>
-					<h3><?php echo $the_email; ?></h3>
+					<h3>Enter complete email address shown below</h3>
+					<h4><?php echo $the_email; ?></h4>
 					
 					<form method="POST">
 					<center>
@@ -164,7 +165,6 @@
 					</form>	
 
 
-			</div>
 		</div>
 	</div>
 </body>
