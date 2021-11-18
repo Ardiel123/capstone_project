@@ -117,7 +117,7 @@
 		$id = $_POST['view_id'];
 		$stat_id = $_POST['stat_id'];
 
-		$sql_view = "SELECT pd.product_image,pd.product_name,oi.current_price, oi.quantity, od.total, od.status_id, pv.product_variation_id FROM product_details_tbl pd INNER JOIN product_variation_tbl pv ON pv.product_details_id = pd.product_details_id INNER JOIN order_items_tbl oi ON oi.product_variation_id = pv.product_variation_id INNER JOIN order_details_tbl od ON oi.order_details_id = od.order_details_id WHERE od.order_details_id = '$id'";
+		$sql_view = "SELECT pd.product_image,pd.product_name,oi.current_price, oi.quantity, od.total, od.status_id, pv.product_variation_id,pv.weight_value,wu.abbreviation FROM product_details_tbl pd INNER JOIN product_variation_tbl pv ON pv.product_details_id = pd.product_details_id INNER JOIN order_items_tbl oi ON oi.product_variation_id = pv.product_variation_id INNER JOIN order_details_tbl od ON oi.order_details_id = od.order_details_id INNER JOIN weight_unit_tbl wu ON pv.weight_unit_id = wu.weight_unit_id WHERE od.order_details_id = '$id'";
 		$exe_view = mysqli_query($db,$sql_view );
 		$view = mysqli_fetch_assoc($exe_view);
 
@@ -207,7 +207,7 @@
 			  								
 			  										<div class="col-sm row-order" >
 			  										<center>
-			  										<button style="outline: none; border: none;" class="but6 btn btn-outline-secondary" type="submit" name="del" value="5">To deliver</button>
+			  										<button style="outline: none; border: none;" class="but6 btn btn-outline-secondary" type="submit" name="del" value="5">To recieve</button>
 			  										</center>
 							  						</div>
 							  						<div class="col-sm row-order">
@@ -354,7 +354,7 @@
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
 			      		<div class="container order-modal1" >
-			  			<table class="table">
+			  			<table class="table table-bordered">
 			  				<thead>
 			  					<tr>
 			  						<th>Product</th>
@@ -386,6 +386,11 @@
 				  							<div class="row">
 				  								<div class="col">
 				  								<?php echo "x".$view['quantity']; ?>
+				  								</div>
+				  							</div>
+				  							<div class="row">
+				  								<div class="col">
+				  								<?php echo "Size: ".$view['weight_value'].' '.$view['abbreviation']; ?>
 				  								</div>
 				  							</div>
 
