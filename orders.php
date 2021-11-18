@@ -357,13 +357,9 @@
 			  			<table class="table">
 			  				<thead>
 			  					<tr>
-			  						<th>Image</th>
-			  						<th>Item</th>
-			  						<th></th>
+			  						<th>Product</th>
 			  						<th>Price</th>
-			  						<th>Qty</th>
 			  						<th>Subtotal</th>
-			  						<th></th>
 			  					</tr>
 			  				</thead>
 			  				<tbody>
@@ -376,18 +372,38 @@
 			  								$subtotal = $view['current_price'] * $view['quantity'];
 			  								$g_total += $subtotal;  
 			  							?>
-				  						<td><?php echo '<img src="'.$view['product_image'].'" style="width: 50px; height: 50px;" >'; ?></td>
-				  						<td class="pname" colspan="2"><?php echo $view['product_name']; ?></td>
-				  						<td><?php echo $view['current_price']; ?></td>
-				  						<td><?php echo "x".$view['quantity']; ?></td>
-				  						<td colspan="2"><?php echo "₱".number_format($subtotal,2,".",","); ?></td>
+				  						<td>
+				  							<div class="row">
+				  							<div class="col">
+				  						<?php echo '<img src="'.$view['product_image'].'" style="width: 60px; height: 60px;" >'; ?>
+				  						</div>
+				  						<div class="col" style="min-width: 120px; ">
+				  							<div class="row">
+				  								<div class="col" class="pname">
+				  									<b><?php echo $view['product_name']; ?></b>
+				  								</div>
+				  							</div>
+				  							<div class="row">
+				  								<div class="col">
+				  								<?php echo "x".$view['quantity']; ?>
+				  								</div>
+				  							</div>
+				  							
+				  							
+				  						</div>
+				  							</div>
+				  						</td>
+				  						
+				  						<td style="vertical-align: middle;"><?php echo $view['current_price']; ?></td>
+				  						
+				  						<td style="vertical-align: middle;"><?php echo "₱".number_format($subtotal,2,".",","); ?></td>
 				  				</tr>	
 				  				<?php	
 			  						}while($view = mysqli_fetch_assoc($exe_view));
 			  					?>
 			  					<tr>
-			  						<td colspan="5" align="right"><?php echo "<b>Total:</b>"; ?></td>
-			  						<td colspan="2"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
+			  						<td colspan="2" align="right"><?php echo "<b>Total:</b>"; ?></td>
+			  						<td colspan="1"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
 			  					</tr>
 			  					<tr>
 			  						<td colspan="7" style="white-space: initial;">

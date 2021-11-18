@@ -677,7 +677,7 @@ font-family: 'Poppins';
 .cart-minus{
 	font-size: 20px;
 	color: black;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .cart-input{
 	text-align: center;
@@ -689,17 +689,22 @@ font-family: 'Poppins';
 .cart-plus{
 	font-size: 20px;
 	color: black;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .cart-h6{
 	margin-bottom: 10px;
 }
 .cart-remove{
 	color: #170c82;
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .cart-total{
 	font-size: 17px;
+	float: left;
+	margin-left: 10px;
+}
+.cart-td{
+	vertical-align: middle;
 }
 .cart-checkout{
 	width:150px;
@@ -889,7 +894,7 @@ font-family: 'Poppins';
 	font-family: 'Poppins';
 }
 .footer-about1{
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .footer-bg{
 	background-color: black;
@@ -913,7 +918,7 @@ font-family: 'Poppins';
 	font-family: 'Poppins' ;
 }
 .footer-facebook{
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .footer2{
 		color: white;
@@ -981,6 +986,18 @@ font-family: 'Poppins';
 		height: 125px !important;
 	}
 }
+@media only screen and (max-width: 360px){
+	.footer-col1{
+		height: 110px !important;
+	}
+	.footer-col2{
+		height: 175px !important;
+		border-color: black !important;
+	}
+	.footer-f{
+		height: 125px !important;
+	}
+}
 /*Header*/
 .navbar{
 	display: flex;
@@ -1000,7 +1017,7 @@ nav ul li{
 	margin-left: 20px;
 }
 a{
-	text-decoration: none;
+	text-decoration: none !important;
 	color: #eeeeee;
 	font-weight: 600;
 }
@@ -1197,7 +1214,7 @@ header{
 .dropdown-content a {
   color: black;
   padding: 12px 16px;
-  text-decoration: none;
+  text-decoration: none !important;
   display: block;
 }
 
