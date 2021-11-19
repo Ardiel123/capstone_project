@@ -793,7 +793,7 @@ font-family: 'Poppins';
 }
 /*services page*/
 .this{
-	background: url("back.jpg");
+	background: url("../img/login/service_img.jpg");
 	height: 500px;
 	width: 100%;
 	position: relative;

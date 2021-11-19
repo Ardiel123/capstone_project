@@ -137,7 +137,9 @@ $query_payment = "SELECT * FROM payment_type_tbl";
 <style>
 
 
-
+.table-bordered td, .table-bordered th {
+    border: none;
+}
 
 
 
@@ -179,12 +181,12 @@ $query_payment = "SELECT * FROM payment_type_tbl";
       <div class="row cart-row1">
 
         <div class="col-lg jusko cart-col1">
-          <table class="crt_tbl table table-striped">
+          <table class="crt_tbl table table-bordered">
             <tbody>
               <?php
                     if (empty($_SESSION['cart'])) {
                   ?>
-                      <tr background="empty_cart.png" class="cart-tr1">
+                      <tr background="img/login/empty_cart.png" class="cart-tr1">
                         <td colspan="3">  </td>
                           
                       </tr>

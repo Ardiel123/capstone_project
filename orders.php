@@ -179,7 +179,7 @@
 			  	</div>
 			  	<div class="panel-body">
 			  		<div class="container order-body" >
-			  			<table class="table table-striped">
+			  			<table>
 			  				
 			  				<thead>
 			  					<tr>
