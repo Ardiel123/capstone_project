@@ -249,6 +249,8 @@
 			<div class="container-fluid">
 
 				<hr>
+									
+				<a href="customer.php" class="to_link">
 				<div class="card-body">
 					<div class="float-left">
 						<h1>
@@ -262,7 +264,9 @@
 						<i class="fa fa-users" aria-hidden="true"></i>
 					</div>
 				</div>
-
+				</a>
+				
+				<a href="product.php" class="to_link">
 				<div class="card-body">
 					<div class="float-left">
 						<h1>
@@ -274,7 +278,9 @@
 						<i class="fa fa-shopping-bag" aria-hidden="true"></i>
 					</div>
 				</div>
+				</a>
 
+				<a href="orders.php?show=1" class="to_link">
 				<div class="card-body">
 					<div class="float-left">
 						<h1>
@@ -288,7 +294,9 @@
 						<i class="fas fa-cart-arrow-down"></i>
 					</div>
 				</div>
-
+				</a>
+				
+				<a href="services.php?show=1" class="to_link">
 				<div class="card-body">
 					<div class="float-left">
 						<h1>
@@ -301,7 +309,9 @@
 					<div class="float-right">
 						<i class="fas fa-print"></i>
 					</div>
+					
 				</div>
+				</a>
 
 			</div>
 

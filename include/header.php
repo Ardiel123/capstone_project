@@ -19,7 +19,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" type="text/css" href="../style/cardstyle.css">
+    <link rel="stylesheet" type="text/css" href="../style/card_style.css">
 </head>
 <body>
 	<input type="checkbox" id="check" class="chk">
@@ -56,3 +56,29 @@
 				
 		</div>
 	</header>
+
+<script>
+	$(window).resize(function()
+  	{
+    	var $theWindowSize = $(this).width();
+		
+    	if($theWindowSize <= 800)
+        {
+            $( "#check").prop('checked', true);
+
+        }else{
+			$( "#check").prop('checked', false);
+		}
+
+	});
+
+
+		let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+		if (isMobile) {
+			$( "#check").prop('checked', true);
+		}
+
+
+
+</script>
