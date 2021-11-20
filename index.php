@@ -48,13 +48,13 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="home-img-index" src="img/water.jpg" alt="Los Angeles" >
+      <img class="home-img-index" src="img/index/water.jpg">
     </div>
     <div class="carousel-item">
-      <img class="home-img-index" src="img/mushroom.jpg" alt="Chicago" >
+      <img class="home-img-index" src="img/index/mushroom.jpg">
     </div>
     <div class="carousel-item">
-      <img class="home-img-index" src="img/fertilizer.jpg" alt="New York" >
+      <img class="home-img-index" src="img/index/fertilizer.jpg">
     </div>
      
   </div>
@@ -126,9 +126,6 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
         $result3 = mysqli_query($db,$sql3);
         $row3 = mysqli_fetch_assoc($result3);
 
-        $sql4 = "SELECT COUNT(announcement_id) AS bilang FROM announcement_tbl;";
-        $result4 = mysqli_query($db,$sql4);
-        $resultCheck4 = mysqli_fetch_assoc($result4);
  ?>
 <!-- announcements -->
 <div class="container-md index-div2" >
@@ -138,7 +135,14 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
 </div>
 <div class="container-sm index-div3" >
 
-<?php do { ?>
+<?php 
+    
+    if(mysqli_num_rows($result3) == 0){
+        echo "<h5>No Announcement is posted yet</h5>";
+    } 
+    else{
+
+    do { ?>
 
   <div style="background-color: white">
   <div class="row">
@@ -154,7 +158,9 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
     </div>
   </div>
    </div>    
-<?php }while($row3 = mysqli_fetch_assoc($result3)); ?>
+<?php }while($row3 = mysqli_fetch_assoc($result3)); 
+
+}?>
 </div>
 
    </center>

@@ -157,12 +157,31 @@ label #sidebar_btn:hover{
 	display: inline-block;
 }
 
+.announcement-content{
+	max-width: 700px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 @media (max-width: 960px) {
 	.navigation ul li a .title  { display: none; }
 	.navigation {width: 60px; }
 	.content {margin-left: 60px; }
 	nav .nav-pills { margin-top: 0; }
 	.actions{ display: none; }
+}
+
+@media (max-width: 1260px){
+
+	.announcement-content{max-width: 400px;}
+	.icon_text{display: none;}
+	.ic{width: 15px;}
+}
+
+@media (max-width: 860px){
+
+	.announcement-content{max-width: 200px;}
 }
 
 /*for footer*/

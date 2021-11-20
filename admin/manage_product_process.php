@@ -77,9 +77,10 @@
 		header("location:product.php");
 	}
 
-	if (isset($_POST['back'])) {
-		header("location:product.php");
-	}
+	// if (isset($_POST['back'])) {
+		
+	// 	header("location:product.php");
+	// }
 
 
 ?>

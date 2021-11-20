@@ -79,7 +79,7 @@
 								};
 							</script> 
 						<div class="form-group">
-							<input type="submit" name="back" value="Back" class="btn-sm btn-default">
+							<input type="button" name="back" value="Back" class="btn-sm btn-default" onclick="history.back();">
 							<input type="submit" name="save_all" value="Save" class="btn-sm btn-primary">
 						</div>
 					</form>

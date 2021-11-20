@@ -109,7 +109,7 @@
 			  <div class="panel-body">
 			  	<div class="container" style="width: 100%; height: 100%;">
            
-				  <table id="example" class="table table-striped " style="width: 100%">
+				  <table id="example" class="table table-striped" style="width: 100%">
 				    <thead>
 				      <tr>
 				      	<th>Product ID#</th>
@@ -148,7 +148,7 @@
 							  
 								  		<a href="manage_product.php?id=<?php echo $show_products['product_details_id']; ?>" style="text-decoration: none; color: white;">
 								  			<button type="button" class="btn-sm btn-success" name="manage">
-								  				<i class="fas fa-edit"></i> Update
+								  				<i class="fas fa-edit ic"></i><span class="icon_text"> Update</span>
 											</button>
 								  		</a>
 								  		

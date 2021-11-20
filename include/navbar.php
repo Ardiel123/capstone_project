@@ -37,6 +37,12 @@
 					<span class="title">Printing</span>
 				</a>
 			</li>
+			<li class="ann">
+				<a href="announcement.php">
+					<span class="icon"><i class="fa fa-bullhorn"></i></span>
+					<span class="title">Announcement</span>
+				</a>
+			</li>
 			
 		</ul>
 	</div>

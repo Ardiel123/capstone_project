@@ -18,7 +18,7 @@
 
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/my_style.css">
     <link rel="stylesheet" type="text/css" href="../style/card_style.css">
 </head>
 <body>

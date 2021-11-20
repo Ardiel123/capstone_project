@@ -110,7 +110,7 @@
 			  							<form method="POST">
 			  								<input type="hidden" name="cat_id" value="<?php echo $show_categories['category_id']; ?>">
 				  							<button type="submit" class="btn-sm btn-success" name="edit">
-												<i class="fas fa-edit"></i> Update
+												<i class="fas fa-edit ic"></i><span class="icon_text"> Update</span>
 											</button>
 										</form>
 			  						</td>
