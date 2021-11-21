@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 01:03 PM
+-- Generation Time: Nov 21, 2021 at 03:58 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -43,7 +43,9 @@ CREATE TABLE `account_tbl` (
 INSERT INTO `account_tbl` (`account_id`, `verification_key`, `status`, `username`, `password`, `usertype`) VALUES
 (7, 'e01cf75af1ee04bd991cb7a082377d94', 1, 'editeddd', 'bea735f03eee25e276ece7e4dc0a4c10', 'customer'),
 (14, 'f59d2bc8a893efc3a67048992ba04425', 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
-(15, '43028b357555317171b58046a7ee63d9', 1, 'ardiel', '801365345c20fec90cf26e0d2109ef6e', 'customer');
+(15, '43028b357555317171b58046a7ee63d9', 1, 'ardiel', '801365345c20fec90cf26e0d2109ef6e', 'customer'),
+(16, 'fced13ad31a16e085ac2530b8fe3acc5', 1, 'ardiels', '801365345c20fec90cf26e0d2109ef6e', 'customer'),
+(17, '031843de43d7d393b1cc544f921c7a86', 0, 'aniel', 'feb14ecc151568543da589cee9320c64', 'customer');
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,7 @@ CREATE TABLE `admin_tbl` (
 --
 
 INSERT INTO `admin_tbl` (`admin_id`, `admin_fname`, `admin_lname`, `admin_email`, `date_created`, `account_id`) VALUES
-(2018101782, 'Ardiel', 'Salatamos', 'salatamos.ardiel@gmail.com', '2021-09-17 06:05:41', 14);
+(2018101753, 'Ardiel', 'Salatamos', 'salatamos.ardiel@gmail.com', '2021-11-14 13:36:06', 14);
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ INSERT INTO `admin_tbl` (`admin_id`, `admin_fname`, `admin_lname`, `admin_email`
 
 CREATE TABLE `announcement_tbl` (
   `announcement_id` int(10) NOT NULL,
-  `date_published` date NOT NULL DEFAULT current_timestamp(),
+  `date_published` datetime NOT NULL DEFAULT current_timestamp(),
   `content` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `admin_id` int(10) NOT NULL
@@ -86,8 +88,8 @@ CREATE TABLE `announcement_tbl` (
 --
 
 INSERT INTO `announcement_tbl` (`announcement_id`, `date_published`, `content`, `image`, `admin_id`) VALUES
-(1, '2021-10-15', 'Sample Announcement', 'img/qwe.jpg', 2018101782),
-(2, '2021-09-23', 'asdasda', 'img/qwe.jpg', 2018101782);
+(41, '2021-11-20 20:46:59', 'KING BOT FRAGGGGGGGGGG', 'img/announcement/7d8d7b27d99d923a3b5a03d3330b4dfa.png', 2018101753),
+(42, '2021-11-20 22:12:36', 'asdasasdsadsadadssdasdasdas', 'img/announcement/65116956c9bc6292ce47285c72d6aac8.png', 2018101753);
 
 -- --------------------------------------------------------
 
@@ -105,7 +107,7 @@ CREATE TABLE `category_tbl` (
 --
 
 INSERT INTO `category_tbl` (`category_id`, `category_name`) VALUES
-(1, 'food\r\n'),
+(1, 'food'),
 (2, 'drink');
 
 -- --------------------------------------------------------
@@ -133,8 +135,10 @@ CREATE TABLE `customer_tbl` (
 --
 
 INSERT INTO `customer_tbl` (`customer_id`, `customer_fname`, `customer_lname`, `house_no`, `barangay`, `city`, `province`, `customer_email`, `customer_phonenumber`, `date_created`, `account_id`) VALUES
-(13, 'edited', 'Salatamos', 136, 'Malasin', 'Santo Domingo', 'Nueva Ecija', 'ardielsalatamos24@gmail.com', '09301795886', '2021-10-29 12:53:21', 7),
-(19, 'ardiel', 'ardiel', 222, 'asdsadsadsad', 'sadsad', 'asdasdasd', 'sadasdas@gmail.com', '0938833', '2021-09-28 10:09:57', 15);
+(13, 'edited', 'Salatamos', 136, 'Malasin', 'Santo Domingo', 'Nueva Ecija', 'ardielsalatamos@gmail.com', '09301795886', '2021-11-16 10:17:45', 7),
+(19, 'ardiel', 'Salatamos', 123, 'Malasin', 'Sto. Domingo', 'Nueva Ecija', 'salatamos.ardiel@gmail.com', '09667837363', '2021-11-16 14:24:37', 15),
+(20, 'asdasd', 'asdas', 0, 'asdas', 'asdasd', 'dasdasd', 'ardielsalatamos24@gmail.com', 'asdasd', '2021-11-16 10:18:00', 16),
+(21, 'aniel', 'qweqweq', 123123, 'qweqweqeqw', 'eqweqweq', 'wqeqweqe', 'johnnielg01@gmail.com', '12313123123', '2021-11-19 13:26:01', 17);
 
 -- --------------------------------------------------------
 
@@ -169,7 +173,7 @@ INSERT INTO `order_details_tbl` (`order_details_id`, `date_ordered`, `status_dat
 (64, '2021-09-26', '2021-01-09 04:37:48', 230, 4, 13, 1, 28),
 (65, '2021-10-26', '2021-01-10 04:37:49', 230, 4, 13, 1, 29),
 (66, '2021-11-26', '2021-01-11 04:37:50', 230, 4, 13, 1, 30),
-(67, '2021-12-26', '2021-10-18 04:20:01', 230, 5, 13, 1, 31),
+(67, '2021-12-26', '2021-11-09 12:09:49', 230, 4, 13, 1, 31),
 (68, '2021-09-26', '2021-01-13 04:37:54', 920, 4, 13, 1, 32),
 (69, '2021-09-26', '2021-01-13 23:09:13', 230, 4, 13, 1, 33),
 (71, '2021-09-28', '2021-01-15 04:37:57', 140, 4, 19, 1, 35),
@@ -182,22 +186,25 @@ INSERT INTO `order_details_tbl` (`order_details_id`, `date_ordered`, `status_dat
 (83, '2021-10-12', '2021-01-21 23:05:13', 70, 4, 13, 1, 70),
 (84, '2021-10-12', '2021-01-22 23:05:15', 70, 4, 13, 1, 71),
 (85, '2021-10-12', '2021-01-23 23:05:16', 70, 4, 13, 1, 72),
-(86, '2021-10-12', '2021-01-24 23:05:19', 70, 4, 13, 1, 73),
-(87, '2021-10-12', '2021-10-11 23:03:08', 70, 1, 13, 1, 74),
-(88, '2021-10-12', '2021-10-11 23:03:10', 70, 1, 13, 1, 75),
-(89, '2021-10-12', '2021-10-11 23:03:12', 70, 1, 13, 1, 76),
-(90, '2021-10-12', '2021-10-11 23:03:13', 70, 1, 13, 1, 77),
-(91, '2021-10-12', '2021-10-11 23:03:15', 70, 1, 13, 1, 78),
-(92, '2021-10-12', '2021-10-11 23:03:16', 70, 1, 13, 1, 79),
-(93, '2021-10-12', '2021-10-11 23:03:18', 70, 1, 13, 1, 80),
-(94, '2021-10-12', '2021-10-11 23:03:19', 70, 1, 13, 1, 81),
-(95, '2021-10-12', '2021-10-11 23:03:21', 70, 1, 13, 1, 82),
-(96, '2021-10-12', '2021-10-11 23:03:22', 70, 1, 13, 1, 83),
-(97, '2021-10-12', '2021-10-11 23:03:24', 70, 1, 13, 1, 84),
-(98, '2021-10-12', '2021-10-11 23:03:26', 70, 1, 13, 1, 85),
-(99, '2021-10-12', '2021-10-11 23:03:27', 70, 1, 13, 1, 86),
-(100, '2021-10-12', '2021-10-11 23:03:29', 70, 1, 13, 1, 87),
-(101, '2021-10-12', '2021-10-11 23:03:31', 70, 1, 13, 1, 88);
+(86, '2021-10-12', '2022-01-04 02:26:03', 70, 4, 13, 1, 73),
+(87, '2021-10-12', '2021-11-15 02:54:35', 70, 2, 13, 1, 74),
+(88, '2021-10-12', '2021-11-15 02:43:02', 70, 2, 13, 1, 75),
+(89, '2021-10-12', '2021-11-15 02:43:08', 70, 2, 13, 1, 76),
+(90, '2021-10-12', '2021-11-15 02:52:12', 70, 2, 13, 1, 77),
+(91, '2021-10-12', '2021-11-15 02:52:58', 70, 2, 13, 1, 78),
+(92, '2021-10-12', '2021-11-15 02:54:19', 70, 2, 13, 1, 79),
+(93, '2021-10-12', '2021-11-15 02:59:00', 70, 4, 13, 1, 80),
+(94, '2021-10-12', '2021-11-15 02:41:54', 70, 2, 13, 1, 81),
+(95, '2021-10-12', '2021-11-15 02:34:26', 70, 2, 13, 1, 82),
+(96, '2021-10-12', '2021-11-15 02:35:16', 70, 2, 13, 1, 83),
+(97, '2021-10-12', '2021-11-15 02:35:29', 70, 2, 13, 1, 84),
+(98, '2021-10-12', '2021-11-15 02:36:06', 70, 2, 13, 1, 85),
+(99, '2021-10-12', '2021-11-15 02:36:20', 70, 2, 13, 1, 86),
+(100, '2021-10-12', '2021-11-15 02:36:44', 70, 2, 13, 1, 87),
+(101, '2021-10-12', '2021-11-15 02:42:56', 70, 2, 13, 1, 88),
+(102, '2021-11-09', '2021-11-09 12:09:49', 150, 4, 19, 1, 91),
+(103, '2021-11-18', '2021-11-18 01:58:55', 315, 5, 19, 1, 92),
+(104, '2021-11-21', '2021-11-21 12:14:50', 5, 1, 19, 1, 93);
 
 -- --------------------------------------------------------
 
@@ -259,7 +266,11 @@ INSERT INTO `order_items_tbl` (`order_items_id`, `quantity`, `current_price`, `p
 (100, 1, 70, 51, 98),
 (101, 1, 70, 51, 99),
 (102, 1, 70, 51, 100),
-(103, 1, 70, 51, 101);
+(103, 1, 70, 51, 101),
+(104, 1, 150, 47, 102),
+(105, 2, 150, 47, 103),
+(106, 3, 5, 49, 103),
+(107, 1, 5, 49, 104);
 
 -- --------------------------------------------------------
 
@@ -307,7 +318,7 @@ CREATE TABLE `printing_service_tbl` (
 --
 
 INSERT INTO `printing_service_tbl` (`printing_service_id`, `service_type`, `print_service_image`, `date_placed`, `print_service_price`, `print_service_size`, `print_service_quantity`, `print_service_total`, `status_date`, `customer_id`, `status_id`, `payment_type_id`, `shipping_details_id`) VALUES
-(3, 'tarpaulin', 'printimg/aabf1d587767b69ca5e4041', '2021-10-05 11:02:47', 0, '2x2', 1, 800, '2021-10-05 12:31:41', 13, 1, 1, 53),
+(3, 'tarpaulin', 'printimg/aabf1d587767b69ca5e4041', '2021-10-05 11:02:47', 0, '2x2', 1, 800, '2021-11-15 03:05:45', 13, 2, 1, 53),
 (6, 'tarpaulin', 'printimg/fd9bc1d2b6898c703cd39f8', '2021-09-28 11:53:11', 0, '2x2', 1, 800, '2021-10-05 10:54:24', 19, 4, 1, 42),
 (7, 'tarpaulin', 'printimg/cab747af5d4786f49bf9f16', '2021-09-28 12:16:18', 0, '2x2', 4, 3200, '2021-10-05 10:54:24', 19, 4, 1, 43),
 (8, 'tarpaulin', 'printimg/234e83d218dfb25acec6f4d', '2021-10-05 10:51:57', 0, '22x22', 2, 1600, '2021-10-05 10:54:24', 13, 4, 1, 48),
@@ -315,17 +326,19 @@ INSERT INTO `printing_service_tbl` (`printing_service_id`, `service_type`, `prin
 (10, 'tarpaulin', 'printimg/2463f189f865ecc94fae179', '2021-10-05 11:02:37', 0, '2x2', 1, 800, '2021-10-05 11:03:05', 13, 5, 1, 50),
 (11, 'tarpaulin', 'printimg/87bee87b7338f49a8403f33', '2021-10-05 11:02:43', 0, '2x2', 1, 800, '2021-10-05 11:03:12', 13, 2, 1, 51),
 (12, 'tarpaulin', 'printimg/5219f4b83734f2389b3de59', '2021-10-05 11:02:45', 0, '2x2', 1, 800, '2021-10-05 11:03:12', 13, 2, 1, 52),
-(14, 'tarpaulin', 'printimg/0660eb01479b4fcdef2560a', '2021-10-05 11:02:49', 0, '2x2', 1, 800, '2021-10-05 11:02:49', 13, 1, 1, 54),
-(15, 'tarpaulin', 'printimg/c5763e2715c5cf2a0510252', '2021-10-05 11:02:51', 0, '2x2', 1, 800, '2021-10-05 11:02:51', 13, 1, 1, 55),
-(16, 'tarpaulin', 'printimg/be92ef03d05206883d2d924', '2021-10-05 11:05:22', 0, '2x2', 1, 800, '2021-10-05 11:05:22', 13, 1, 2, 56),
-(17, 'tarpaulin', 'printimg/47cfe34e37452d584943d94', '2021-10-05 11:21:16', 0, '2x2', 1, 800, '2021-10-05 11:21:16', 13, 1, 1, 57),
+(14, 'tarpaulin', 'printimg/0660eb01479b4fcdef2560a', '2021-10-05 11:02:49', 0, '2x2', 1, 800, '2021-11-15 03:05:45', 13, 2, 1, 54),
+(15, 'tarpaulin', 'printimg/c5763e2715c5cf2a0510252', '2021-10-05 11:02:51', 0, '2x2', 1, 800, '2021-11-15 03:05:45', 13, 2, 1, 55),
+(16, 'tarpaulin', 'printimg/be92ef03d05206883d2d924', '2021-10-05 11:05:22', 0, '2x2', 1, 800, '2021-11-15 03:05:45', 13, 2, 2, 56),
+(17, 'tarpaulin', 'printimg/47cfe34e37452d584943d94', '2021-10-05 11:21:16', 0, '2x2', 1, 800, '2021-11-15 03:05:45', 13, 2, 1, 57),
 (18, 'tarpaulin', 'printimg/b5b8d263281cddf1ada17e4b150d21fd.jpg', '2021-10-05 11:22:45', 0, '2x2', 1, 800, '2021-10-05 12:32:04', 13, 3, 1, 58),
-(19, '1', 'printimg/b7161bea0b9b6006be0012c7d1160eae.', '2021-10-06 00:55:00', 0, '3x3 FT', 2, 4000, '2021-10-06 00:55:00', 13, 1, 1, 60),
-(20, '2', 'printimg/7b69e3fc280e0b6a588f9ed1857dea8e.', '2021-10-06 00:55:59', 0, '2x2', 2, 400, '2021-10-06 00:55:59', 13, 1, 1, 61),
-(21, '2', 'printimg/74e81673f84dd5086bb95cb6417cebf5.', '2021-10-06 00:57:18', 0, '2x2', 4, 800, '2021-10-06 00:57:18', 13, 1, 1, 62),
-(22, '2', 'printimg/04fe8b99b30777b21f8f2511ca74ff87.', '2021-10-06 00:58:50', 0, '2x2 in', 1, 200, '2021-10-06 00:58:50', 13, 1, 1, 63),
-(23, '2', 'printimg/b91a72831aa60060a398abcf6ed10a52.gif', '2021-10-06 01:04:42', 200, '2x2 INCH', 3, 600, '2021-10-06 01:04:42', 13, 1, 2, 64),
-(24, '1', 'printimg/34b7df77505e0c60c43d1951bdd7b173.', '2021-10-06 01:07:28', 2000, '3x3 FT', 4, 8000, '2021-10-06 01:07:28', 13, 1, 1, 65);
+(19, '1', 'printimg/b7161bea0b9b6006be0012c7d1160eae.', '2021-10-06 00:55:00', 0, '3x3 FT', 2, 4000, '2021-11-15 03:05:45', 13, 2, 1, 60),
+(20, '2', 'printimg/7b69e3fc280e0b6a588f9ed1857dea8e.', '2021-10-06 00:55:59', 0, '2x2', 2, 400, '2021-11-15 03:05:45', 13, 2, 1, 61),
+(21, '2', 'printimg/74e81673f84dd5086bb95cb6417cebf5.', '2021-10-06 00:57:18', 0, '2x2', 4, 800, '2021-11-15 03:05:45', 13, 2, 1, 62),
+(22, '2', 'printimg/04fe8b99b30777b21f8f2511ca74ff87.', '2021-10-06 00:58:50', 0, '2x2 in', 1, 200, '2021-11-15 03:05:45', 13, 2, 1, 63),
+(23, '2', 'printimg/b91a72831aa60060a398abcf6ed10a52.gif', '2021-10-06 01:04:42', 200, '2x2 INCH', 3, 600, '2021-11-15 03:05:45', 13, 2, 2, 64),
+(24, '1', 'printimg/34b7df77505e0c60c43d1951bdd7b173.', '2021-10-06 01:07:28', 2000, '3x3 FT', 4, 8000, '2021-11-15 03:06:01', 13, 2, 1, 65),
+(25, 'logo', 'printimg/7201bd242244639c94516a804cac6875.', '2021-11-03 12:35:40', 0, '2x2', 2, 400, '2021-11-10 02:34:34', 19, 4, 1, 89),
+(26, '2', 'printimg/57b67a5f850a859f2a40944c4e148802.', '2021-11-03 12:38:41', 200, '2x2 INCH', 2, 400, '2021-11-10 02:34:38', 19, 4, 1, 90);
 
 -- --------------------------------------------------------
 
@@ -339,6 +352,7 @@ CREATE TABLE `product_details_tbl` (
   `product_description` varchar(255) NOT NULL,
   `product_image` varchar(50) NOT NULL,
   `date_posted` timestamp NOT NULL DEFAULT current_timestamp(),
+  `available` tinyint(1) NOT NULL,
   `category_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -346,15 +360,15 @@ CREATE TABLE `product_details_tbl` (
 -- Dumping data for table `product_details_tbl`
 --
 
-INSERT INTO `product_details_tbl` (`product_details_id`, `product_name`, `product_description`, `product_image`, `date_posted`, `category_id`) VALUES
-(38, 'Kape Ecija', 'Fresh coffees', 'img/qwe.jpg', '2021-09-10 00:46:00', 1),
-(39, 'mushroom chicharon', 'delicious chicharon', 'img/qwe.jpg', '2021-09-10 00:48:41', 2),
-(40, 'Distilled water', 'refreshing drink', 'img/qwe.jpg', '2021-09-10 00:50:10', 2),
-(41, 'milk tea', 'natural milk tea', 'img/qwe.jpg', '2021-09-10 00:51:26', 1),
-(42, 'kape', 'sample description', 'img/qwe.jpg', '2021-09-10 01:25:50', 2),
-(44, '3', '32131', 'img/711bea256a51d6a33df03a35bac9a53d.jpg', '2021-09-18 03:07:59', 2),
-(45, 'samplewww', 'samplewwww', 'img/a92a1b064da2b0bb3f847fbccd79b844.png', '2021-09-24 13:27:06', 2),
-(46, '2131231231', '123123123', 'img/7a7a39da99aa56281fd1b6f2063fc923.png', '2021-09-26 11:50:45', 1);
+INSERT INTO `product_details_tbl` (`product_details_id`, `product_name`, `product_description`, `product_image`, `date_posted`, `available`, `category_id`) VALUES
+(38, 'Kape Ecija', 'Fresh coffees', 'img/9b81f3a1f7e97ac483cb283944069336.jpg', '2021-09-10 00:46:00', 1, 1),
+(39, 'mushroom chicharon', 'delicious chicharon', 'img/d5c426e2f89a3d9bf038d3fa6723a6c4.jpg', '2021-09-10 00:48:41', 1, 2),
+(40, 'Distilled water', 'refreshing drink', 'img/e3a7948ea36e4962493e236b9ff81e8a.jpg', '2021-09-10 00:50:10', 1, 2),
+(41, 'milk tea', 'natural milk tea', 'img/a5e8f2c07ae04d32c5002702d90d5a69.jpg', '2021-09-10 00:51:26', 1, 1),
+(42, 'kape', 'sample description', 'img/22b0fbfeaf9c79736c927470b280b547.jpg', '2021-09-10 01:25:50', 1, 2),
+(44, '3', '32131', 'img/f9a3a9306450fe502d709210484a92e6.jpg', '2021-09-18 03:07:59', 1, 2),
+(45, 'samplewww', 'samplewwww', 'img/2ca220b5c218fd6f6aed09f8e463220b.jpg', '2021-09-24 13:27:06', 1, 2),
+(46, '2131231231', '123123123', 'img/a0902428c009f3ff26b9f30c40516a69.jpg', '2021-09-26 11:50:45', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -386,7 +400,9 @@ INSERT INTO `product_variation_tbl` (`product_variation_id`, `weight_value`, `pr
 (53, 1, 230, 42, 3),
 (54, 400, 600, 42, 4),
 (56, 1, 2, 44, 1),
-(57, 1, 100, 45, 2);
+(57, 1, 100, 45, 2),
+(59, 23, 7, 46, 1),
+(60, 123, 22222, 46, 1);
 
 -- --------------------------------------------------------
 
@@ -469,7 +485,12 @@ INSERT INTO `shipping_details_tbl` (`shipping_details_id`, `recipient_name`, `re
 (85, 'Diel Salatamos', '09301795886', '136/Malasin/Santo Domingo/Nueva Ecija', '2021-10-17 07:03:26'),
 (86, 'Diel Salatamos', '09301795886', '136/Malasin/Santo Domingo/Nueva Ecija', '2021-10-17 07:03:27'),
 (87, 'Diel Salatamos', '09301795886', '136/Malasin/Santo Domingo/Nueva Ecija', '2021-10-17 07:03:29'),
-(88, 'Diel Salatamos', '09301795886', '136/Malasin/Santo Domingo/Nueva Ecija', '2021-10-17 07:03:31');
+(88, 'Diel Salatamos', '09301795886', '136/Malasin/Santo Domingo/Nueva Ecija', '2021-10-17 07:03:31'),
+(89, 'ardiel ardiel', '0938833', '222/asdsadsadsad/sadsad/asdasdasd', '2021-11-08 08:35:40'),
+(90, 'ardiel ardiel', '0938833', '222/asdsadsadsad/sadsad/asdasdasd', '2021-11-08 08:38:41'),
+(91, 'ardiel Salatamos', '09667837363', '123/Malasin/Sto. Domingo/Nueva Ecija', '2021-11-14 08:09:01'),
+(92, 'ardiel Salatamos', '09667837363', '123/Malasin/Sto. Domingo/Nueva Ecija', '2021-11-23 02:57:06'),
+(93, 'ardiel Salatamos', '09667837363', '123/Malasin/Sto. Domingo/Nueva Ecija', '2021-11-26 08:14:50');
 
 -- --------------------------------------------------------
 
@@ -627,13 +648,13 @@ ALTER TABLE `weight_unit_tbl`
 -- AUTO_INCREMENT for table `account_tbl`
 --
 ALTER TABLE `account_tbl`
-  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `announcement_tbl`
 --
 ALTER TABLE `announcement_tbl`
-  MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `announcement_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `category_tbl`
@@ -645,19 +666,19 @@ ALTER TABLE `category_tbl`
 -- AUTO_INCREMENT for table `customer_tbl`
 --
 ALTER TABLE `customer_tbl`
-  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `customer_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order_details_tbl`
 --
 ALTER TABLE `order_details_tbl`
-  MODIFY `order_details_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `order_details_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `order_items_tbl`
 --
 ALTER TABLE `order_items_tbl`
-  MODIFY `order_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `order_items_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `payment_type_tbl`
@@ -669,7 +690,7 @@ ALTER TABLE `payment_type_tbl`
 -- AUTO_INCREMENT for table `printing_service_tbl`
 --
 ALTER TABLE `printing_service_tbl`
-  MODIFY `printing_service_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `printing_service_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `product_details_tbl`
@@ -681,13 +702,13 @@ ALTER TABLE `product_details_tbl`
 -- AUTO_INCREMENT for table `product_variation_tbl`
 --
 ALTER TABLE `product_variation_tbl`
-  MODIFY `product_variation_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `product_variation_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `shipping_details_tbl`
 --
 ALTER TABLE `shipping_details_tbl`
-  MODIFY `shipping_details_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `shipping_details_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `status_tbl`
@@ -715,7 +736,7 @@ ALTER TABLE `admin_tbl`
 -- Constraints for table `announcement_tbl`
 --
 ALTER TABLE `announcement_tbl`
-  ADD CONSTRAINT `adm_id` FOREIGN KEY (`admin_id`) REFERENCES `admin_tbl` (`admin_id`);
+  ADD CONSTRAINT `adm_id` FOREIGN KEY (`admin_id`) REFERENCES `admin_tbl` (`admin_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `customer_tbl`
