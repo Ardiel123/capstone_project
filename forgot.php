@@ -82,7 +82,7 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/my_style.css">
 </head>
 <style>
 	label #sidebar_btn{
@@ -156,7 +156,7 @@
 					</div>
 
 					<div class="form-group inputs">
-						<label for="usern">Enter the complete email shown above</label>
+						<label for="usern">Enter here:</label>
 						<input type="email" name="email" class="form-control">
 					</div>
 					</center>
