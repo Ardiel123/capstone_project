@@ -24,6 +24,11 @@
 	<div class="content">
 		<div class="for_title">
 			<h2>Products</h2>
+			<?php if(isset($_GET['err'])) { ?>
+				<div class="alert alert-danger" role="alert">
+						<?php echo $_GET['err']; ?>
+				</div>
+			<?php } ?>
 		</div>
 		<!-- Modal for add product-->
 			  <div id="add_products" class="modal fade" role="dialog">
@@ -34,10 +39,13 @@
 			      	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			        	<h4 class="modal-title">Add Product</h4>
 			      </div>
-			      	<!--form-->
+				      <?php if(isset($error)) { ?>
+								<div class="alert alert-danger" role="alert">
+										<?php echo $error; ?>
+								</div>
+							<?php } ?>
+							<div class="modal-body">
 			      	<form action="" method="POST" enctype="multipart/form-data">
-			      		<div class="modal-body">
-
 			      				<h4>Product Information</h4>
 			        			<div class="form-group">
 					    		<label for="category">Category: <span>*</span></label>
@@ -65,7 +73,7 @@
 							   	 	<select name="size" class="form-control">
 									  			<option>Select unit:</option>
 									  			<?php do{ ?>
-									  				<option value="<?php echo $weight_unit['weight_unit_id'] ?>">
+									  					<option value="<?php echo $weight_unit['weight_unit_id'] ?>">
 									  					<?php echo ''.$weight_unit['abbreviation'].' - '.$weight_unit['description'].'';?>	
 									  				</option>
 									  			<?php }while($weight_unit = mysqli_fetch_assoc($result4)) ?>
@@ -97,9 +105,16 @@
 			  	<div style="float: left;">
 			  		Filter by: <select name="cat" id="mylist" class="form-control" style="width: 90px; display: inline-block;" onchange="myFunction()">
 						  	<option value="All">All</option>
-						  	<?php do{ ?>
-						  		<option value="<?php echo $category5['category_name'];?>"><?php echo $category5['category_name'];?></option>
-						  	<?php }while($category5 = mysqli_fetch_assoc($result5)) ?>
+						  	<?php 
+						  		if(mysqli_num_rows($result5) == 0){
+
+						  		}else{
+
+								  	do{ ?>
+								  		<option value="<?php echo $category5['category_name'];?>"><?php echo $category5['category_name'];?></option>
+								  	<?php }while($category5 = mysqli_fetch_assoc($result5));
+
+								  } ?>
 						  	</select>
 			  	</div>
 			  	<button type="button" class="btn-sm btn-primary" style="margin-left: -50%; float:right;" data-toggle="modal" data-target="#add_products"><i class="fas fa-plus-circle"></i></i> Add</button>
@@ -172,6 +187,7 @@
 	</div>
 
 <script type="text/javascript">
+
 $(document).ready( function () {
   var table = $('#example').DataTable({
   	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
@@ -202,4 +218,9 @@ function myFunction() {
 	  }       
  	}
 }
+
+if (window.history.replaceState) {
+  	window.history.replaceState( null, null, window.location.href );
+}
+
 </script>

@@ -42,14 +42,16 @@
 		$colorstr = "";
 		$border = "";
 
-		do{
-			
-			$xx_str .= '"'.$ye['year'].'",';
-			$yx_str .= ''.round($ye['yearly_total'],2).',';
-			$colorstr .= '"#DC8927",';
-			$border .= '"#060606",';
+		if(mysqli_num_rows($ex)){
+			do{
+				
+				$xx_str .= '"'.$ye['year'].'",';
+				$yx_str .= ''.round($ye['yearly_total'],2).',';
+				$colorstr .= '"#DC8927",';
+				$border .= '"#060606",';
 
-		}while ($ye = mysqli_fetch_assoc($ex));
+			}while ($ye = mysqli_fetch_assoc($ex));
+		}
 
 
 		$sq2 ="SELECT year(status_date) as years, SUM(print_service_total) as yearly_totals FROM printing_service_tbl Where status_id = 4 GROUP BY year(status_date) ORDER BY year(status_date)";
@@ -61,14 +63,16 @@
 		$colorstrp = "";
 		$borderp = "";
 
-		do{
-			
-			$xx_strp .= '"'.$ye2['years'].'",';
-			$yx_strp .= ''.round($ye2['yearly_totals'],2).',';
-			$colorstrp .= '"#800000",';
-			$borderp .= '"#060606",';
+		if(mysqli_num_rows($ex2)){
+			do{
+				
+				$xx_strp .= '"'.$ye2['years'].'",';
+				$yx_strp .= ''.round($ye2['yearly_totals'],2).',';
+				$colorstrp .= '"#800000",';
+				$borderp .= '"#060606",';
 
-		}while ($ye2 = mysqli_fetch_assoc($ex2));
+			}while ($ye2 = mysqli_fetch_assoc($ex2));
+		}
 
 	
 ?>
@@ -156,9 +160,13 @@
 									$show_y = "SELECT year(status_date) as y FROM order_details_tbl Where status_id = 4 GROUP BY year(status_date)";
 									$exx = mysqli_query($db,$show_y);
 									$shww = mysqli_fetch_assoc($exx);
-								do{?>
-									<option value="<?php echo $shww['y']; ?>"  <?php echo (isset($year)&&($year==$shww['y'])?"selected":"")?>><?php echo $shww['y']; ?></option>
-								<?php }while($shww = mysqli_fetch_assoc($exx)); ?>
+
+								if(mysqli_num_rows($exx)){
+									do{?>
+										<option value="<?php echo $shww['y']; ?>"  <?php echo (isset($year)&&($year==$shww['y'])?"selected":"")?>><?php echo $shww['y']; ?></option>
+									<?php }while($shww = mysqli_fetch_assoc($exx)); 
+								}?>
+									
 							</select>
 						</div>
 
@@ -191,6 +199,7 @@
 
 					<div class="data_view2 col-sm-10">
 						<canvas id="myChart2"></canvas>
+
 					</div>
 
 					<div class="col-sm-2" style="margin-top: 25px">
@@ -213,9 +222,12 @@
 									$show_y2 = "SELECT year(status_date) as y2 FROM printing_service_tbl Where status_id = 4 GROUP BY year(status_date)";
 									$exx2 = mysqli_query($db,$show_y2);
 									$shww2 = mysqli_fetch_assoc($exx2);
-								do{?>
-									<option value="<?php echo $shww2['y2']; ?>"  <?php echo (isset($year2)&&($year2==$shww2['y2'])?"selected":"")?>><?php echo $shww2['y2']; ?></option>
-								<?php }while($shww2 = mysqli_fetch_assoc($exx2)); ?>
+
+								if(mysqli_num_rows($exx2)){
+									do{?>
+										<option value="<?php echo $shww2['y2']; ?>"  <?php echo (isset($year2)&&($year2==$shww2['y2'])?"selected":"")?>><?php echo $shww2['y2']; ?></option>
+									<?php }while($shww2 = mysqli_fetch_assoc($exx2)); 
+								}?>
 							</select>
 						</div>
 
@@ -315,14 +327,12 @@
 
 			</div>
 
-
-
 		</div>
 	</div>
 <script>
-	if ( window.history.replaceState ) {
-  		window.history.replaceState( null, null, window.location.href );
-	}
+if(window.history.replaceState) {
+  	window.history.replaceState( null, null, window.location.href );
+}
 
 	function showDiv(){
 
@@ -464,7 +474,6 @@
 	  "#DC8927",
 	  "#800000"
 	];
-
 
 	new Chart("myChart3", {
 	  type: "doughnut",

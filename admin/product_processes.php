@@ -65,12 +65,18 @@
 			}	
 			else
 			{
-				echo '<script> alert("Product already exist!")</script>';
+				echo '<script> window.location.href="product.php?err=Product already exist";</script>';
 			}
 		}
 		else
 		{
-			echo '<script> alert("Please fill all required fields") </script>';
+			$error = "All field is required";
+			echo  '<script> 
+					$(document).ready(function(){
+					$("#add_products").modal("show");
+					});
+				</script>';
+		
 		}
 
 		

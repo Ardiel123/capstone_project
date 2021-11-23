@@ -72,14 +72,14 @@
 
 
 <div class="container-md">
-  <h2 class="title-index" >Featured Products</h2>
+   <center><?php if($resultCheck > 0) { ?>   
+  <h2 class="title-index" >Our Best Sellers Product</h2>
   <hr class="hr3" >
   <div class="row">
   
-  <center>
+  
   <div class="row">
   
-    <?php if($resultCheck > 0) { ?>
   <?php while($row = mysqli_fetch_assoc($result)){ ?>
 
         <?php 
@@ -128,7 +128,7 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
 
  ?>
 <!-- announcements -->
-<div class="container-md index-div2" >
+<div class="container-md index-div2" id="announcement_div">
   <h2 class="title-index" >Announcements</h2>
   <hr class="hr3">
 
@@ -138,7 +138,7 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
 <?php 
     
     if(mysqli_num_rows($result3) == 0){
-        echo "<h5>No Announcement is posted yet</h5>";
+        echo "<h5>No announcement is posted yet</h5>";
     } 
     else{
 

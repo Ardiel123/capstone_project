@@ -32,7 +32,8 @@
 		
 			$query4 = "INSERT INTO product_variation_tbl(product_details_id,weight_unit_id,weight_value,price) VALUES('$product_details_id','$size','$per_value','$price')";
 			$result4 = mysqli_query($db,$query4);
-			header("location: manage_product.php?id=$product_details_id");
+
+			echo  '<script> window.location.href="manage_product.php?id='.$product_details_id.'";</script>';
 		}
 		else
 		{
@@ -44,7 +45,7 @@
 	if (isset($_POST['edit'])) {
 
 		$details_id = $_POST['details_id']; 
-		header("location: edit_variant.php?id=$details_id");
+		echo  '<script> window.location.href="edit_variant.php?id='.$details_id.'";</script>';
 	}
 
 	if(isset($_POST['save_all'])){
@@ -74,7 +75,7 @@
 
 		}
 
-		header("location:product.php");
+		echo  '<script> window.location.href="product.php";</script>';
 	}
 
 	// if (isset($_POST['back'])) {

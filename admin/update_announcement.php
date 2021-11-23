@@ -35,9 +35,8 @@
 			echo  '<script> window.location.href="update_announcement.php?id='.$ann.'";</script>';
 
 		}
-		
-		echo  '<script> window.location.href="update_announcement.php?id='.$ann.'";</script>';
 
+		echo  '<script> window.location.href="update_announcement.php?id='.$ann.'";</script>';
 	}
 ?>
 <style>

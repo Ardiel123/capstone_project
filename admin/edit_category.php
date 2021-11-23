@@ -14,15 +14,24 @@ if (isset($_POST['save'])) {
 
 	$new_name = $_POST['name'];
 
-	$query3 = "UPDATE `category_tbl` SET `category_name`='$new_name' WHERE category_id = '$id'";
-	mysqli_query($db,$query3);
-	header("location: category.php");
+	$query3 = "SELECT category_name FROM `category_tbl` WHERE category_name = '$new_name'";
+	$result3 = mysqli_query($db, $query3);
 
+	if(mysqli_num_rows($result3)){
+
+		echo '<script> window.location.href="edit_category.php?id='.$id.'&err=Category already exist!";</script>';
+
+	}else{
+
+		$query3 = "UPDATE `category_tbl` SET `category_name`='$new_name' WHERE category_id = '$id'";
+		mysqli_query($db,$query3);
+		echo  '<script> window.location.href="category.php";</script>';	
+	}
 
 }
 
 if (isset($_POST['back'])) {
-	header("location: category.php");
+	echo  '<script> window.location.href="category.php";</script>';
 }
 
 ?>
@@ -30,6 +39,11 @@ if (isset($_POST['back'])) {
 		<div class="for_title">
 			<h2>Edit Category</h2>
 		</div>
+		<?php if(isset($_GET['err'])) { ?>
+			<div class="alert alert-danger" role="alert">
+				<?php echo $_GET['err']; ?>
+			</div>
+		<?php } ?>
 		<div class="my_content">
 
 			<div class="panel panel-default" style="width: 50%;">

@@ -937,15 +937,14 @@ font-family: 'Poppins';
 		font-size: 20px;
 
 	}
-	
 	.footer1{
 		color: white;
 		font-size: 14px;
 	}
+
 	.footer3{
 		color: white;
 		font-size: 15px;
-
 	}
 	.footer3:hover{
 		color: #cc7a00;

@@ -18,10 +18,11 @@
 
 		$que = "UPDATE `product_variation_tbl` SET weight_value='$value',price='$price', weight_unit_id='$size' WHERE product_variation_id = '$to_save_id'";
 		$result2 = mysqli_query($db,$que);
-		header("location: manage_product.php?id=$prod_id");
+		echo  '<script> window.location.href="manage_product.php?id='.$prod_id.'";</script>';
+
 	}
 	if (isset($_POST['back'])) {
 		$prod_id = $_POST['product_id'];
-		header("location: manage_product.php?id=$prod_id");
+		echo  '<script> window.location.href="manage_product.php?id='.$prod_id.'";</script>';
 	}
 ?>

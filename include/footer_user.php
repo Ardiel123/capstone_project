@@ -11,8 +11,7 @@
 	<div class="row">
 		<div class="col-sm footer-col1" >
 		<h5 class="footer-about" >About</h5>
-		<a href="" class="footer-about1"><h6 class="footer2" >About Us</h6></a>
-		<a href="announcement.php" class="footer-about1"><h6 class="footer2" >Announcements</h6></a>
+		<a href="index.php#announcement_div" class="footer-about1"><h6 class="footer2" >Announcements</h6></a>
 		</div>
 
 
@@ -27,17 +26,17 @@
 			
 				<div class="row footer1">
 					<div class="col-sm footer-bg" >
-						<p>Address: Sumacab Este, Cabanatuan City, Nueva Ecija</p>
+						<p><i class='bx bx-current-location' ></i>&nbsp;&nbsp;&nbsp;Address: Sumacab Este, Cabanatuan City, Nueva Ecija</p>
 					</div>
 				</div>
 				<div class="row footer1">
 					<div class="col-sm">
-						<p>Phone: 0966-239-6545</p>
+						<p><i class='bx bx-phone'></i>&nbsp;&nbsp;&nbsp;0966-239-6545</p>
 					</div>
 				</div>
 				<div class="row footer1">
 					<div class="col-sm footer-bg" >
-						<p>Email: NeustProduction@gmail.com</p>
+						<p><i class="far fa-envelope"></i>&nbsp;&nbsp;&nbsp;tradebay2021@gmail.com</p>
 					</div>
 				</div>
 		

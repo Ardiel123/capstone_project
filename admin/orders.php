@@ -227,7 +227,7 @@
 					$exe_sql_qry = mysqli_query($db,$sql_qry);
 					$status = mysqli_fetch_assoc($exe_sql_qry);
 
-					if($status['status_id'] != 4){
+					if($status['status_id'] != 1){
 							$check = false;
 					}
 			}
