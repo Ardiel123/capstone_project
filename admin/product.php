@@ -158,7 +158,7 @@
 						  		<td><?php echo $show_products['category_name']; ?></td>
 						  		<td><?php echo $show_products['product_name']; ?></td>
 							  	<td><?php echo $show_products['product_description']; ?></td>
-							  	<td><?php echo $show_products['date_posted']; ?></td>
+							  	<td><?php echo date("Y-m-d h:i a", strtotime($show_products['date_posted'])); ?></td>
 							  	<td>
 							  
 								  		<a href="manage_product.php?id=<?php echo $show_products['product_details_id']; ?>" style="text-decoration: none; color: white;">

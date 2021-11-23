@@ -122,7 +122,7 @@
   </div>
 </div>
 <?php 
-$sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
+$sql3 = "SELECT announcement_id, content, image, admin_id, CONCAT(MONTHNAME(date_published),' ',DAY(date_published),', ',YEAR(date_published)) date_pub FROM announcement_tbl ORDER BY date_published DESC";
         $result3 = mysqli_query($db,$sql3);
         $row3 = mysqli_fetch_assoc($result3);
 
@@ -146,7 +146,7 @@ $sql3 = "SELECT * FROM announcement_tbl ORDER BY date_published DESC;";
 
   <div style="background-color: white">
   <div class="row">
-    <div class="col"><h6 class="a-text" ><?php echo $row3['date_published']?></h6></div>
+    <div class="col"><h6 class="a-text" ><?php echo $row3['date_pub']?></h6></div>
   </div>
   <div class="row a-index-row1" >
     <div class="col-md-5 index-col1" >
