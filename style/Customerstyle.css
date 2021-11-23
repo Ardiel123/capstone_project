@@ -951,7 +951,7 @@ font-family: 'Poppins';
 	}
 	footer{
 		background-color: black;
-		height: 170px !important;
+		height: 195px !important;
 	}
 @media only screen and (max-width: 1207px){
   footer{
@@ -975,6 +975,17 @@ font-family: 'Poppins';
 	}
 	.footer-f{
 		height: 215px !important;
+	}
+}
+@media only screen and (max-width: 627px){
+	.footer-col1{
+		height: 250px !important;
+	}
+	.footer-col2{
+		height: 250px !important;
+	}
+	.footer-f{
+		height: 250px !important;
 	}
 }
 
