@@ -22,7 +22,7 @@
 			  	<div class="panel-body">
 
 			  		<div class="container" style="width: 100%; height: 600px; overflow: auto;">
-			  			<table id="example" class="table table-striped">
+			  			<table id="example" class="table table-striped" style="width: 100%">
 			  				<thead>
 			  					<tr>
 			  						<th>Customer ID#</th>
@@ -99,8 +99,12 @@
 <script type="text/javascript">
 	
 $(document).ready( function () {
-  var table = $('#example').DataTable();
-} );
+  var table = $('#example').DataTable({
+  	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+  	"scrollX": true,
+  	"bScrollCollapse": true
+  });
+});
 
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
