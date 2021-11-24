@@ -400,16 +400,16 @@
 				  							</div>
 				  						</td>
 				  						
-				  						<td style="vertical-align: middle;"><?php echo $view['current_price']; ?></td>
+				  						<td style="vertical-align: middle;text-align: center;"><?php echo $view['current_price']; ?></td>
 				  						
-				  						<td style="vertical-align: middle;"><?php echo "₱".number_format($subtotal,2,".",","); ?></td>
+				  						<td style="vertical-align: middle;text-align: center;"><?php echo "₱".number_format($subtotal,2,".",","); ?></td>
 				  				</tr>	
 				  				<?php	
 			  						}while($view = mysqli_fetch_assoc($exe_view));
 			  					?>
 			  					<tr>
 			  						<td colspan="2" align="right"><?php echo "<b>Total:</b>"; ?></td>
-			  						<td colspan="1"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
+			  						<td colspan="1" style="text-align: center;"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
 			  					</tr>
 			  					<tr>
 			  						<td colspan="7" style="white-space: initial;">

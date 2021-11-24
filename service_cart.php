@@ -332,12 +332,11 @@
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
 			      		<div class="container sc-modal1" >
-			  			<table class="table table-borderless">
+			  			<table class="table table-bordered">
 			  				<thead>
 			  					<tr>
-			  						<th>Image</th>
-			  						<th>Size</th>
-			  						<th>Qty</th>
+			  						<th>Service</th>
+			  						
 			  						<th>Total</th>
 			  					</tr>
 			  				</thead>
@@ -348,10 +347,30 @@
 			  					?>
 			  					<tr>	
 
-				  						<td><?php echo '<img src="'.$view['print_service_image'].'" style="width: 50px; height: 50px;" >'; ?></td>
-				  						<td><?php echo $view['print_service_size']; ?></td>
-				  						<td><?php echo "x".$view['print_service_quantity']; ?></td>
-				  						<td><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
+				  						<td>
+				  						<div class="row">
+				  							<div class="col">
+				  									<?php echo '<img src="'.$view['print_service_image'].'" style="width: 50px; height: 50px;" >'; ?>
+				  							</div>
+				  							<div class="col" style="min-width: 120px;">
+				  									<div class="row">
+				  										<div class="col">
+				  											<?php echo "Quantity: ".$view['print_service_quantity']; ?>
+				  										</div>
+				  									</div>
+				  									<div class="row">
+				  										<div class="col">
+				  											<?php echo "Size: ".$view['print_service_size']; ?>
+				  										</div>
+				  									</div>
+				  							</div>
+				  						</div>
+				  					
+				  							
+				  						</td>
+				  						
+				  						
+				  						<td style="text-align: center;vertical-align: middle;"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
 				  				</tr>	
 				  				<?php	
 			  						}while($view = mysqli_fetch_assoc($exe_view));
