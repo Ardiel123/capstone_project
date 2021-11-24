@@ -72,28 +72,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TradeBay</title>
-	    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="style/my_style.css">
+	<title>TradeBay</title>
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="style/Customerstyle.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <style>
+
 	label #sidebar_btn{
 		display: none;
 	}
-	.right_area h5{
-		display: none;
-	}
+	.left_area{
+	margin-top: 20px;
+	width: 30%;
+	float: left;
+	height: 70px;
+	transition: 0.5s;
+}
+.right_area{
+	width: 30%;
+	float: right;
+	height: 70px;
+	padding: 20px;
+}
+.left_area h3{
+	position: absolute;
+	color: #fff;
+	margin-left: 50px;
+	text-transform: uppercase;
+	font-size: 30px;
+	font-weight: 900;
+}
+.left_area span{
+	color: #cc7a00;
+	font-size: 30px;
+}
+.right_area h6{
+	margin-top: 10px;
+	position: absolute;
+	color: #fff;
+}
 	.content{
 		margin: auto;
-		margin-top: 100px;
+		margin-top: 77px;
+		height: 1000px;
 		align-items: center;
 	}
 	.my_content{
@@ -111,7 +150,6 @@
 
 	.inputs{
 		width: 40%;
-		margin-top: 40px;
 	}
 
 	@media screen and (max-width: 900px){
@@ -119,10 +157,9 @@
 			width: 100%;
 		}
 		.container{
-			width: 100%;
+			width: 97%;
 		}
 	}
-
 
 </style>
 <body>
@@ -133,7 +170,10 @@
 			<i class="fa fa-bars" aria-hidden="true" id="sidebar_btn"></i>
 		</label>
 		<div class="left_area">
-			<h3>Trade <span>Bay</span></h3>
+			<a href="index.php"><h3>Trade <span>Bay</span></h3></a>
+		</div>
+		<div class="right_area">
+			<a href="login.php"><h6><i class="fa fa-sign-in-alt"></i>&nbsp;&nbsp;Login</h6></a>
 		</div>
 	</header>
 	<div class="content">
@@ -142,8 +182,8 @@
 				<h2>Account recovery</h2><hr>
 
 
-					<h3>Enter complete email address shown below</h3>
-					<h4><?php echo $the_email; ?></h4>
+					<h6>Enter complete email address shown below</h6>
+					<h6><?php echo $the_email; ?></h6>
 					
 					<form method="POST">
 					<center>
@@ -168,4 +208,7 @@
 		</div>
 	</div>
 </body>
-</html>
+<?php 
+	include('include/footer_user.php');
+ ?>
+

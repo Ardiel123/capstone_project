@@ -51,7 +51,7 @@
 				      </a>
 				      		 <div class="dropdown-menu dropdown-menu-right">
 				      		 	<?php if(!isset($_SESSION['cus_name'])){ ?>
-							<a class="dropdown-item" href="login.php">Login</a>
+							<a class="dropdown-item" href="login.php"><i class="fa fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
 
 						<?php }else{ ?>
         						<a class="dropdown-item" href="account.php">

@@ -11,7 +11,7 @@
 	<div class="row">
 		<div class="col-sm footer-col1" >
 		<h5 class="footer-about" >About</h5>
-		<a href="index.php#announcement_div" class="footer-about1"><h6 class="footer2" >Announcements</h6></a>
+		<a href="index.php#announcement_div" class="footer-about1"><p class="footer2" >Announcements</p></a>
 		</div>
 
 
@@ -26,7 +26,7 @@
 			
 				<div class="row footer1">
 					<div class="col-sm footer-bg" >
-						<p><i class='bx bx-current-location' ></i>&nbsp;&nbsp;&nbsp;Address: Sumacab Este, Cabanatuan City, Nueva Ecija</p>
+						<p><i class="fa fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;Sumacab Este, Cabanatuan City, Nueva Ecija</p>
 					</div>
 				</div>
 				<div class="row footer1">
