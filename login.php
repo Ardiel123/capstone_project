@@ -66,7 +66,18 @@
 	}
 
 ?>
+<style>
 
+.show{
+	font-size: 20px; 
+	float: right; 
+	margin-top: -45px; 
+	margin-left: 10px; 
+	position: relative;
+	opacity: 0.2;
+}
+
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +96,7 @@
 		</div>
 		<div class="login-content">
 			<form method="POST">
-				<img src="img/login/avatar.png">
+			<!-- 	<img src="img/login/avatar.png"> -->
 				<a href="index.php" class="fortitle"><h2 class="title">Trade<span class="bay">Bay</span> Login</h2></a>
 							<?php if(isset($error)) { ?>
 								<div class="alert">
@@ -111,9 +122,8 @@
             	   </div>
             	</div>
 
-            	<div style="float:  right; margin-top: -45px; margin-left: 10px;  position: relative;">
-            		<i class="far fa-eye show" id="togglePassword" style="font-size: 20px;"></i>
-            	</div>
+     					<i class="far fa-eye show" id="togglePassword"></i>
+            		
             	
             	<input type="submit" class="btn" name="login_btn" value="Login" style="margin-top: 60px;">
             	<a href="customer_register.php" class="fortitle"><input type="button" class="btn" value="Signup"></a>

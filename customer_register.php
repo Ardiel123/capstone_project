@@ -21,7 +21,7 @@
 		</div>
 		<div class="login-content">
 			<form method="POST">
-				<img src="img/login/avatar.png">
+<!-- 				<img src="img/login/avatar.png"> -->
 				<a href="index.php" class="fortitle"><h2 class="title">Trade<span class="bay">Bay</span> Registration</h2></a>
 							<?php if(isset($error)) { ?>
 								<div class="alert">
