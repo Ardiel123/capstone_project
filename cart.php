@@ -187,7 +187,7 @@ $query_payment = "SELECT * FROM payment_type_tbl";
                     if (empty($_SESSION['cart'])) {
                   ?>
                       <tr background="img/login/empty_cart.png" class="cart-tr1">
-                        <td colspan="3">  </td>
+                        <td colspan="3"></td>
                           
                       </tr>
                   <?php

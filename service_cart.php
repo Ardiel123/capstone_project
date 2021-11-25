@@ -145,7 +145,9 @@
 <style>
 	
 	
-	
+	@media (max-width: 960px) {
+		.empty{width: 250px; height: 300px;}
+	}
 	
 	
 </style>
@@ -184,7 +186,7 @@
 			  	</div>
 			  	<div class="panel-body">
 			  		<div class="container sc-container2" >
-			  			<table class="table table-striped">
+			  			<table>
 			  				<thead>
 			  					<tr cols="8">
 			  					<form method="GET">
@@ -231,9 +233,8 @@
 			  					<?php
 					  				if (mysqli_num_rows($exe_show_order) == 0) {
 					  			?>
-					  				<tr>
-					  					<td colspan="5" style="text-align: center;"><td>
-					  				</tr>
+					  				
+					  				<img class="empty" src="img/index/noorder.png" width="400" height="300" style="margin: auto; display: block;">
 					  			<?php
 					  				}
 					  				else{	
@@ -379,7 +380,7 @@
 			  						<?php if( $stat_id == 1){ ?>
 			  							<form method="POST">
 			  								<input type="hidden" name="cancel_order_id" value="<?php echo $id; ?>">
-			  							<td colspan="5" align="right"><button type="submit" name="cancel_ord" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel order <?php echo "SRV_NUM".$id; ?>? you will repeat the process again if you want to order.')">Cancel order</button></td>
+			  							<td colspan="5" align="right"><button type="submit" name="cancel_ord" class="btn btn-danger" onclick="return confirm('Are you sure you want to cancel order <?php echo "SRV_NUM".$id; ?>? you will repeat the process again if you want to order.')">Cancel service</button></td>
 										</form>
 			  						<?php }else
 			  								{

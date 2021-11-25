@@ -53,6 +53,7 @@
 			}else{
 
 				$verification_key = md5(time().$username);
+				$host = getHostByName(getHostName());
 
 				$query = "SELECT ac.username, ct.customer_email FROM account_tbl ac INNER JOIN customer_tbl ct WHERE ac.username = '$username' OR ct.customer_email = '$email_address' LIMIT 1";
 				$result = mysqli_query($db,$query);
@@ -80,7 +81,7 @@
 
 						$mail->isHTML(true);
 						$mail->Subject='TradeBay Customer Verification';
-						$mail->Body='<h1>Verification Email</h1></br><h5>Click the log-in link provided below to activate your account and log-in.</h5></br> <a href="192.168.1.2/capstone_project/verify_user_email.php?vkey='.$verification_key.'">Log-in Account</a>';
+						$mail->Body='<h1>Verification Email</h1></br><h5>Click the log-in link provided below to activate your account and log-in.</h5></br> <a href="'.$host.'/capstone_project/verify_user_email.php?vkey='.$verification_key.'">Log-in Account</a>';
 
 						if(!$mail->send()){
 							echo "Message not sent";

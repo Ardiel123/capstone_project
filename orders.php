@@ -144,7 +144,15 @@
 	
 
 ?>
-
+<style>
+	
+	
+	@media (max-width: 960px) {
+		.empty{width: 250px; height: 300px;}
+	}
+	
+	
+</style>
 
 <hr class="hr1">
 <div class="nav-div1">
@@ -234,9 +242,9 @@
 			  					<?php
 					  				if (mysqli_num_rows($exe_show_order) == 0) {
 					  			?>
-					  				<tr>
-					  					<td colspan="5" style="text-align: center;"><td>
-					  				</tr>
+					  				
+					  					<img class="empty" src="img/index/noorder.png" width="400" height="300" style="margin: auto; display: block;">
+					  					
 					  			<?php
 					  				}
 					  				else{	
