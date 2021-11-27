@@ -68,7 +68,7 @@
 				
 				$xx_strp .= '"'.$ye2['years'].'",';
 				$yx_strp .= ''.round($ye2['yearly_totals'],2).',';
-				$colorstrp .= '"#800000",';
+				$colorstrp .= '"#3D56B2",';
 				$borderp .= '"#060606",';
 
 			}while ($ye2 = mysqli_fetch_assoc($ex2));
@@ -383,7 +383,7 @@ if(window.history.replaceState) {
 		data: {
 			labels: [<?php echo $xx_str; ?>],
 			datasets: [{
-				label: 'Product Sales',
+				label: 'Tradebay Product Sales',
 				data: [<?php echo $yx_str.'0'; ?>],
 				backgroundColor: [<?php echo $colorstr; ?>],
 				borderColor: [<?php echo $border; ?>],
@@ -451,7 +451,7 @@ if(window.history.replaceState) {
 		data: {
 			labels: [<?php echo $xx_strp; ?>],
 			datasets: [{
-				label: 'Printing Sales',
+				label: 'Tradebay Printing Sales',
 				data: [<?php echo $yx_strp.'0'; ?>],
 				backgroundColor: [<?php echo $colorstrp; ?>],
 				borderColor: [<?php echo $borderp; ?>],
@@ -472,7 +472,7 @@ if(window.history.replaceState) {
 	var yValues = [<?php echo $ye3['product']; ?>,<?php echo $ye4['print']; ?>];
 	var barColors = [
 	  "#DC8927",
-	  "#800000"
+	  "#3D56B2"
 	];
 
 	new Chart("myChart3", {

@@ -132,7 +132,7 @@
 		<div class="this">
 			<div class="center-services">
 
-					<button type="button" name="req" class="btn btn-primary btn-services" data-toggle="modal" data-target="#myModal" >Request Logo printing</button>
+					<button type="button" name="req" class="btn btn-primary btn-services" data-toggle="modal" data-target="#myModal" >Request for Printing</button>
 
 			</div>
 		</div>

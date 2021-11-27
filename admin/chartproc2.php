@@ -20,7 +20,7 @@ if(isset($_POST['subbtn2'])){
 					
 					$x_str .= '"'.$year['year'].'",';
 					$y_str .= ''.$year['yearly_total'].',';
-					$colorstr .= '"#800000",';
+					$colorstr .= '"#3D56B2",';
 					$border .= '"#060606",';
 
 				}while ($year = mysqli_fetch_assoc($exe_year));
@@ -45,7 +45,7 @@ if(isset($_POST['subbtn2'])){
 					}
 
 					$x_str .= '"'.$monthname[$x-1].'",';
-					$colorstr .= '"#800000",';
+					$colorstr .= '"#3D56B2",';
 					$border .= '"#060606",';
 
 				}
@@ -72,7 +72,7 @@ if(isset($_POST['subbtn2'])){
 							$y_str .= ''.$zero.',';
 						}
 
-						$colorstr .= '"#800000",';
+						$colorstr .= '"#3D56B2",';
 						$border .= '"#060606",';
 						$x_str .= '"Week'.$week['week_num'].'",';
 
