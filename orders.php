@@ -117,7 +117,7 @@
 		$id = $_POST['view_id'];
 		$stat_id = $_POST['stat_id'];
 
-		$sql_view = "SELECT pd.product_image,pd.product_name,oi.current_price, oi.quantity, od.total, od.status_id, pv.product_variation_id,pv.weight_value,wu.abbreviation FROM product_details_tbl pd INNER JOIN product_variation_tbl pv ON pv.product_details_id = pd.product_details_id INNER JOIN order_items_tbl oi ON oi.product_variation_id = pv.product_variation_id INNER JOIN order_details_tbl od ON oi.order_details_id = od.order_details_id INNER JOIN weight_unit_tbl wu ON pv.weight_unit_id = wu.weight_unit_id WHERE od.order_details_id = '$id'";
+		$sql_view = "SELECT pd.product_image,pd.product_name,oi.current_price, oi.quantity, od.total, od.status_id, pv.product_variation_id, pv.weight_value, sd.date_to_receive, wu.abbreviation FROM product_details_tbl pd INNER JOIN product_variation_tbl pv ON pv.product_details_id = pd.product_details_id INNER JOIN order_items_tbl oi ON oi.product_variation_id = pv.product_variation_id INNER JOIN order_details_tbl od ON oi.order_details_id = od.order_details_id INNER JOIN shipping_details_tbl sd ON od.shipping_details_id = sd.shipping_details_id INNER JOIN weight_unit_tbl wu ON pv.weight_unit_id = wu.weight_unit_id WHERE od.order_details_id = '$id'";
 		$exe_view = mysqli_query($db,$sql_view );
 		$view = mysqli_fetch_assoc($exe_view);
 
@@ -259,7 +259,7 @@
 					  									<?php echo "ORD_NUM".$show_order['order_details_id']; ?>
 					  								</div>
 					  								<div class="col-sm row1-order order3" >
-					  									<?php echo $show_order['date_ordered']; ?>
+					  									<?php echo date_format(new DateTime($show_order['date_ordered']), 'F d, Y'); ?>
 					  								</div>
 					  							
 			  						
@@ -362,7 +362,7 @@
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
 			      		<div class="container order-modal1" >
-			  			<table class="table table-bordered">
+			  			<table class="table">
 			  				<thead>
 			  					<tr>
 			  						<th>Product</th>
@@ -412,6 +412,9 @@
 				  						
 				  						<td style="vertical-align: middle;text-align: center;"><?php echo "₱".number_format($subtotal,2,".",","); ?></td>
 				  				</tr>	
+				  				<tr>
+			  						<td colspan="3">Posibble shipping on: <b><?php echo date_format(new DateTime($view['date_to_receive']), 'F d, Y'); ?></b></td>
+			  					</tr>
 				  				<?php	
 			  						}while($view = mysqli_fetch_assoc($exe_view));
 			  					?>
@@ -419,9 +422,10 @@
 			  						<td colspan="2" align="right"><?php echo "<b>Total:</b>"; ?></td>
 			  						<td colspan="1" style="text-align: center;"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
 			  					</tr>
+
 			  					<tr>
 			  						<td colspan="7" style="white-space: initial;">
-			  							<p><i>You've agreed that if youre outside Cabanatuan city you will add additional <b>₱80</b> when the item is delivered.<i></p>
+			  							<p><i>You're responsible for the shipping cost when the item is delivered by the courier.<i></p>
 			  						</td>
 			  					</tr>
 			  					<tr>

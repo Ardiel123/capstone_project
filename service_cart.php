@@ -115,7 +115,7 @@
 		$id = $_POST['view_id'];
 		$stat_id = $_POST['stat_id'];
 
-		$sql_view = "SELECT * FROM printing_service_tbl WHERE printing_service_id = '$id'";
+		$sql_view = "SELECT * FROM printing_service_tbl ps INNER JOIN shipping_details_tbl sd ON ps.shipping_details_id = sd.shipping_details_id WHERE printing_service_id = '$id'";
 		$exe_view = mysqli_query($db,$sql_view );
 		$view = mysqli_fetch_assoc($exe_view);
 
@@ -251,7 +251,7 @@
 				  						<?php echo $show_order['service_type']; ?>
 				  						</div>
 			  							<div class="col-sm sc-row1">
-				  						<?php echo $show_order['date_placed']; ?>
+				  						<?php echo date_format(new DateTime($show_order['date_placed']), 'F d, Y'); ?>
 				  						</div>
 			  							<div class="col-sm sc-row1">
 				  						<?php echo "Total: ₱".$show_order['print_service_total']; ?>
@@ -333,7 +333,7 @@
 			      	<form action="" method="POST">
 			      		<div class="modal-body">
 			      		<div class="container sc-modal1" >
-			  			<table class="table table-bordered">
+			  			<table class="table">
 			  				<thead>
 			  					<tr>
 			  						<th>Service</th>
@@ -373,6 +373,9 @@
 				  						
 				  						<td style="text-align: center;vertical-align: middle;"><?php echo "<b>₱".number_format($g_total,2,".",",")."</b>"; ?></td>
 				  				</tr>	
+				  				<tr>
+				  						<td colspan="2">Posibble shipping on: <b><?php echo date_format(new DateTime($view['date_to_receive']), 'F d, Y'); ?></b></td>
+				  				</tr>
 				  				<?php	
 			  						}while($view = mysqli_fetch_assoc($exe_view));
 			  					?>
